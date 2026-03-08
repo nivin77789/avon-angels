@@ -48,13 +48,13 @@
     --font-display: 'Outfit', sans-serif;
     --font-body: 'DM Sans', sans-serif;
 
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 30%));
     --gradient-accent: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 30%));
     --gradient-dark: linear-gradient(135deg, hsl(217 33% 12%), hsl(217 33% 20%));
     --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
-    --shadow-soft: 0 4px 20px -4px hsl(217 91% 60% / 0.1);
-    --shadow-elevated: 0 20px 60px -15px hsl(217 91% 60% / 0.15);
-    --shadow-glow: 0 0 40px -10px hsl(217 91% 60% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(160 84% 39% / 0.1);
+    --shadow-elevated: 0 20px 60px -15px hsl(160 84% 39% / 0.15);
+    --shadow-glow: 0 0 40px -10px hsl(160 84% 39% / 0.3);
   }
 }
 

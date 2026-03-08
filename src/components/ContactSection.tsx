@@ -26,7 +26,7 @@ const ContactSection = () => {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     try {
-      await push(ref(db, "assessments"), {
+      await push(dbRef(db, "assessments"), {
         name: formData.get("name"),
         phone: formData.get("phone"),
         email: formData.get("email"),

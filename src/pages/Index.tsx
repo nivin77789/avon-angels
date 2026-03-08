@@ -4,6 +4,7 @@ import TrustMarquee from "@/components/TrustMarquee";
 import AboutSection from "@/components/AboutSection";
 import StatsCounter from "@/components/StatsCounter";
 import ServicesSection from "@/components/ServicesSection";
+import ExtraMileSection from "@/components/ExtraMileSection";
 import ProcessSection from "@/components/ProcessSection";
 import TeamSection from "@/components/TeamSection";
 import GallerySection from "@/components/GallerySection";
@@ -26,6 +27,7 @@ const Index = () => (
     <AboutSection />
     <StatsCounter />
     <ServicesSection />
+    <ExtraMileSection />
     <ProcessSection />
     <TeamSection />
     <GallerySection />

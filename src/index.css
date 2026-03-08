@@ -120,9 +120,9 @@ html {
   background: hsl(214 30% 94%);
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(217 91% 60% / 0.3);
+  background: hsl(160 84% 39% / 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(217 91% 60% / 0.5);
+  background: hsl(160 84% 39% / 0.5);
 }

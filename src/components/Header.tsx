@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Heart, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AccessibilityWidget from "./AccessibilityWidget";
 
 const navItems = [
   { label: "Home", id: "home" },
@@ -171,6 +172,9 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-2">
+              {/* Accessibility Widget */}
+              <AccessibilityWidget scrolled={scrolled} />
+
               {/* Phone - visible on lg+ */}
               <a
                 href="tel:+441234567890"

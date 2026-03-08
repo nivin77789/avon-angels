@@ -1,128 +1,134 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Shield, Award, Users, Clock } from "lucide-react";
-import gardenImg from "@/assets/garden.jpg";
-import AnimatedBlob from "./AnimatedBlob";
+import { Shield, Award, Users, Clock, CheckCircle } from "lucide-react";
+import teamImg from "@/assets/team.jpg";
 
 const stats = [
-  { icon: Shield, label: "CQC Rated", value: "Outstanding" },
-  { icon: Award, label: "Years of Care", value: "15+" },
-  { icon: Users, label: "Caring Staff", value: "50+" },
-  { icon: Clock, label: "Support", value: "24/7" },
+  { icon: Shield, value: "CQC", label: "Registered" },
+  { icon: Award, value: "15+", label: "Years Experience" },
+  { icon: Users, value: "200+", label: "Active Clients" },
+  { icon: Clock, value: "24/7", label: "Availability" },
 ];
 
-const CountUp = ({ value, inView }: { value: string; inView: boolean }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ type: "spring", stiffness: 100, damping: 12 }}
-      className="text-2xl font-display font-bold text-foreground"
-    >
-      {value}
-    </motion.div>
-  );
-};
+const features = [
+  "Person-centred care plans tailored to individual needs",
+  "Fully trained, DBS-checked and insured carers",
+  "Regular quality audits and family feedback reviews",
+  "Transparent pricing with no hidden fees",
+];
 
 const AboutSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="py-28 bg-background relative overflow-hidden">
-      <AnimatedBlob className="w-80 h-80 bg-primary -top-20 -right-20" delay={2} />
-      <AnimatedBlob className="w-60 h-60 bg-accent bottom-0 left-0" delay={5} />
+    <section id="about" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="container relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Image side */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="relative rounded-3xl overflow-hidden"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
+            >
+              <img src={teamImg} alt="Avon Angels Home Care Team" className="w-full h-[480px] object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
+            </motion.div>
+
+            {/* Floating card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.6, type: "spring" }}
+              className="absolute -bottom-6 -right-6 bg-card rounded-2xl p-5 border border-border"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
+            >
+              <div className="text-3xl font-display font-bold text-primary">98%</div>
+              <div className="text-sm font-body text-muted-foreground">Client Satisfaction</div>
+              <div className="flex gap-0.5 mt-1">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-3 h-3 rounded-full bg-accent" />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Decorative border */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.8 }}
+              className="absolute -inset-4 border-2 border-primary/10 rounded-[2rem] -z-10"
+            />
+          </motion.div>
+
+          {/* Text side */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-sm font-body tracking-widest uppercase text-accent font-semibold inline-flex items-center gap-2"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-semibold mb-6"
             >
-              <motion.div className="w-8 h-[2px] bg-accent" initial={{ width: 0 }} animate={isInView ? { width: 32 } : {}} transition={{ duration: 0.8 }} />
-              About Us
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              About Avon Angels
             </motion.span>
-            <h2 className="text-4xl lg:text-5xl font-display font-bold text-foreground mt-4 mb-8 leading-tight">
-              A Home Away
-              <br />From Home
+
+            <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
+              Compassionate Home Care
+              <br />
+              <span className="text-gradient">You Can Trust</span>
             </h2>
-            <p className="font-body text-muted-foreground leading-relaxed mb-4 text-lg">
-              Nestled in the heart of Avon, our care home has been providing exceptional residential
-              and nursing care for over 15 years. We believe in treating every resident as part of
-              our family.
-            </p>
-            <p className="font-body text-muted-foreground leading-relaxed mb-10">
-              Our dedicated team of qualified professionals is passionate about creating a warm,
-              stimulating environment where residents can thrive. From our beautifully maintained
-              gardens to our home-cooked meals, every detail is designed with care.
+
+            <p className="font-body text-muted-foreground text-lg leading-relaxed mb-6">
+              Since 2010, Avon Angels has been delivering exceptional home care services across Avon. 
+              We believe everyone deserves to live independently and with dignity in their own home.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, i) => (
+            <div className="space-y-3 mb-10">
+              {features.map((f, i) => (
                 <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + i * 0.12, type: "spring", stiffness: 120 }}
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  className="bg-card rounded-xl p-5 text-center cursor-default group"
-                  style={{ boxShadow: "var(--shadow-soft)" }}
+                  key={f}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                  className="flex items-start gap-3"
                 >
-                  <motion.div whileHover={{ rotate: 10 }} className="inline-block">
-                    <stat.icon className="w-6 h-6 text-primary mx-auto mb-3 group-hover:text-accent transition-colors" />
-                  </motion.div>
-                  <CountUp value={stat.value} inView={isInView} />
-                  <div className="text-xs font-body text-muted-foreground mt-1">{stat.label}</div>
+                  <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <span className="font-body text-foreground/80 text-sm">{f}</span>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 60, rotateY: 10 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-            className="relative"
-            style={{ perspective: "1000px" }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.02, rotateY: -3 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="relative"
-            >
-              <img
-                src={gardenImg}
-                alt="Beautiful gardens at Avon Angels Care Home"
-                className="rounded-2xl object-cover w-full h-[520px]"
-                style={{ boxShadow: "var(--shadow-elevated)" }}
-              />
-              {/* Decorative frame */}
-              <motion.div
-                className="absolute -inset-4 border-2 border-primary/20 rounded-3xl -z-10"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.8 }}
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, x: -20 }}
-              animate={isInView ? { opacity: 1, scale: 1, x: 0 } : {}}
-              transition={{ delay: 0.7, type: "spring", stiffness: 120 }}
-              whileHover={{ scale: 1.08 }}
-              className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-2xl p-6"
-              style={{ boxShadow: "var(--shadow-elevated)" }}
-            >
-              <div className="text-3xl font-display font-bold">98%</div>
-              <div className="text-sm font-body text-primary-foreground/80">Family Satisfaction</div>
-            </motion.div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6 + i * 0.1, type: "spring" }}
+                  whileHover={{ y: -4 }}
+                  className="bg-secondary rounded-xl p-4 text-center cursor-default"
+                >
+                  <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                  <div className="text-xl font-display font-bold text-foreground">{stat.value}</div>
+                  <div className="text-xs font-body text-muted-foreground">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

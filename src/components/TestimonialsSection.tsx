@@ -1,95 +1,159 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Star, Quote } from "lucide-react";
-import AnimatedBlob from "./AnimatedBlob";
+import { useRef, useState } from "react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
     name: "Margaret Thompson",
-    relation: "Daughter of Resident",
-    text: "The care my mother receives at Avon Angels is truly exceptional. The staff treat her with such kindness and dignity. We couldn't be more grateful.",
+    relation: "Daughter of Client",
+    text: "Avon Angels transformed my mother's quality of life. She receives personal care at home every morning, and the carers are absolutely wonderful — always on time, always smiling.",
     rating: 5,
+    location: "Bath, Avon",
   },
   {
     name: "David Collins",
-    relation: "Son of Resident",
-    text: "From the moment we walked through the door, we felt at home. The environment is warm, the food is wonderful, and the carers are angels in every sense.",
+    relation: "Son of Client",
+    text: "Dad was resistant to having carers at first, but within a week he was looking forward to their visits. They've become like family. The companionship has made a huge difference.",
     rating: 5,
+    location: "Bristol, Avon",
   },
   {
     name: "Susan Hartley",
-    relation: "Niece of Resident",
-    text: "My aunt has flourished since moving to Avon Angels. The activities keep her engaged and the personalised care plan has made a real difference to her wellbeing.",
+    relation: "Niece of Client",
+    text: "The dementia care my aunt receives is exceptional. The team understands her needs perfectly and adapts beautifully. We finally have peace of mind knowing she's safe at home.",
     rating: 5,
+    location: "Keynsham, Avon",
+  },
+  {
+    name: "Robert Fletcher",
+    relation: "Live-in Care Client",
+    text: "After my stroke, I thought I'd have to move into a care home. Avon Angels provided a live-in carer who helped me recover at home. I'm now more independent than ever.",
+    rating: 5,
+    location: "Clevedon, Avon",
+  },
+  {
+    name: "Patricia Moore",
+    relation: "Wife of Client",
+    text: "The respite care service gave me a much-needed break. Knowing my husband was in safe, caring hands allowed me to truly rest. I can't thank them enough.",
+    rating: 5,
+    location: "Portishead, Avon",
   },
 ];
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [active, setActive] = useState(0);
+
+  const next = () => setActive((a) => (a + 1) % testimonials.length);
+  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section id="testimonials" className="py-28 bg-background relative overflow-hidden">
-      <AnimatedBlob className="w-72 h-72 bg-accent top-10 right-10" delay={1} />
+    <section id="testimonials" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl" />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-sm font-body tracking-widest uppercase text-accent font-semibold">Testimonials</span>
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-foreground mt-4 mb-4">
-            What Families Say
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-semibold mb-6">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            Testimonials
+          </span>
+          <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-4">
+            Trusted by Families
+            <br /><span className="text-gradient">Across Avon</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ duration: 0.7, delay: 0.15 * i, type: "spring", stiffness: 100 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="bg-card rounded-2xl p-8 relative group"
-              style={{ boxShadow: "var(--shadow-soft)" }}
+        {/* Featured testimonial */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="max-w-3xl mx-auto mb-12"
+        >
+          <div className="bg-card rounded-3xl p-8 lg:p-12 border border-border/50 relative" style={{ boxShadow: "var(--shadow-elevated)" }}>
+            <Quote className="w-12 h-12 text-primary/10 mb-4" />
+            <motion.p
+              key={active}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-body text-foreground/80 text-lg lg:text-xl leading-relaxed italic mb-8"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : {}}
-                transition={{ delay: 0.3 + i * 0.15, type: "spring" }}
-              >
-                <Quote className="w-10 h-10 text-primary/15 mb-4" />
-              </motion.div>
-              <div className="flex gap-1 mb-4">
-                {[...Array(t.rating)].map((_, j) => (
-                  <motion.div
-                    key={j}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.5 + j * 0.05 + i * 0.1 }}
-                  >
-                    <Star className="w-4 h-4 text-accent fill-accent" />
-                  </motion.div>
-                ))}
-              </div>
-              <p className="font-body text-muted-foreground leading-relaxed mb-6 italic">"{t.text}"</p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-sm font-display font-bold text-primary">
-                    {t.name.split(" ").map(n => n[0]).join("")}
+              "{testimonials[active].text}"
+            </motion.p>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="font-display font-bold text-primary">
+                    {testimonials[active].name.split(" ").map(n => n[0]).join("")}
                   </span>
                 </div>
                 <div>
-                  <div className="font-display font-semibold text-foreground text-sm">{t.name}</div>
-                  <div className="text-xs font-body text-muted-foreground">{t.relation}</div>
+                  <div className="font-display font-semibold text-foreground">{testimonials[active].name}</div>
+                  <div className="text-sm font-body text-muted-foreground">{testimonials[active].relation} · {testimonials[active].location}</div>
                 </div>
               </div>
-            </motion.div>
+              <div className="flex gap-1">
+                {[...Array(testimonials[active].rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-accent fill-accent" />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={prev}
+              className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/30 transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </motion.button>
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === active ? "bg-primary w-8" : "bg-border hover:bg-primary/30"}`}
+                />
+              ))}
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={next}
+              className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/30 transition-colors"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </motion.button>
+          </div>
+        </motion.div>
+
+        {/* Trust metrics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap items-center justify-center gap-8 lg:gap-16 pt-8 border-t border-border"
+        >
+          {[
+            { value: "4.9/5", label: "Google Rating" },
+            { value: "500+", label: "5-Star Reviews" },
+            { value: "98%", label: "Would Recommend" },
+            { value: "96%", label: "Staff Retention" },
+          ].map((m) => (
+            <div key={m.label} className="text-center">
+              <div className="text-2xl font-display font-bold text-foreground">{m.value}</div>
+              <div className="text-xs font-body text-muted-foreground">{m.label}</div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

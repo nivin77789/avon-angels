@@ -71,7 +71,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
       >
         {/* Card body */}
         <motion.div
-          className="relative rounded-2xl p-7 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
+          className="relative rounded-xl p-5 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
           style={{
             background: "hsl(var(--card))",
             boxShadow: `0 ${shadowBlur}px ${shadowBlur}px ${shadowSpread}px hsl(160 84% 39% / 0.12)`,

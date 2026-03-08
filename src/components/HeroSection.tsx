@@ -51,7 +51,7 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <motion.div className="relative z-20 container py-32 lg:py-0" style={{ y: textY, opacity }}>
+      <motion.div className="relative z-20 container py-24 sm:py-32 lg:py-0" style={{ y: textY, opacity }}>
         <div className="max-w-2xl">
           {/* Trust badges with stagger */}
           <motion.div

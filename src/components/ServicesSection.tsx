@@ -110,7 +110,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
               <motion.div
                 animate={isHovered ? { rotate: [0, -8, 8, 0], scale: 1.1 } : { rotate: 0, scale: 1 }}
                 transition={{ duration: 0.6, type: "spring" }}
-                className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-xl group-hover:shadow-primary/30 transition-all duration-500 relative"
+                className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
               >
                 <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                 {/* Icon glow */}

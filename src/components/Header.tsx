@@ -237,12 +237,7 @@ const Header = () => {
               className="absolute top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-card shadow-2xl"
             >
               <div className="flex items-center justify-between p-5 border-b border-border">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                    <Heart className="w-4 h-4 text-primary-foreground" fill="currentColor" />
-                  </div>
-                  <span className="font-display font-bold text-foreground">Avon Angels</span>
-                </div>
+                <img src={avonLogo} alt="Avon Angels Home Care" className="h-9 w-auto" />
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setOpen(false)}

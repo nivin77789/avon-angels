@@ -60,7 +60,7 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 lg:py-32 section-blue-light relative overflow-hidden">
+    <section id="pricing" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
       <div className="container relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}

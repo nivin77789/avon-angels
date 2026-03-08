@@ -19,7 +19,7 @@ const ServicesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="services" className="py-24 lg:py-32 section-blue-light relative overflow-hidden">
+    <section id="services" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
       <div className="absolute top-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
 

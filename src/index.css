@@ -15,7 +15,7 @@
     --popover: 214 40% 99%;
     --popover-foreground: 217 33% 12%;
 
-    --primary: 217 91% 60%;
+    --primary: 160 84% 39%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 214 35% 93%;
@@ -32,7 +32,7 @@
 
     --border: 214 30% 89%;
     --input: 214 30% 89%;
-    --ring: 217 91% 60%;
+    --ring: 160 84% 39%;
 
     --radius: 0.75rem;
 
@@ -43,18 +43,18 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-ring: 160 84% 39%;
 
     --font-display: 'Outfit', sans-serif;
     --font-body: 'DM Sans', sans-serif;
 
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 30%));
     --gradient-accent: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 30%));
     --gradient-dark: linear-gradient(135deg, hsl(217 33% 12%), hsl(217 33% 20%));
     --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
-    --shadow-soft: 0 4px 20px -4px hsl(217 91% 60% / 0.1);
-    --shadow-elevated: 0 20px 60px -15px hsl(217 91% 60% / 0.15);
-    --shadow-glow: 0 0 40px -10px hsl(217 91% 60% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(160 84% 39% / 0.1);
+    --shadow-elevated: 0 20px 60px -15px hsl(160 84% 39% / 0.15);
+    --shadow-glow: 0 0 40px -10px hsl(160 84% 39% / 0.3);
   }
 }
 
@@ -100,12 +100,12 @@
     background: linear-gradient(135deg, hsl(217 33% 12%), hsl(217 40% 18%));
   }
 
-  .section-blue {
-    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 50%));
+  .section-green {
+    background: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 30%));
   }
 
-  .section-blue-light {
-    background: hsl(217 50% 96%);
+  .section-green-light {
+    background: hsl(160 40% 96%);
   }
 }
 
@@ -120,9 +120,9 @@ html {
   background: hsl(214 30% 94%);
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(217 91% 60% / 0.3);
+  background: hsl(160 84% 39% / 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(217 91% 60% / 0.5);
+  background: hsl(160 84% 39% / 0.5);
 }

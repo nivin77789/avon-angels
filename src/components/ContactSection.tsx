@@ -152,7 +152,7 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Tell us more</label>
-              <Textarea required placeholder="Briefly describe the care needs..." rows={4} className="font-body resize-none rounded-xl" />
+              <Textarea name="message" required placeholder="Briefly describe the care needs..." rows={4} className="font-body resize-none rounded-xl" />
             </div>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button

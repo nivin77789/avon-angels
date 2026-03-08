@@ -28,6 +28,7 @@ const Index = () => (
     <CTASection />
     <ContactSection />
     <Footer />
+    <Chatbot />
   </>
 );
 

@@ -69,12 +69,7 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.08, y: -2 }}
                 className="glass-dark rounded-full px-4 py-2 flex items-center gap-2 cursor-default"
               >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
-                >
-                  <b.icon className="w-4 h-4 text-accent" />
-                </motion.div>
+                <b.icon className="w-4 h-4 text-accent" />
                 <span className="text-xs font-body font-medium text-primary-foreground/90">{b.text}</span>
               </motion.div>
             ))}

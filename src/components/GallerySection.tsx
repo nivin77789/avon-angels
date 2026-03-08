@@ -1,64 +1,71 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import roomImg from "@/assets/room.jpg";
-import gardenImg from "@/assets/garden.jpg";
-import heroImg from "@/assets/hero-care.jpg";
+import { MapPin, Phone, Award } from "lucide-react";
 
-const images = [
-  { src: heroImg, alt: "Communal lounge at Avon Angels Care Home", label: "Communal Living" },
-  { src: roomImg, alt: "Comfortable bedroom at Avon Angels Care Home", label: "Private Rooms" },
-  { src: gardenImg, alt: "Beautiful gardens at Avon Angels Care Home", label: "Our Gardens" },
+const areas = [
+  "Bath", "Bristol", "Keynsham", "Clevedon", "Portishead", 
+  "Weston-super-Mare", "Nailsea", "Midsomer Norton", "Radstock",
+  "Thornbury", "Yate", "Chipping Sodbury",
 ];
 
 const GallerySection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-28 bg-card relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
       <div className="container" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-sm font-body tracking-widest uppercase text-accent font-semibold">Our Home</span>
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-foreground mt-4 mb-4">
-            A Place You'll Love
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-body font-semibold mb-6">
+            <MapPin className="w-3.5 h-3.5" />
+            Coverage Area
+          </span>
+          <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-5">
+            Caring for Communities
+            <br /><span className="text-gradient-accent">Across Avon</span>
           </h2>
+          <p className="font-body text-muted-foreground text-lg">
+            We provide home care services throughout Avon and the surrounding areas.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {images.map((img, i) => (
+        <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-12">
+          {areas.map((area, i) => (
             <motion.div
-              key={img.label}
-              initial={{ opacity: 0, scale: 0.9, rotateY: 15 }}
-              animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.15 * i, ease: [0.25, 0.4, 0.25, 1] }}
-              whileHover={{ scale: 1.03, y: -6 }}
-              className="relative group overflow-hidden rounded-2xl cursor-pointer"
-              style={{ boxShadow: "var(--shadow-soft)", perspective: "800px" }}
+              key={area}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.05 * i, type: "spring" }}
+              whileHover={{ scale: 1.08, y: -2 }}
+              className="px-5 py-2.5 rounded-full bg-secondary border border-border/50 font-body text-sm text-foreground/70 hover:bg-primary hover:text-primary-foreground hover:border-primary cursor-default transition-all duration-300"
             >
-              <motion.img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-80 object-cover"
-                whileHover={{ scale: 1.08 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
-                <motion.span
-                  className="font-display font-semibold text-primary-foreground p-6 text-lg"
-                  initial={{ y: 20 }}
-                  whileInView={{ y: 0 }}
-                >
-                  {img.label}
-                </motion.span>
-              </div>
+              <MapPin className="w-3 h-3 inline mr-1.5" />{area}
             </motion.div>
           ))}
         </div>
+
+        {/* Trust row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap justify-center items-center gap-8 lg:gap-16"
+        >
+          {[
+            { icon: Award, text: "CQC Registered" },
+            { icon: Phone, text: "24/7 On-Call Support" },
+            { icon: Award, text: "UKHCA Member" },
+          ].map((item) => (
+            <div key={item.text} className="flex items-center gap-2 text-sm font-body text-muted-foreground">
+              <item.icon className="w-5 h-5 text-primary" />
+              {item.text}
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

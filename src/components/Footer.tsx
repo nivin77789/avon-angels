@@ -1,49 +1,74 @@
 import { motion } from "framer-motion";
-import { Heart, ArrowUp } from "lucide-react";
+import { Heart, ArrowUp, Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  const sections = [
+    {
+      title: "Services",
+      links: ["Personal Care", "Live-in Care", "Dementia Care", "Companionship", "Night Care", "Respite Care", "Complex Care"],
+    },
+    {
+      title: "Company",
+      links: ["About Us", "Our Team", "How It Works", "Pricing", "Testimonials", "FAQ", "Careers"],
+    },
+    {
+      title: "Resources",
+      links: ["Care Guide", "Funding Advice", "CQC Report", "Blog", "Privacy Policy", "Terms of Service"],
+    },
+  ];
+
   return (
-    <footer className="bg-foreground py-16 relative">
+    <footer className="bg-foreground pt-16 pb-8 relative">
       <div className="container">
-        <div className="grid md:grid-cols-3 gap-10 mb-12">
-          <div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Heart className="w-5 h-5 text-accent" fill="currentColor" />
-              <span className="text-xl font-display font-bold text-primary-foreground">Avon Angels</span>
+              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
+                <Heart className="w-5 h-5 text-primary-foreground" fill="currentColor" />
+              </div>
+              <div>
+                <span className="text-lg font-display font-bold text-primary-foreground">Avon Angels</span>
+                <span className="block text-[10px] font-body tracking-widest uppercase text-primary-foreground/50">Home Care</span>
+              </div>
             </div>
-            <p className="text-sm font-body text-primary-foreground/50 leading-relaxed">
-              Providing compassionate, high-quality care in Avon since 2010. Registered with the Care Quality Commission.
+            <p className="text-sm font-body text-primary-foreground/50 leading-relaxed mb-5 max-w-sm">
+              Professional, compassionate home care services across Avon since 2010. CQC registered and rated. Helping your loved ones live independently at home.
             </p>
-          </div>
-          <div>
-            <h4 className="font-display font-semibold text-primary-foreground mb-5">Quick Links</h4>
-            <div className="space-y-3">
-              {["Home", "About", "Services", "Testimonials", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: "smooth" })}
-                  className="block text-sm font-body text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
+            <div className="space-y-2">
+              <a href="tel:+441234567890" className="flex items-center gap-2 text-sm font-body text-primary-foreground/60 hover:text-accent transition-colors">
+                <Phone className="w-4 h-4" /> 01234 567 890
+              </a>
+              <a href="mailto:hello@avonangels.co.uk" className="flex items-center gap-2 text-sm font-body text-primary-foreground/60 hover:text-accent transition-colors">
+                <Mail className="w-4 h-4" /> hello@avonangels.co.uk
+              </a>
+              <div className="flex items-center gap-2 text-sm font-body text-primary-foreground/60">
+                <MapPin className="w-4 h-4" /> Serving all of Avon, UK
+              </div>
             </div>
           </div>
-          <div>
-            <h4 className="font-display font-semibold text-primary-foreground mb-5">Contact</h4>
-            <div className="space-y-2 text-sm font-body text-primary-foreground/50">
-              <p>123 Riverside Lane, Avon</p>
-              <p>Bristol BS1 2AB</p>
-              <p>01234 567 890</p>
-              <p>hello@avonangelscarehome.co.uk</p>
+
+          {sections.map((s) => (
+            <div key={s.title}>
+              <h4 className="font-display font-semibold text-primary-foreground mb-5 text-sm">{s.title}</h4>
+              <div className="space-y-2.5">
+                {s.links.map((link) => (
+                  <button
+                    key={link}
+                    className="block text-sm font-body text-primary-foreground/45 hover:text-accent transition-colors"
+                  >
+                    {link}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
+
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs font-body text-primary-foreground/30">
-            © {new Date().getFullYear()} Avon Angels Care Home. All rights reserved.
+            © {new Date().getFullYear()} Avon Angels Home Care. All rights reserved. CQC Registered.
           </p>
           <motion.button
             whileHover={{ scale: 1.1, y: -2 }}

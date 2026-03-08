@@ -112,7 +112,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
                 transition={{ duration: 0.6, type: "spring" }}
                 className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
               >
-                <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                 {/* Icon glow */}
                 <motion.div
                   className="absolute -inset-2 rounded-xl bg-primary/0 group-hover:bg-primary/10 blur-lg transition-all duration-500"

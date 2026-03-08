@@ -15,39 +15,15 @@ const CTASection = () => {
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 section-green" />
       
-      {/* Animated gradient mesh */}
-      <motion.div
+      {/* Static ambient glow */}
+      <div
         className="absolute top-0 left-0 w-full h-full opacity-30"
         style={{ background: "radial-gradient(ellipse at 20% 50%, hsl(160 84% 50% / 0.3), transparent 50%)" }}
-        animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
-        transition={{ duration: 10, repeat: Infinity }}
       />
-      <motion.div
+      <div
         className="absolute top-0 left-0 w-full h-full opacity-20"
         style={{ background: "radial-gradient(ellipse at 80% 50%, hsl(160 60% 60% / 0.4), transparent 50%)" }}
-        animate={{ scale: [1.2, 1, 1.2], x: [0, -30, 0] }}
-        transition={{ duration: 8, repeat: Infinity }}
       />
-
-      {/* Floating particles */}
-      {[...Array(30)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full bg-primary-foreground"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${1 + Math.random() * 3}px`,
-            height: `${1 + Math.random() * 3}px`,
-          }}
-          animate={{
-            opacity: [0, 0.6, 0],
-            scale: [0, 1.5, 0],
-            y: [0, -(10 + Math.random() * 30), 0],
-          }}
-          transition={{ duration: 2 + Math.random() * 3, repeat: Infinity, delay: Math.random() * 5 }}
-        />
-      ))}
 
       <div className="container relative z-10" ref={ref}>
         <motion.div

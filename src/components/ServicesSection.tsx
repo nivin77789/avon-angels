@@ -99,26 +99,6 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.2), transparent)" }}
           />
 
-          {/* Floating background particles */}
-          {isHovered && (
-            <>
-              {[...Array(4)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 rounded-full bg-primary/30"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{
-                    opacity: [0, 0.6, 0],
-                    scale: [0, 1.5, 0],
-                    y: [0, -40 - i * 10],
-                    x: [(i - 1.5) * 20, (i - 1.5) * 30],
-                  }}
-                  transition={{ duration: 1.5, delay: i * 0.15, repeat: Infinity }}
-                  style={{ bottom: "30%", left: "50%" }}
-                />
-              ))}
-            </>
-          )}
 
           {/* Content with 3D depth layers */}
           <div className="relative z-10">

@@ -236,11 +236,7 @@ const HeroSection = () => {
         onClick={() => scrollTo("about")}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 group"
       >
-        <motion.div
-          className="absolute -inset-4 rounded-full bg-primary-foreground/5 group-hover:bg-primary-foreground/10 transition-colors"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
+         <div className="absolute -inset-4 rounded-full bg-primary-foreground/5 group-hover:bg-primary-foreground/10 transition-colors" />
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}

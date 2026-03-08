@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
@@ -47,6 +47,12 @@ const TestimonialsSection = () => {
 
   const next = () => setActive((a) => (a + 1) % testimonials.length);
   const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(next, 6000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="testimonials" className="py-24 lg:py-32 bg-background relative overflow-hidden">

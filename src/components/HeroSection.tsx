@@ -67,7 +67,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.4 + i * 0.15, type: "spring", stiffness: 200 }}
                 whileHover={{ scale: 1.08, y: -2 }}
-                className="glass-dark rounded-full px-4 py-2 flex items-center gap-2 cursor-default"
+                className="glass-dark rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 cursor-default"
               >
                 <b.icon className="w-4 h-4 text-accent" />
                 <span className="text-xs font-body font-medium text-primary-foreground/90">{b.text}</span>

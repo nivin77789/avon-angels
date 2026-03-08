@@ -139,7 +139,7 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>
-              <select className="w-full border border-input bg-background rounded-xl px-3 py-2 text-sm font-body text-foreground">
+              <select name="careType" className="w-full border border-input bg-background rounded-xl px-3 py-2 text-sm font-body text-foreground">
                 <option>Personal Care</option>
                 <option>Live-in Care</option>
                 <option>Dementia Care</option>

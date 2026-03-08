@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Heart, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AccessibilityWidget from "./AccessibilityWidget";
+import avonLogo from "@/assets/avon_angels.png";
 
 const navItems = [
   { label: "Home", id: "home" },
@@ -80,26 +81,7 @@ const Header = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <motion.div
-                className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                  scrolled ? "bg-primary" : "bg-accent"
-                }`}
-                whileHover={{ rotate: 12 }}
-              >
-                <Heart className="w-4 h-4 text-primary-foreground" fill="currentColor" />
-              </motion.div>
-              <div className="flex items-baseline gap-1.5">
-                <span className={`text-base font-display font-bold tracking-tight transition-colors duration-300 ${
-                  scrolled ? "text-foreground" : "text-primary-foreground"
-                }`}>
-                  Avon Angels
-                </span>
-                <span className={`text-[9px] font-body font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
-                  scrolled ? "text-primary" : "text-accent"
-                }`}>
-                  HOME CARE
-                </span>
-              </div>
+              <img src={avonLogo} alt="Avon Angels Home Care" className="h-10 w-auto" />
             </motion.button>
 
             {/* Desktop Nav */}
@@ -255,12 +237,7 @@ const Header = () => {
               className="absolute top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-card shadow-2xl"
             >
               <div className="flex items-center justify-between p-5 border-b border-border">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                    <Heart className="w-4 h-4 text-primary-foreground" fill="currentColor" />
-                  </div>
-                  <span className="font-display font-bold text-foreground">Avon Angels</span>
-                </div>
+                <img src={avonLogo} alt="Avon Angels Home Care" className="h-9 w-auto" />
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setOpen(false)}

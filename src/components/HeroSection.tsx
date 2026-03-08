@@ -51,14 +51,14 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <motion.div className="relative z-20 container py-32 lg:py-0" style={{ y: textY, opacity }}>
+      <motion.div className="relative z-20 container py-24 sm:py-32 lg:py-0" style={{ y: textY, opacity }}>
         <div className="max-w-2xl">
           {/* Trust badges with stagger */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-wrap gap-3 mb-8"
+            className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8"
           >
             {badges.map((b, i) => (
               <motion.div
@@ -67,7 +67,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.4 + i * 0.15, type: "spring", stiffness: 200 }}
                 whileHover={{ scale: 1.08, y: -2 }}
-                className="glass-dark rounded-full px-4 py-2 flex items-center gap-2 cursor-default"
+                className="glass-dark rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 cursor-default"
               >
                 <b.icon className="w-4 h-4 text-accent" />
                 <span className="text-xs font-body font-medium text-primary-foreground/90">{b.text}</span>
@@ -80,7 +80,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.08] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.08] mb-4 sm:mb-6"
           >
             <motion.span
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
@@ -127,7 +127,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-lg lg:text-xl font-body text-primary-foreground/80 mb-8 max-w-lg leading-relaxed"
+            className="text-base sm:text-lg lg:text-xl font-body text-primary-foreground/80 mb-6 sm:mb-8 max-w-lg leading-relaxed"
           >
             Avon Angels delivers compassionate, CQC-registered home care services across Avon. 
             From personal care to live-in support — we help your loved ones thrive at home.
@@ -138,7 +138,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="flex flex-col gap-2.5 mb-10"
+            className="flex flex-col gap-2 mb-8 sm:mb-10"
           >
             {["Personalised care plans", "Fully trained & DBS-checked carers", "No long-term contracts"].map((f, i) => (
               <motion.div
@@ -166,7 +166,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
           >
             <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="relative group">
               <div className="absolute -inset-1 rounded-full bg-accent/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -12,6 +12,7 @@ const plans = [
 const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: number; isInView: boolean }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const rotX = useSpring(useTransform(my, [-0.5, 0.5], [12, -12]), { stiffness: 150, damping: 20 });
@@ -21,7 +22,7 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
   const glareOp = useSpring(useTransform(mx, [-0.5, 0, 0.5], [0, 0.02, 0.15]), { stiffness: 200, damping: 25 });
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
+    if (isTouchDevice || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     mx.set((e.clientX - rect.left) / rect.width - 0.5);
     my.set((e.clientY - rect.top) / rect.height - 0.5);
@@ -40,9 +41,9 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
       <motion.div
         ref={cardRef}
         onMouseMove={handleMouse}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
         onMouseLeave={handleLeave}
-        style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
+        style={{ rotateX: isTouchDevice ? 0 : rotX, rotateY: isTouchDevice ? 0 : rotY, transformStyle: isTouchDevice ? "flat" : "preserve-3d" }}
         className="relative"
       >
         <div className={`rounded-2xl p-7 relative overflow-hidden border ${plan.popular ? "bg-foreground text-primary-foreground border-foreground" : "bg-card border-border/50 hover:border-primary/30"} transition-colors duration-500`}
@@ -50,17 +51,13 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
         >
           {/* Glare */}
           <motion.div className="pointer-events-none absolute inset-0 rounded-2xl" style={{ opacity: glareOp, background: `radial-gradient(circle at ${glareX}% ${glareY}%, ${plan.popular ? "hsl(160 84% 70% / 0.15)" : "hsl(160 84% 50% / 0.12)"}, transparent 55%)` }} />
-          {/* Shimmer */}
-          <motion.div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${plan.popular ? "hsl(160 84% 50% / 0.4)" : "hsl(160 84% 39% / 0.3)"}, transparent)` }} animate={{ x: ["-100%", "100%"] }} transition={{ duration: 3, repeat: Infinity, delay: index * 0.5, repeatDelay: 4 }} />
+          {/* Shimmer - desktop only */}
+          <div className="hidden sm:block absolute top-0 left-0 w-full h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${plan.popular ? "hsl(160 84% 50% / 0.4)" : "hsl(160 84% 39% / 0.3)"}, transparent)` }} />
 
           {plan.popular && (
-            <motion.div
-              className="absolute top-4 right-4 flex items-center gap-1 bg-accent text-accent-foreground text-xs font-body font-semibold px-3 py-1 rounded-full"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <div className="absolute top-4 right-4 flex items-center gap-1 bg-accent text-accent-foreground text-xs font-body font-semibold px-3 py-1 rounded-full">
               <Star className="w-3 h-3" /> Most Popular
-            </motion.div>
+            </div>
           )}
 
           <motion.div style={{ translateZ: isHovered ? 20 : 0, transformStyle: "preserve-3d" }} transition={{ duration: 0.3 }}>
@@ -101,8 +98,8 @@ const PricingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
-      <motion.div className="absolute top-20 left-20 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.05)" }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity }} />
+    <section id="pricing" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
+      <div className="absolute top-20 left-20 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.05)" }} />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center max-w-2xl mx-auto mb-16">

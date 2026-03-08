@@ -17,6 +17,7 @@ const services = [
 const Card3D = ({ service, index, isInView }: { service: typeof services[0]; index: number; isInView: boolean }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -28,15 +29,15 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
   const glareX = useTransform(mouseX, [-0.5, 0.5], [20, 80]);
   const glareY = useTransform(mouseY, [-0.5, 0.5], [20, 80]);
 
-  const iconZ = useSpring(isHovered ? 40 : 0, { stiffness: 200, damping: 20 });
-  const titleZ = useSpring(isHovered ? 25 : 0, { stiffness: 200, damping: 20 });
-  const descZ = useSpring(isHovered ? 15 : 0, { stiffness: 200, damping: 20 });
+  const iconZ = useSpring(isHovered && !isTouchDevice ? 40 : 0, { stiffness: 200, damping: 20 });
+  const titleZ = useSpring(isHovered && !isTouchDevice ? 25 : 0, { stiffness: 200, damping: 20 });
+  const descZ = useSpring(isHovered && !isTouchDevice ? 15 : 0, { stiffness: 200, damping: 20 });
 
   const shadowBlur = useSpring(isHovered ? 40 : 10, { stiffness: 120, damping: 20 });
   const shadowSpread = useSpring(isHovered ? -5 : -4, { stiffness: 120, damping: 20 });
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
+    if (isTouchDevice || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
     mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
@@ -60,12 +61,12 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
       <motion.div
         ref={cardRef}
         onMouseMove={handleMouse}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
         onMouseLeave={handleLeave}
         style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
+          rotateX: isTouchDevice ? 0 : rotateX,
+          rotateY: isTouchDevice ? 0 : rotateY,
+          transformStyle: isTouchDevice ? "flat" : "preserve-3d",
         }}
         className="relative group cursor-default"
       >
@@ -178,7 +179,7 @@ const ServicesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="services" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
       {/* Static background shapes */}
       <div className="absolute top-20 left-10 w-96 h-96 rounded-full blur-[120px]"
         style={{ background: "hsl(160 84% 39% / 0.06)" }}
@@ -207,7 +208,7 @@ const ServicesSection = () => {
             />
             Our Services
           </motion.span>
-          <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-5">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-display font-bold text-foreground mb-4 sm:mb-5">
             Complete Home Care
             <br />
             <span className="text-gradient">Solutions</span>

@@ -45,8 +45,8 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
-      <motion.div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity }} />
+    <section id="contact" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
+      <div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div
@@ -127,11 +127,11 @@ const ContactSection = () => {
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
             transition={{ delay: 0.3, type: "spring", stiffness: 60 }}
             whileHover={{ scale: 1.005 }}
-            className="bg-card rounded-2xl p-8 space-y-5 border border-border/50 hover:border-primary/20 transition-all duration-500 relative overflow-hidden"
+            className="bg-card rounded-2xl p-5 sm:p-8 space-y-4 sm:space-y-5 border border-border/50 hover:border-primary/20 transition-all duration-500 relative overflow-hidden"
             style={{ boxShadow: "0 20px 60px -15px hsl(160 84% 39% / 0.12)" }}
           >
             {/* Shimmer */}
-            <motion.div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.3), transparent)" }} animate={{ x: ["-100%", "100%"] }} transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }} />
+            <div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.3), transparent)" }} />
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Your Name</label><Input name="name" required placeholder="Full name" className="font-body rounded-xl" /></div>

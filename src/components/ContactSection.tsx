@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { db, ref as dbRef, push } from "@/lib/firebase";
 
 const contactInfo = [
   { icon: MapPin, label: "Service Area", value: "All of Avon, Bath, Bristol & surrounding areas" },
@@ -19,14 +20,28 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    try {
+      await push(dbRef(db, "assessments"), {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        location: formData.get("location"),
+        careType: formData.get("careType"),
+        message: formData.get("message"),
+        timestamp: Date.now(),
+        read: false,
+      });
       toast({ title: "Enquiry submitted!", description: "We'll contact you within 24 hours." });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+      form.reset();
+    } catch {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    }
+    setSending(false);
   };
 
   return (
@@ -107,24 +122,24 @@ const ContactSection = () => {
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Your Name</label>
-                <Input required placeholder="Full name" className="font-body rounded-xl" />
+                <Input name="name" required placeholder="Full name" className="font-body rounded-xl" />
               </div>
               <div>
                 <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Phone Number</label>
-                <Input type="tel" required placeholder="Your phone number" className="font-body rounded-xl" />
+                <Input name="phone" type="tel" required placeholder="Your phone number" className="font-body rounded-xl" />
               </div>
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Email Address</label>
-              <Input type="email" required placeholder="your@email.co.uk" className="font-body rounded-xl" />
+              <Input name="email" type="email" required placeholder="your@email.co.uk" className="font-body rounded-xl" />
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label>
-              <Input required placeholder="e.g. BS1 or Bath" className="font-body rounded-xl" />
+              <Input name="location" required placeholder="e.g. BS1 or Bath" className="font-body rounded-xl" />
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>
-              <select className="w-full border border-input bg-background rounded-xl px-3 py-2 text-sm font-body text-foreground">
+              <select name="careType" className="w-full border border-input bg-background rounded-xl px-3 py-2 text-sm font-body text-foreground">
                 <option>Personal Care</option>
                 <option>Live-in Care</option>
                 <option>Dementia Care</option>
@@ -137,7 +152,7 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Tell us more</label>
-              <Textarea required placeholder="Briefly describe the care needs..." rows={4} className="font-body resize-none rounded-xl" />
+              <Textarea name="message" required placeholder="Briefly describe the care needs..." rows={4} className="font-body resize-none rounded-xl" />
             </div>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button

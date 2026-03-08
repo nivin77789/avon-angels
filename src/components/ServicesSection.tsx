@@ -3,15 +3,14 @@ import { useRef, useState } from "react";
 import { Heart, Brain, Utensils, Activity, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Personal Care", desc: "Assistance with washing, dressing, grooming, and personal hygiene — delivered with dignity and respect.", gradient: "from-emerald-400/20 to-teal-500/10" },
-  { icon: Home, title: "Live-in Care", desc: "A dedicated carer living in your home, providing round-the-clock companionship and support.", gradient: "from-teal-400/20 to-cyan-500/10" },
-  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care from trained professionals, creating safe and familiar routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
-  { icon: Users, title: "Companionship", desc: "Friendly visits, social activities, and emotional support to combat loneliness and isolation.", gradient: "from-emerald-400/20 to-green-500/10" },
-  { icon: Moon, title: "Night Care", desc: "Overnight support for those who need assistance during the night, ensuring safety and peace of mind.", gradient: "from-teal-400/20 to-emerald-500/10" },
-  { icon: Activity, title: "Respite Care", desc: "Short-term care giving family carers a well-deserved break while your loved one is in expert hands.", gradient: "from-green-400/20 to-teal-500/10" },
-  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing support for conditions including MS, Parkinson's, stroke recovery, and more.", gradient: "from-emerald-400/20 to-cyan-500/10" },
-  { icon: Pill, title: "Medication Support", desc: "Safe medication management, reminders, and administration by trained care professionals.", gradient: "from-cyan-400/20 to-teal-500/10" },
-  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals prepared in your home, tailored to dietary needs and personal preferences.", gradient: "from-teal-400/20 to-green-500/10" },
+  { icon: Heart, title: "Personal Care", desc: "Washing, dressing & grooming with dignity.", gradient: "from-emerald-400/20 to-teal-500/10" },
+  { icon: Home, title: "Live-in Care", desc: "Round-the-clock support in your home.", gradient: "from-teal-400/20 to-cyan-500/10" },
+  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care & safe routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
+  { icon: Users, title: "Companionship", desc: "Social visits & emotional support.", gradient: "from-emerald-400/20 to-green-500/10" },
+  { icon: Activity, title: "Respite Care", desc: "Short-term relief for family carers.", gradient: "from-green-400/20 to-teal-500/10" },
+  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing for complex conditions.", gradient: "from-emerald-400/20 to-cyan-500/10" },
+  { icon: Pill, title: "Medication Support", desc: "Safe medication management & reminders.", gradient: "from-cyan-400/20 to-teal-500/10" },
+  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals tailored to your needs.", gradient: "from-teal-400/20 to-green-500/10" },
 ];
 
 const Card3D = ({ service, index, isInView }: { service: typeof services[0]; index: number; isInView: boolean }) => {

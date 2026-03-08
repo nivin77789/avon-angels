@@ -1,17 +1,16 @@
 import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
-import { Heart, Brain, Utensils, Activity, Moon, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
+import { Heart, Brain, Utensils, Activity, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Personal Care", desc: "Assistance with washing, dressing, grooming, and personal hygiene — delivered with dignity and respect.", gradient: "from-emerald-400/20 to-teal-500/10" },
-  { icon: Home, title: "Live-in Care", desc: "A dedicated carer living in your home, providing round-the-clock companionship and support.", gradient: "from-teal-400/20 to-cyan-500/10" },
-  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care from trained professionals, creating safe and familiar routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
-  { icon: Users, title: "Companionship", desc: "Friendly visits, social activities, and emotional support to combat loneliness and isolation.", gradient: "from-emerald-400/20 to-green-500/10" },
-  { icon: Moon, title: "Night Care", desc: "Overnight support for those who need assistance during the night, ensuring safety and peace of mind.", gradient: "from-teal-400/20 to-emerald-500/10" },
-  { icon: Activity, title: "Respite Care", desc: "Short-term care giving family carers a well-deserved break while your loved one is in expert hands.", gradient: "from-green-400/20 to-teal-500/10" },
-  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing support for conditions including MS, Parkinson's, stroke recovery, and more.", gradient: "from-emerald-400/20 to-cyan-500/10" },
-  { icon: Pill, title: "Medication Support", desc: "Safe medication management, reminders, and administration by trained care professionals.", gradient: "from-cyan-400/20 to-teal-500/10" },
-  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals prepared in your home, tailored to dietary needs and personal preferences.", gradient: "from-teal-400/20 to-green-500/10" },
+  { icon: Heart, title: "Personal Care", desc: "Washing, dressing & grooming with dignity.", gradient: "from-emerald-400/20 to-teal-500/10" },
+  { icon: Home, title: "Live-in Care", desc: "Round-the-clock support in your home.", gradient: "from-teal-400/20 to-cyan-500/10" },
+  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care & safe routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
+  { icon: Users, title: "Companionship", desc: "Social visits & emotional support.", gradient: "from-emerald-400/20 to-green-500/10" },
+  { icon: Activity, title: "Respite Care", desc: "Short-term relief for family carers.", gradient: "from-green-400/20 to-teal-500/10" },
+  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing for complex conditions.", gradient: "from-emerald-400/20 to-cyan-500/10" },
+  { icon: Pill, title: "Medication Support", desc: "Safe medication management & reminders.", gradient: "from-cyan-400/20 to-teal-500/10" },
+  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals tailored to your needs.", gradient: "from-teal-400/20 to-green-500/10" },
 ];
 
 const Card3D = ({ service, index, isInView }: { service: typeof services[0]; index: number; isInView: boolean }) => {
@@ -72,7 +71,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
       >
         {/* Card body */}
         <motion.div
-          className="relative rounded-2xl p-7 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
+          className="relative rounded-xl p-5 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
           style={{
             background: "hsl(var(--card))",
             boxShadow: `0 ${shadowBlur}px ${shadowBlur}px ${shadowSpread}px hsl(160 84% 39% / 0.12)`,
@@ -106,14 +105,14 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Icon - floats highest on hover */}
             <motion.div
               style={{ translateZ: iconZ, transformStyle: "preserve-3d" }}
-              className="mb-5"
+              className="mb-3"
             >
               <motion.div
                 animate={isHovered ? { rotate: [0, -8, 8, 0], scale: 1.1 } : { rotate: 0, scale: 1 }}
                 transition={{ duration: 0.6, type: "spring" }}
-                className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-xl group-hover:shadow-primary/30 transition-all duration-500 relative"
+                className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
               >
-                <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                 {/* Icon glow */}
                 <motion.div
                   className="absolute -inset-2 rounded-xl bg-primary/0 group-hover:bg-primary/10 blur-lg transition-all duration-500"
@@ -124,7 +123,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Title - mid depth */}
             <motion.h3
               style={{ translateZ: titleZ, transformStyle: "preserve-3d" }}
-              className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300"
+              className="text-base font-display font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-300"
             >
               {service.title}
             </motion.h3>
@@ -132,7 +131,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Description - lowest depth */}
             <motion.p
               style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
-              className="font-body text-muted-foreground text-sm leading-relaxed mb-4"
+              className="font-body text-muted-foreground text-xs leading-relaxed mb-3"
             >
               {service.desc}
             </motion.p>
@@ -218,7 +217,7 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((s, i) => (
             <Card3D key={s.title} service={s} index={i} isInView={isInView} />
           ))}

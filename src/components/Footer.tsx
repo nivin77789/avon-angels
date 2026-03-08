@@ -6,7 +6,7 @@ const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const sections = [
-    { title: "Services", links: ["Personal Care", "Live-in Care", "Dementia Care", "Companionship", "Night Care", "Respite Care", "Complex Care"] },
+    { title: "Services", links: ["Personal Care", "Live-in Care", "Dementia Care", "Companionship", "Respite Care", "Complex Care"] },
     { title: "Company", links: ["About Us", "Our Team", "How It Works", "Pricing", "Testimonials", "FAQ", "Careers"] },
     { title: "Resources", links: ["Care Guide", "Funding Advice", "CQC Report", "Blog", "Privacy Policy", "Terms of Service"] },
   ];

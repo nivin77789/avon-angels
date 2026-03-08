@@ -138,7 +138,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="flex flex-col gap-2.5 mb-10"
+            className="flex flex-col gap-2 mb-8 sm:mb-10"
           >
             {["Personalised care plans", "Fully trained & DBS-checked carers", "No long-term contracts"].map((f, i) => (
               <motion.div

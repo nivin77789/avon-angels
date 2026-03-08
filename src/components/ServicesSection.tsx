@@ -208,7 +208,7 @@ const ServicesSection = () => {
             />
             Our Services
           </motion.span>
-          <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-5">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-display font-bold text-foreground mb-4 sm:mb-5">
             Complete Home Care
             <br />
             <span className="text-gradient">Solutions</span>

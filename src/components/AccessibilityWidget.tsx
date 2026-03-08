@@ -184,8 +184,8 @@ const AccessibilityWidget = ({ scrolled = false }: AccessibilityWidgetProps) => 
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ type: "spring", damping: 25, stiffness: 400 }}
-                className="absolute top-full right-0 mt-3 w-[340px] max-h-[80vh] overflow-y-auto bg-card/98 backdrop-blur-2xl rounded-2xl shadow-2xl border border-border z-50"
-                style={{ boxShadow: "0 25px 50px -12px hsl(160 84% 39% / 0.25)" }}
+                className="absolute top-full right-0 mt-3 w-[340px] max-h-[80vh] overflow-y-auto bg-card backdrop-blur-2xl rounded-2xl shadow-2xl border border-border z-50"
+                style={{ fontSize: "16px", boxShadow: "0 25px 50px -12px hsl(160 84% 39% / 0.25)" }}
               >
                 {/* Header */}
                 <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-border bg-card/95 backdrop-blur-xl rounded-t-2xl">

@@ -179,7 +179,7 @@ const ServicesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="services" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
       {/* Static background shapes */}
       <div className="absolute top-20 left-10 w-96 h-96 rounded-full blur-[120px]"
         style={{ background: "hsl(160 84% 39% / 0.06)" }}

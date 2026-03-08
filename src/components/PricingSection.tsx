@@ -41,9 +41,9 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
       <motion.div
         ref={cardRef}
         onMouseMove={handleMouse}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
         onMouseLeave={handleLeave}
-        style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
+        style={{ rotateX: isTouchDevice ? 0 : rotX, rotateY: isTouchDevice ? 0 : rotY, transformStyle: isTouchDevice ? "flat" : "preserve-3d" }}
         className="relative"
       >
         <div className={`rounded-2xl p-7 relative overflow-hidden border ${plan.popular ? "bg-foreground text-primary-foreground border-foreground" : "bg-card border-border/50 hover:border-primary/30"} transition-colors duration-500`}

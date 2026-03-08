@@ -80,7 +80,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.08] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.08] mb-4 sm:mb-6"
           >
             <motion.span
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}

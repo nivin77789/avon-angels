@@ -219,7 +219,7 @@ const ProcessSection = () => {
           </div>
 
           {/* Step nodes on the line (desktop) */}
-          <div className="hidden lg:flex absolute top-10 left-[14%] right-[14%] -translate-y-1/2 justify-between pointer-events-none">
+          <div className="hidden lg:flex absolute top-[60px] left-[14%] right-[14%] -translate-y-1/2 justify-between pointer-events-none z-0">
             {steps.map((s, i) => (
               <motion.div
                 key={i}

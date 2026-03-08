@@ -42,43 +42,13 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Animated mesh gradient overlay */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full blur-[120px] opacity-20"
-          style={{ background: "radial-gradient(circle, hsl(160 84% 39%), transparent 70%)" }}
-          animate={{ x: [0, 100, 0], y: [0, 50, 0], scale: [1, 1.3, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full blur-[150px] opacity-15"
-          style={{ background: "radial-gradient(circle, hsl(160 84% 50%), transparent 60%)" }}
-          animate={{ x: [0, -80, 0], y: [0, -60, 0], scale: [1.2, 1, 1.2] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      {/* Floating particles - more dramatic */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            left: `${5 + Math.random() * 90}%`,
-            top: `${5 + Math.random() * 90}%`,
-            width: `${2 + Math.random() * 4}px`,
-            height: `${2 + Math.random() * 4}px`,
-            background: `hsl(160 84% ${39 + Math.random() * 30}% / ${0.2 + Math.random() * 0.4})`,
-          }}
-          animate={{
-            y: [0, -(20 + Math.random() * 40), 0],
-            x: [0, (Math.random() - 0.5) * 30, 0],
-            opacity: [0, 0.8, 0],
-            scale: [0, 1.5, 0],
-          }}
-          transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: Math.random() * 5 }}
-        />
-      ))}
+      {/* Static ambient glow */}
+      <div className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full blur-[120px] opacity-15"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39%), transparent 70%)" }}
+      />
+      <div className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full blur-[120px] opacity-10"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 50%), transparent 60%)" }}
+      />
 
       {/* Content */}
       <motion.div className="relative z-20 container py-32 lg:py-0" style={{ y: textY, opacity }}>
@@ -99,12 +69,7 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.08, y: -2 }}
                 className="glass-dark rounded-full px-4 py-2 flex items-center gap-2 cursor-default"
               >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
-                >
-                  <b.icon className="w-4 h-4 text-accent" />
-                </motion.div>
+                <b.icon className="w-4 h-4 text-accent" />
                 <span className="text-xs font-body font-medium text-primary-foreground/90">{b.text}</span>
               </motion.div>
             ))}
@@ -236,19 +201,15 @@ const HeroSection = () => {
         transition={{ duration: 1, delay: 1.5, type: "spring" }}
         className="hidden lg:block absolute right-12 bottom-24 z-20"
       >
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 1, 0] }}
+         <motion.div
+          animate={{ y: [0, -12, 0] }}
           transition={{ duration: 6, repeat: Infinity }}
           whileHover={{ scale: 1.05 }}
           className="glass-dark rounded-2xl p-6 w-64 cursor-default"
         >
-          <motion.div
-            className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-accent flex items-center justify-center"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+          <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-accent flex items-center justify-center">
             <Sparkles className="w-4 h-4 text-accent-foreground" />
-          </motion.div>
+          </div>
           <div className="text-4xl font-display font-bold text-primary-foreground mb-1">2,500+</div>
           <div className="text-sm font-body text-primary-foreground/60 mb-3">Families Supported</div>
           <div className="flex -space-x-2">
@@ -275,11 +236,7 @@ const HeroSection = () => {
         onClick={() => scrollTo("about")}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 group"
       >
-        <motion.div
-          className="absolute -inset-4 rounded-full bg-primary-foreground/5 group-hover:bg-primary-foreground/10 transition-colors"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
+         <div className="absolute -inset-4 rounded-full bg-primary-foreground/5 group-hover:bg-primary-foreground/10 transition-colors" />
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}

@@ -104,19 +104,6 @@ const AnimatedStep = ({ step, index, isInView }: { step: typeof steps[0]; index:
             />
           </svg>
 
-          {/* Pulsing rings */}
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{ border: `2px solid hsl(${step.color} / 0.15)` }}
-            animate={hasAnimated ? { scale: [1, 1.4, 1.4], opacity: [0.5, 0, 0] } : {}}
-            transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{ border: `2px solid hsl(${step.color} / 0.1)` }}
-            animate={hasAnimated ? { scale: [1, 1.7, 1.7], opacity: [0.3, 0, 0] } : {}}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.4 + index * 0.3 }}
-          />
 
           {/* Icon circle */}
           <motion.div
@@ -166,26 +153,6 @@ const AnimatedStep = ({ step, index, isInView }: { step: typeof steps[0]; index:
           {step.desc}
         </motion.p>
 
-        {/* Decorative dots on hover */}
-        {isHovered && (
-          <>
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1.5 h-1.5 rounded-full"
-                initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-                animate={{
-                  opacity: [0, 0.8, 0],
-                  scale: [0, 1, 0],
-                  x: (Math.random() - 0.5) * 80,
-                  y: -30 - Math.random() * 50,
-                }}
-                transition={{ duration: 1 + Math.random() * 0.5, repeat: Infinity, delay: i * 0.15 }}
-                style={{ left: "50%", top: "30%", background: `hsl(${step.color} / 0.5)` }}
-              />
-            ))}
-          </>
-        )}
       </motion.div>
     </motion.div>
   );
@@ -197,12 +164,10 @@ const ProcessSection = () => {
 
   return (
     <section id="process" className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* Background orbs */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] opacity-[0.04]"
+      {/* Static background glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] opacity-[0.04]"
         style={{ background: "hsl(160 84% 39%)" }}
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 10, repeat: Infinity }}
       />
 
       <div className="container relative z-10" ref={ref}>
@@ -241,21 +206,15 @@ const ProcessSection = () => {
               transition={{ delay: 0.8, duration: 2, ease: [0.22, 1, 0.36, 1] }}
               style={{ originX: 0, background: "linear-gradient(90deg, hsl(160 84% 39%), hsl(160 70% 50%), hsl(160 84% 39%))" }}
             />
-            {/* Traveling glow dot */}
+            {/* Traveling dot */}
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
+              className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
               style={{
                 background: "hsl(160 84% 50%)",
-                boxShadow: "0 0 12px 4px hsl(160 84% 50% / 0.5), 0 0 30px 8px hsl(160 84% 50% / 0.2)",
+                boxShadow: "0 0 8px 2px hsl(160 84% 50% / 0.4)",
               }}
               animate={isInView ? { left: ["-2%", "102%"] } : {}}
               transition={{ duration: 4, delay: 1.2, repeat: Infinity, ease: "linear" }}
-            />
-            {/* Secondary trailing dot */}
-            <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-accent/60"
-              animate={isInView ? { left: ["-2%", "102%"] } : {}}
-              transition={{ duration: 4, delay: 1.5, repeat: Infinity, ease: "linear" }}
             />
           </div>
 

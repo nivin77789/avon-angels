@@ -14,7 +14,7 @@ const GallerySection = () => {
 
   return (
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div

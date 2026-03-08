@@ -94,47 +94,11 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             }}
           />
 
-          {/* Top shimmer line */}
-          <div className="absolute inset-0 overflow-hidden rounded-2xl">
-            <motion.div
-              className="absolute top-0 left-0 w-full h-[1px]"
-              style={{
-                background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.5), transparent)",
-              }}
-              animate={{ x: ["-100%", "100%"] }}
-              transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.2, repeatDelay: 4 }}
-            />
-            {/* Side shimmer */}
-            <motion.div
-              className="absolute top-0 right-0 h-full w-[1px]"
-              style={{
-                background: "linear-gradient(180deg, transparent, hsl(160 84% 39% / 0.3), transparent)",
-              }}
-              animate={{ y: ["-100%", "100%"] }}
-              transition={{ duration: 3, repeat: Infinity, delay: index * 0.3 + 1, repeatDelay: 5 }}
-            />
-          </div>
+          {/* Subtle top highlight */}
+          <div className="absolute top-0 left-0 w-full h-[1px]"
+            style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.2), transparent)" }}
+          />
 
-          {/* Floating background particles */}
-          {isHovered && (
-            <>
-              {[...Array(4)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 rounded-full bg-primary/30"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{
-                    opacity: [0, 0.6, 0],
-                    scale: [0, 1.5, 0],
-                    y: [0, -40 - i * 10],
-                    x: [(i - 1.5) * 20, (i - 1.5) * 30],
-                  }}
-                  transition={{ duration: 1.5, delay: i * 0.15, repeat: Infinity }}
-                  style={{ bottom: "30%", left: "50%" }}
-                />
-              ))}
-            </>
-          )}
 
           {/* Content with 3D depth layers */}
           <div className="relative z-10">
@@ -215,24 +179,12 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
-      {/* Animated background shapes */}
-      <motion.div
-        className="absolute top-20 left-10 w-96 h-96 rounded-full blur-[120px]"
+      {/* Static background shapes */}
+      <div className="absolute top-20 left-10 w-96 h-96 rounded-full blur-[120px]"
         style={{ background: "hsl(160 84% 39% / 0.06)" }}
-        animate={{ scale: [1, 1.3, 1], x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 12, repeat: Infinity }}
       />
-      <motion.div
-        className="absolute bottom-10 right-10 w-80 h-80 rounded-full blur-[100px]"
+      <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full blur-[100px]"
         style={{ background: "hsl(160 70% 50% / 0.05)" }}
-        animate={{ scale: [1.2, 1, 1.2], y: [0, -30, 0] }}
-        transition={{ duration: 9, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px]"
-        style={{ background: "hsl(160 84% 39% / 0.03)" }}
-        animate={{ scale: [1, 1.15, 1] }}
-        transition={{ duration: 8, repeat: Infinity }}
       />
 
       <div className="container relative z-10" ref={ref}>

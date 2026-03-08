@@ -113,22 +113,6 @@ const AboutSection = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.6 + i * 0.1, type: "spring" }}
-                  whileHover={{ y: -4 }}
-                  className="bg-secondary rounded-xl p-4 text-center cursor-default"
-                >
-                  <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                  <div className="text-xl font-display font-bold text-foreground">{stat.value}</div>
-                  <div className="text-xs font-body text-muted-foreground">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

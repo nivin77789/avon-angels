@@ -195,7 +195,7 @@ const ProcessSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative">
           {/* Animated connection line (desktop) */}
-          <div className="hidden lg:block absolute top-[60px] left-[14%] right-[14%] h-[2px] overflow-hidden z-0">
+          <div className="hidden lg:block absolute top-10 left-[14%] right-[14%] h-[2px] overflow-hidden">
             {/* Background track */}
             <div className="absolute inset-0 bg-border/50 rounded-full" />
             {/* Animated fill */}
@@ -219,7 +219,7 @@ const ProcessSection = () => {
           </div>
 
           {/* Step nodes on the line (desktop) */}
-          <div className="hidden lg:flex absolute top-[60px] left-[14%] right-[14%] -translate-y-1/2 justify-between pointer-events-none z-0">
+          <div className="hidden lg:flex absolute top-10 left-[14%] right-[14%] -translate-y-1/2 justify-between pointer-events-none">
             {steps.map((s, i) => (
               <motion.div
                 key={i}

@@ -105,7 +105,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Icon - floats highest on hover */}
             <motion.div
               style={{ translateZ: iconZ, transformStyle: "preserve-3d" }}
-              className="mb-5"
+              className="mb-3"
             >
               <motion.div
                 animate={isHovered ? { rotate: [0, -8, 8, 0], scale: 1.1 } : { rotate: 0, scale: 1 }}

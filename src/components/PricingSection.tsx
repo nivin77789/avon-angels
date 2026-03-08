@@ -12,6 +12,7 @@ const plans = [
 const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: number; isInView: boolean }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const rotX = useSpring(useTransform(my, [-0.5, 0.5], [12, -12]), { stiffness: 150, damping: 20 });
@@ -21,7 +22,7 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
   const glareOp = useSpring(useTransform(mx, [-0.5, 0, 0.5], [0, 0.02, 0.15]), { stiffness: 200, damping: 25 });
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
+    if (isTouchDevice || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     mx.set((e.clientX - rect.left) / rect.width - 0.5);
     my.set((e.clientY - rect.top) / rect.height - 0.5);

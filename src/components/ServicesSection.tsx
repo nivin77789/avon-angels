@@ -61,12 +61,12 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
       <motion.div
         ref={cardRef}
         onMouseMove={handleMouse}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
         onMouseLeave={handleLeave}
         style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
+          rotateX: isTouchDevice ? 0 : rotateX,
+          rotateY: isTouchDevice ? 0 : rotateY,
+          transformStyle: isTouchDevice ? "flat" : "preserve-3d",
         }}
         className="relative group cursor-default"
       >

@@ -1,7 +1,7 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle } from "lucide-react";
-import teamImg from "@/assets/team.jpg";
+import aboutImg from "@/assets/about-team.png";
 
 const features = [
   "Person-centred care plans tailored to individual needs",

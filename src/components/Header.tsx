@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Heart, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AccessibilityWidget from "./AccessibilityWidget";
 
 const navItems = [
   { label: "Home", id: "home" },

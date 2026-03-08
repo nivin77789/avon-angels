@@ -135,8 +135,7 @@ const AboutSection = () => {
             </h2>
 
             <p className="font-body text-muted-foreground text-lg leading-relaxed mb-6">
-              Since 2010, Avon Angels has been delivering exceptional home care services across Avon. 
-              We believe everyone deserves to live independently and with dignity in their own home.
+              At Avon Angels, we understand that inviting someone into your home is a very personal decision. That's why we are dedicated to earning your trust every step of the way. Our caring team supports you or your loved ones to live independently, safely, and with dignity—always with kindness, respect, and a friendly smile. We're here to make home life easier, comforting, and full of confidence.
             </p>
 
             <div className="space-y-3 mb-10">

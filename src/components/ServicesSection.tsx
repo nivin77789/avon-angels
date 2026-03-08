@@ -94,26 +94,10 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             }}
           />
 
-          {/* Top shimmer line */}
-          <div className="absolute inset-0 overflow-hidden rounded-2xl">
-            <motion.div
-              className="absolute top-0 left-0 w-full h-[1px]"
-              style={{
-                background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.5), transparent)",
-              }}
-              animate={{ x: ["-100%", "100%"] }}
-              transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.2, repeatDelay: 4 }}
-            />
-            {/* Side shimmer */}
-            <motion.div
-              className="absolute top-0 right-0 h-full w-[1px]"
-              style={{
-                background: "linear-gradient(180deg, transparent, hsl(160 84% 39% / 0.3), transparent)",
-              }}
-              animate={{ y: ["-100%", "100%"] }}
-              transition={{ duration: 3, repeat: Infinity, delay: index * 0.3 + 1, repeatDelay: 5 }}
-            />
-          </div>
+          {/* Subtle top highlight */}
+          <div className="absolute top-0 left-0 w-full h-[1px]"
+            style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.2), transparent)" }}
+          />
 
           {/* Floating background particles */}
           {isHovered && (

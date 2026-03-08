@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground pt-16 pb-8 relative">
+    <footer className="section-dark pt-16 pb-8 relative">
       <div className="container">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           <div className="lg:col-span-2">

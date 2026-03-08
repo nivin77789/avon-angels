@@ -13,7 +13,7 @@ const GallerySection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="container" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}

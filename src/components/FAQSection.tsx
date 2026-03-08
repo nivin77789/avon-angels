@@ -18,7 +18,9 @@ const FAQSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="faq" className="py-24 lg:py-32 bg-background relative">
+    <section id="faq" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+      <motion.div className="absolute top-1/3 right-0 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} animate={{ x: [0, -30, 0] }} transition={{ duration: 10, repeat: Infinity }} />
+
       <div className="container relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -26,7 +28,7 @@ const FAQSection = () => {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-semibold mb-6">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <motion.span className="w-2 h-2 rounded-full bg-primary" animate={{ scale: [1, 1.5, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
             FAQ
           </span>
           <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-5">
@@ -40,23 +42,26 @@ const FAQSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2 }}
           className="max-w-3xl mx-auto"
+          style={{ perspective: "1000px" }}
         >
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.1 * i }}
+                initial={{ opacity: 0, y: 20, rotateX: 10 }}
+                animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+                transition={{ delay: 0.08 * i, type: "spring", stiffness: 80 }}
               >
-                <AccordionItem value={`faq-${i}`} className="bg-card rounded-xl border border-border/50 px-6 overflow-hidden">
-                  <AccordionTrigger className="font-display font-semibold text-foreground text-left hover:no-underline py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="font-body text-muted-foreground leading-relaxed pb-5">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div whileHover={{ scale: 1.01, y: -2 }} transition={{ type: "spring", stiffness: 300 }}>
+                  <AccordionItem value={`faq-${i}`} className="bg-card rounded-xl border border-border/50 hover:border-primary/20 px-6 overflow-hidden transition-colors duration-300 hover:shadow-lg hover:shadow-primary/5">
+                    <AccordionTrigger className="font-display font-semibold text-foreground text-left hover:no-underline hover:text-primary py-5 transition-colors duration-300">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="font-body text-muted-foreground leading-relaxed pb-5">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
               </motion.div>
             ))}
           </Accordion>

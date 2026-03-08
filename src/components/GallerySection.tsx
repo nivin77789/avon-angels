@@ -14,7 +14,9 @@ const GallerySection = () => {
 
   return (
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      <div className="container" ref={ref}>
+      <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity }} />
+
+      <div className="container relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -33,22 +35,21 @@ const GallerySection = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-12">
+        <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-12" style={{ perspective: "800px" }}>
           {areas.map((area, i) => (
             <motion.div
               key={area}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.05 * i, type: "spring" }}
-              whileHover={{ scale: 1.08, y: -2 }}
-              className="px-5 py-2.5 rounded-full bg-secondary border border-border/50 font-body text-sm text-foreground/70 hover:bg-primary hover:text-primary-foreground hover:border-primary cursor-default transition-all duration-300"
+              initial={{ opacity: 0, scale: 0.6, rotateX: 30, y: 20 }}
+              animate={isInView ? { opacity: 1, scale: 1, rotateX: 0, y: 0 } : {}}
+              transition={{ delay: 0.04 * i, type: "spring", stiffness: 100 }}
+              whileHover={{ scale: 1.12, y: -5, rotateY: 8, z: 20 }}
+              className="px-5 py-2.5 rounded-full bg-secondary border border-border/50 font-body text-sm text-foreground/70 hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-lg hover:shadow-primary/15 cursor-default transition-all duration-300"
             >
               <MapPin className="w-3 h-3 inline mr-1.5" />{area}
             </motion.div>
           ))}
         </div>
 
-        {/* Trust row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -59,11 +60,20 @@ const GallerySection = () => {
             { icon: Award, text: "CQC Registered" },
             { icon: Phone, text: "24/7 On-Call Support" },
             { icon: Award, text: "UKHCA Member" },
-          ].map((item) => (
-            <div key={item.text} className="flex items-center gap-2 text-sm font-body text-muted-foreground">
-              <item.icon className="w-5 h-5 text-primary" />
-              {item.text}
-            </div>
+          ].map((item, i) => (
+            <motion.div
+              key={item.text}
+              className="flex items-center gap-2 text-sm font-body text-muted-foreground group cursor-default"
+              whileHover={{ scale: 1.1, y: -2 }}
+              initial={{ opacity: 0, rotateY: 15 }}
+              animate={isInView ? { opacity: 1, rotateY: 0 } : {}}
+              transition={{ delay: 0.6 + i * 0.1 }}
+            >
+              <motion.div whileHover={{ rotate: 15 }}>
+                <item.icon className="w-5 h-5 text-primary" />
+              </motion.div>
+              <span className="group-hover:text-primary transition-colors">{item.text}</span>
+            </motion.div>
           ))}
         </motion.div>
       </div>

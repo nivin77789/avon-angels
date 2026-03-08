@@ -95,7 +95,7 @@ const TeamSection = () => {
               style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
               className="rounded-3xl overflow-hidden cursor-default"
             >
-              <img src={teamImg} alt="Avon Angels care team" className="w-full h-[480px] object-cover" loading="lazy" />
+              <img src={teamImg} alt="Avon Angels care team" className="w-full h-[480px] object-cover scale-110" loading="lazy" />
               <motion.div
                 className="pointer-events-none absolute inset-0"
                 style={{ opacity: glareOp, background: `radial-gradient(circle at ${glareX}% ${glareY}%, hsl(160 84% 70% / 0.35), transparent 55%)` }}

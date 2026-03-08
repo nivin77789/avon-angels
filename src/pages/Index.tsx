@@ -12,7 +12,7 @@ import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
-import NewsletterSection from "@/components/NewsletterSection";
+
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import ScrollProgress from "@/components/ScrollProgress";

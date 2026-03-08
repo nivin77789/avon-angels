@@ -164,12 +164,10 @@ const ProcessSection = () => {
 
   return (
     <section id="process" className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* Background orbs */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] opacity-[0.04]"
+      {/* Static background glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] opacity-[0.04]"
         style={{ background: "hsl(160 84% 39%)" }}
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 10, repeat: Infinity }}
       />
 
       <div className="container relative z-10" ref={ref}>

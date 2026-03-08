@@ -71,12 +71,6 @@ const StatsCounter = () => {
                 className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
               >
                 <s.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-                {/* Pulse ring */}
-                <motion.div
-                  className="absolute -inset-1 rounded-2xl border border-primary/20"
-                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
-                />
               </motion.div>
               <motion.div
                 className="text-3xl lg:text-5xl font-display font-bold text-primary-foreground mb-1"

@@ -130,6 +130,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide heavy blur orbs on mobile for performance */
+@media (max-width: 768px) {
+  .blur-3xl,
+  [class*="blur-[1"] {
+    display: none !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

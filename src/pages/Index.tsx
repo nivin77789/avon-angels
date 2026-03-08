@@ -34,7 +34,7 @@ const Index = () => (
     <FAQSection />
     <CTASection />
     <ContactSection />
-    <NewsletterSection />
+    
     <Footer />
     <Chatbot />
   </>

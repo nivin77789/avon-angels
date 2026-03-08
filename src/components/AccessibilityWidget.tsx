@@ -147,7 +147,7 @@ const AccessibilityWidget = ({ scrolled = false }: AccessibilityWidgetProps) => 
       <div className="relative">
         <motion.button
           onClick={() => setOpen(!open)}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className={`relative w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 ${
             scrolled
@@ -156,12 +156,23 @@ const AccessibilityWidget = ({ scrolled = false }: AccessibilityWidgetProps) => 
           }`}
           aria-label="Accessibility Settings"
         >
-          <Accessibility className="w-4 h-4" data-a11y-keep />
+          {/* Animated ring pulse */}
+          <motion.span
+            className={`absolute inset-0 rounded-xl border-2 ${scrolled ? "border-primary/40" : "border-accent/50"}`}
+            animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.span
+            className={`absolute inset-0 rounded-xl border ${scrolled ? "border-primary/20" : "border-accent/30"}`}
+            animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          />
+          <Accessibility className="w-4 h-4 relative z-10" data-a11y-keep />
           {activeCount > 0 && (
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-[9px] font-bold rounded-full flex items-center justify-center"
+              className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-[9px] font-bold rounded-full flex items-center justify-center z-10"
             >
               {activeCount}
             </motion.span>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Heart, ArrowUp, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowUp, Phone, Mail, MapPin } from "lucide-react";
+import avonLogo from "@/assets/avon_angels.png";
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

@@ -122,7 +122,7 @@ const ContactSection = () => {
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Your Name</label>
-                <Input required placeholder="Full name" className="font-body rounded-xl" />
+                <Input name="name" required placeholder="Full name" className="font-body rounded-xl" />
               </div>
               <div>
                 <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Phone Number</label>

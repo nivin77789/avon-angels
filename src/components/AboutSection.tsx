@@ -55,7 +55,7 @@ const AboutSection = () => {
               style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
               className="relative rounded-3xl overflow-hidden cursor-default"
             >
-              <img src={teamImg} alt="Avon Angels Home Care Team" className="w-full h-[480px] object-cover" loading="lazy" />
+              <img src={aboutImg} alt="Avon Angels Home Care Team" className="w-full h-[480px] object-cover scale-110" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
               {/* Holographic glare */}
               <motion.div

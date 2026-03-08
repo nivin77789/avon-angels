@@ -37,7 +37,6 @@ const Index = () => (
     <NewsletterSection />
     <Footer />
     <Chatbot />
-    <AccessibilityWidget />
   </>
 );
 

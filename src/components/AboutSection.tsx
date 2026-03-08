@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Shield, Award, Users, Clock, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import teamImg from "@/assets/team.jpg";
 
 const stats = [

@@ -123,7 +123,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Title - mid depth */}
             <motion.h3
               style={{ translateZ: titleZ, transformStyle: "preserve-3d" }}
-              className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300"
+              className="text-base font-display font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-300"
             >
               {service.title}
             </motion.h3>

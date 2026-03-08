@@ -131,7 +131,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Description - lowest depth */}
             <motion.p
               style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
-              className="font-body text-muted-foreground text-sm leading-relaxed mb-4"
+              className="font-body text-muted-foreground text-xs leading-relaxed mb-3"
             >
               {service.desc}
             </motion.p>

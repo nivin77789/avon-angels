@@ -1,27 +1,39 @@
-import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useRef, useState } from "react";
 import { Heart, Brain, Utensils, Activity, Moon, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Personal Care", desc: "Assistance with washing, dressing, grooming, and personal hygiene — delivered with dignity and respect." },
-  { icon: Home, title: "Live-in Care", desc: "A dedicated carer living in your home, providing round-the-clock companionship and support." },
-  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care from trained professionals, creating safe and familiar routines." },
-  { icon: Users, title: "Companionship", desc: "Friendly visits, social activities, and emotional support to combat loneliness and isolation." },
-  { icon: Moon, title: "Night Care", desc: "Overnight support for those who need assistance during the night, ensuring safety and peace of mind." },
-  { icon: Activity, title: "Respite Care", desc: "Short-term care giving family carers a well-deserved break while your loved one is in expert hands." },
-  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing support for conditions including MS, Parkinson's, stroke recovery, and more." },
-  { icon: Pill, title: "Medication Support", desc: "Safe medication management, reminders, and administration by trained care professionals." },
-  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals prepared in your home, tailored to dietary needs and personal preferences." },
+  { icon: Heart, title: "Personal Care", desc: "Assistance with washing, dressing, grooming, and personal hygiene — delivered with dignity and respect.", gradient: "from-emerald-400/20 to-teal-500/10" },
+  { icon: Home, title: "Live-in Care", desc: "A dedicated carer living in your home, providing round-the-clock companionship and support.", gradient: "from-teal-400/20 to-cyan-500/10" },
+  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care from trained professionals, creating safe and familiar routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
+  { icon: Users, title: "Companionship", desc: "Friendly visits, social activities, and emotional support to combat loneliness and isolation.", gradient: "from-emerald-400/20 to-green-500/10" },
+  { icon: Moon, title: "Night Care", desc: "Overnight support for those who need assistance during the night, ensuring safety and peace of mind.", gradient: "from-teal-400/20 to-emerald-500/10" },
+  { icon: Activity, title: "Respite Care", desc: "Short-term care giving family carers a well-deserved break while your loved one is in expert hands.", gradient: "from-green-400/20 to-teal-500/10" },
+  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing support for conditions including MS, Parkinson's, stroke recovery, and more.", gradient: "from-emerald-400/20 to-cyan-500/10" },
+  { icon: Pill, title: "Medication Support", desc: "Safe medication management, reminders, and administration by trained care professionals.", gradient: "from-cyan-400/20 to-teal-500/10" },
+  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals prepared in your home, tailored to dietary needs and personal preferences.", gradient: "from-teal-400/20 to-green-500/10" },
 ];
 
-const TiltCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
+const Card3D = ({ service, index, isInView }: { service: typeof services[0]; index: number; isInView: boolean }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [8, -8]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-8, 8]);
-  const glareX = useTransform(mouseX, [-0.5, 0.5], [0, 100]);
-  const glareY = useTransform(mouseY, [-0.5, 0.5], [0, 100]);
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), { stiffness: 150, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), { stiffness: 150, damping: 20 });
+
+  const glareOpacity = useSpring(useTransform(mouseX, [-0.5, 0, 0.5], [0, 0.05, 0.15]), { stiffness: 200, damping: 25 });
+  const glareX = useTransform(mouseX, [-0.5, 0.5], [20, 80]);
+  const glareY = useTransform(mouseY, [-0.5, 0.5], [20, 80]);
+
+  const iconZ = useSpring(isHovered ? 40 : 0, { stiffness: 200, damping: 20 });
+  const titleZ = useSpring(isHovered ? 25 : 0, { stiffness: 200, damping: 20 });
+  const descZ = useSpring(isHovered ? 15 : 0, { stiffness: 200, damping: 20 });
+
+  const shadowBlur = useSpring(isHovered ? 40 : 10, { stiffness: 120, damping: 20 });
+  const shadowSpread = useSpring(isHovered ? -5 : -4, { stiffness: 120, damping: 20 });
 
   const handleMouse = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -33,24 +45,166 @@ const TiltCard = ({ children, index }: { children: React.ReactNode; index: numbe
   const handleLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
+    setIsHovered(false);
   };
+
+  const Icon = service.icon;
 
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouse}
-      onMouseLeave={handleLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="relative"
+      initial={{ opacity: 0, y: 60, rotateX: 25, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, y: 0, rotateX: 0, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay: 0.07 * index, type: "spring", stiffness: 70 }}
+      style={{ perspective: "1200px" }}
     >
-      {children}
-      {/* Glare effect */}
       <motion.div
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        ref={cardRef}
+        onMouseMove={handleMouse}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleLeave}
         style={{
-          background: `radial-gradient(circle at ${glareX}% ${glareY}%, hsl(160 84% 39% / 0.08), transparent 60%)`,
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
         }}
-      />
+        className="relative group cursor-default"
+      >
+        {/* Card body */}
+        <motion.div
+          className="relative rounded-2xl p-7 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
+          style={{
+            background: "hsl(var(--card))",
+            boxShadow: `0 ${shadowBlur}px ${shadowBlur}px ${shadowSpread}px hsl(160 84% 39% / 0.12)`,
+          }}
+        >
+          {/* Animated gradient fill on hover */}
+          <motion.div
+            className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.5 }}
+          />
+
+          {/* Holographic glare */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 rounded-2xl"
+            style={{
+              opacity: glareOpacity,
+              background: `radial-gradient(circle at ${glareX}% ${glareY}%, hsl(160 84% 70% / 0.35), transparent 55%)`,
+            }}
+          />
+
+          {/* Top shimmer line */}
+          <div className="absolute inset-0 overflow-hidden rounded-2xl">
+            <motion.div
+              className="absolute top-0 left-0 w-full h-[1px]"
+              style={{
+                background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.5), transparent)",
+              }}
+              animate={{ x: ["-100%", "100%"] }}
+              transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.2, repeatDelay: 4 }}
+            />
+            {/* Side shimmer */}
+            <motion.div
+              className="absolute top-0 right-0 h-full w-[1px]"
+              style={{
+                background: "linear-gradient(180deg, transparent, hsl(160 84% 39% / 0.3), transparent)",
+              }}
+              animate={{ y: ["-100%", "100%"] }}
+              transition={{ duration: 3, repeat: Infinity, delay: index * 0.3 + 1, repeatDelay: 5 }}
+            />
+          </div>
+
+          {/* Floating background particles */}
+          {isHovered && (
+            <>
+              {[...Array(4)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 rounded-full bg-primary/30"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: [0, 0.6, 0],
+                    scale: [0, 1.5, 0],
+                    y: [0, -40 - i * 10],
+                    x: [(i - 1.5) * 20, (i - 1.5) * 30],
+                  }}
+                  transition={{ duration: 1.5, delay: i * 0.15, repeat: Infinity }}
+                  style={{ bottom: "30%", left: "50%" }}
+                />
+              ))}
+            </>
+          )}
+
+          {/* Content with 3D depth layers */}
+          <div className="relative z-10">
+            {/* Icon - floats highest on hover */}
+            <motion.div
+              style={{ translateZ: iconZ, transformStyle: "preserve-3d" }}
+              className="mb-5"
+            >
+              <motion.div
+                animate={isHovered ? { rotate: [0, -8, 8, 0], scale: 1.1 } : { rotate: 0, scale: 1 }}
+                transition={{ duration: 0.6, type: "spring" }}
+                className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-xl group-hover:shadow-primary/30 transition-all duration-500 relative"
+              >
+                <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                {/* Icon glow */}
+                <motion.div
+                  className="absolute -inset-2 rounded-xl bg-primary/0 group-hover:bg-primary/10 blur-lg transition-all duration-500"
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Title - mid depth */}
+            <motion.h3
+              style={{ translateZ: titleZ, transformStyle: "preserve-3d" }}
+              className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300"
+            >
+              {service.title}
+            </motion.h3>
+
+            {/* Description - lowest depth */}
+            <motion.p
+              style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
+              className="font-body text-muted-foreground text-sm leading-relaxed mb-4"
+            >
+              {service.desc}
+            </motion.p>
+
+            {/* Learn more CTA */}
+            <motion.div
+              style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
+              className="flex items-center gap-1.5 text-primary text-sm font-body font-medium overflow-hidden h-5"
+            >
+              <motion.span
+                initial={{ y: 20, opacity: 0 }}
+                animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                Learn more
+              </motion.span>
+              <motion.div
+                initial={{ x: -10, opacity: 0 }}
+                animate={isHovered ? { x: 0, opacity: 1 } : { x: -10, opacity: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
+                <ArrowRight className="w-3.5 h-3.5" />
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* 3D shadow beneath card */}
+        <motion.div
+          className="absolute -bottom-2 left-4 right-4 h-8 rounded-2xl blur-xl -z-10"
+          style={{
+            background: "hsl(160 84% 39% / 0.08)",
+          }}
+          animate={{ opacity: isHovered ? 0.8 : 0.3, scale: isHovered ? 1.05 : 0.95 }}
+          transition={{ duration: 0.4 }}
+        />
+      </motion.div>
     </motion.div>
   );
 };
@@ -63,13 +217,21 @@ const ServicesSection = () => {
     <section id="services" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
       {/* Animated background shapes */}
       <motion.div
-        className="absolute top-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
-        animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
-        transition={{ duration: 10, repeat: Infinity }}
+        className="absolute top-20 left-10 w-96 h-96 rounded-full blur-[120px]"
+        style={{ background: "hsl(160 84% 39% / 0.06)" }}
+        animate={{ scale: [1, 1.3, 1], x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 12, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-10 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl"
-        animate={{ scale: [1.1, 1, 1.1], y: [0, -20, 0] }}
+        className="absolute bottom-10 right-10 w-80 h-80 rounded-full blur-[100px]"
+        style={{ background: "hsl(160 70% 50% / 0.05)" }}
+        animate={{ scale: [1.2, 1, 1.2], y: [0, -30, 0] }}
+        transition={{ duration: 9, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px]"
+        style={{ background: "hsl(160 84% 39% / 0.03)" }}
+        animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
 
@@ -81,14 +243,14 @@ const ServicesSection = () => {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ type: "spring", delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-semibold mb-6"
           >
             <motion.span
               className="w-2 h-2 rounded-full bg-primary"
-              animate={{ scale: [1, 1.5, 1] }}
+              animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
             Our Services
@@ -103,56 +265,9 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ perspective: "1000px" }}>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 50, rotateX: 15 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.06 * i, type: "spring", stiffness: 80 }}
-            >
-              <TiltCard index={i}>
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  className="bg-card rounded-2xl p-7 group cursor-default relative overflow-hidden border border-border/50 hover:border-primary/40 transition-all duration-500"
-                  style={{ boxShadow: "var(--shadow-soft)" }}
-                >
-                  {/* Animated gradient background */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  />
-                  {/* Shimmer line */}
-                  <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                    <motion.div
-                      className="absolute top-0 -left-full w-full h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-                      animate={{ x: ["-100%", "200%"] }}
-                      transition={{ duration: 3, repeat: Infinity, delay: i * 0.3, repeatDelay: 5 }}
-                    />
-                  </div>
-                  <div className="relative z-10">
-                    <motion.div
-                      whileHover={{ rotate: 15, scale: 1.15 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-500"
-                    >
-                      <s.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-                    </motion.div>
-                    <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{s.title}</h3>
-                    <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
-                    <motion.div
-                      className="flex items-center gap-1.5 text-primary text-sm font-body font-medium"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileHover={{ x: 4 }}
-                    >
-                      <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
-                        Learn more
-                      </span>
-                      <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0" />
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </TiltCard>
-            </motion.div>
+            <Card3D key={s.title} service={s} index={i} isInView={isInView} />
           ))}
         </div>
       </div>

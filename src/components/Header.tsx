@@ -81,26 +81,7 @@ const Header = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <motion.div
-                className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                  scrolled ? "bg-primary" : "bg-accent"
-                }`}
-                whileHover={{ rotate: 12 }}
-              >
-                <Heart className="w-4 h-4 text-primary-foreground" fill="currentColor" />
-              </motion.div>
-              <div className="flex items-baseline gap-1.5">
-                <span className={`text-base font-display font-bold tracking-tight transition-colors duration-300 ${
-                  scrolled ? "text-foreground" : "text-primary-foreground"
-                }`}>
-                  Avon Angels
-                </span>
-                <span className={`text-[9px] font-body font-semibold tracking-[0.2em] uppercase transition-colors duration-300 ${
-                  scrolled ? "text-primary" : "text-accent"
-                }`}>
-                  HOME CARE
-                </span>
-              </div>
+              <img src={avonLogo} alt="Avon Angels Home Care" className="h-10 w-auto" />
             </motion.button>
 
             {/* Desktop Nav */}

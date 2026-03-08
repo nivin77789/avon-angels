@@ -20,14 +20,28 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    try {
+      await push(ref(db, "assessments"), {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        location: formData.get("location"),
+        careType: formData.get("careType"),
+        message: formData.get("message"),
+        timestamp: Date.now(),
+        read: false,
+      });
       toast({ title: "Enquiry submitted!", description: "We'll contact you within 24 hours." });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+      form.reset();
+    } catch {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    }
+    setSending(false);
   };
 
   return (

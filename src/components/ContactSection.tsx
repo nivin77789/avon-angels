@@ -127,7 +127,7 @@ const ContactSection = () => {
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
             transition={{ delay: 0.3, type: "spring", stiffness: 60 }}
             whileHover={{ scale: 1.005 }}
-            className="bg-card rounded-2xl p-8 space-y-5 border border-border/50 hover:border-primary/20 transition-all duration-500 relative overflow-hidden"
+            className="bg-card rounded-2xl p-5 sm:p-8 space-y-4 sm:space-y-5 border border-border/50 hover:border-primary/20 transition-all duration-500 relative overflow-hidden"
             style={{ boxShadow: "0 20px 60px -15px hsl(160 84% 39% / 0.12)" }}
           >
             {/* Shimmer */}

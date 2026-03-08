@@ -1,6 +1,6 @@
 import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
-import { Heart, Brain, Utensils, Activity, Moon, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
+import { Heart, Brain, Utensils, Activity, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
 
 const services = [
   { icon: Heart, title: "Personal Care", desc: "Assistance with washing, dressing, grooming, and personal hygiene — delivered with dignity and respect.", gradient: "from-emerald-400/20 to-teal-500/10" },

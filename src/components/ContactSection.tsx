@@ -131,7 +131,7 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Email Address</label>
-              <Input type="email" required placeholder="your@email.co.uk" className="font-body rounded-xl" />
+              <Input name="email" type="email" required placeholder="your@email.co.uk" className="font-body rounded-xl" />
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label>

@@ -15,7 +15,7 @@ const TeamSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="team" className="py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+    <section id="team" className="py-24 lg:py-32 section-blue-light relative overflow-hidden">
       <div className="container relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div

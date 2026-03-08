@@ -1,6 +1,7 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle } from "lucide-react";
+// About section team image
 import aboutImg from "@/assets/about-team.png";
 
 const features = [

@@ -206,21 +206,15 @@ const ProcessSection = () => {
               transition={{ delay: 0.8, duration: 2, ease: [0.22, 1, 0.36, 1] }}
               style={{ originX: 0, background: "linear-gradient(90deg, hsl(160 84% 39%), hsl(160 70% 50%), hsl(160 84% 39%))" }}
             />
-            {/* Traveling glow dot */}
+            {/* Traveling dot */}
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
+              className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
               style={{
                 background: "hsl(160 84% 50%)",
-                boxShadow: "0 0 12px 4px hsl(160 84% 50% / 0.5), 0 0 30px 8px hsl(160 84% 50% / 0.2)",
+                boxShadow: "0 0 8px 2px hsl(160 84% 50% / 0.4)",
               }}
               animate={isInView ? { left: ["-2%", "102%"] } : {}}
               transition={{ duration: 4, delay: 1.2, repeat: Infinity, ease: "linear" }}
-            />
-            {/* Secondary trailing dot */}
-            <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-accent/60"
-              animate={isInView ? { left: ["-2%", "102%"] } : {}}
-              transition={{ duration: 4, delay: 1.5, repeat: Infinity, ease: "linear" }}
             />
           </div>
 

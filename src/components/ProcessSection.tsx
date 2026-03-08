@@ -173,13 +173,7 @@ const AnimatedStep = ({ step, index, isInView }: { step: typeof steps[0]; index:
               <motion.div
                 key={i}
                 className="absolute w-1.5 h-1.5 rounded-full"
-                style={{ background: `hsl(${step.color} / 0.4)` }}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                  x: 0,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
                 animate={{
                   opacity: [0, 0.8, 0],
                   scale: [0, 1, 0],

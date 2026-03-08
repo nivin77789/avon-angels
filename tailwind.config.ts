@@ -85,8 +85,12 @@ export default {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px -5px hsl(217 91% 60% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px -5px hsl(217 91% 60% / 0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px -5px hsl(160 84% 39% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px -5px hsl(160 84% 39% / 0.5)" },
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
         "slide-in-left": {
           "0%": { transform: "translateX(-100%)", opacity: "0" },

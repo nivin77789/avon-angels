@@ -126,7 +126,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Phone Number</label>
-                <Input type="tel" required placeholder="Your phone number" className="font-body rounded-xl" />
+                <Input name="phone" type="tel" required placeholder="Your phone number" className="font-body rounded-xl" />
               </div>
             </div>
             <div>

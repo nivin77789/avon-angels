@@ -16,6 +16,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import ScrollProgress from "@/components/ScrollProgress";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const Index = () => (
   <>

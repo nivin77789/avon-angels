@@ -217,7 +217,7 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((s, i) => (
             <Card3D key={s.title} service={s} index={i} isInView={isInView} />
           ))}

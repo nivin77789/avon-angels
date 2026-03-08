@@ -242,7 +242,6 @@ const ProcessSection = () => {
             {/* Animated fill */}
             <motion.div
               className="h-full rounded-full"
-              style={{ background: "linear-gradient(90deg, hsl(160 84% 39%), hsl(160 70% 50%), hsl(160 84% 39%))" }}
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : {}}
               transition={{ delay: 0.8, duration: 2, ease: [0.22, 1, 0.36, 1] }}

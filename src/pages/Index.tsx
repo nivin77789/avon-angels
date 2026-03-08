@@ -16,26 +16,70 @@ import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import ScrollProgress from "@/components/ScrollProgress";
+import { ScrollReveal, ScrollScale, ParallaxSection } from "@/components/ScrollAnimations";
 
 const Index = () => (
   <>
     <ScrollProgress />
     <Header />
     <HeroSection />
-    <TrustMarquee />
-    <AboutSection />
-    <StatsCounter />
-    <ServicesSection />
-    <ProcessSection />
-    <TeamSection />
-    <GallerySection />
-    <TestimonialsSection />
-    <PricingSection />
-    <FAQSection />
-    <CTASection />
-    <ContactSection />
-    <NewsletterSection />
-    <Footer />
+
+    <ScrollReveal variant="fade-up">
+      <TrustMarquee />
+    </ScrollReveal>
+
+    <ScrollReveal variant="fade-up" delay={0.1}>
+      <AboutSection />
+    </ScrollReveal>
+
+    <ScrollScale>
+      <StatsCounter />
+    </ScrollScale>
+
+    <ScrollReveal variant="zoom" delay={0.05}>
+      <ServicesSection />
+    </ScrollReveal>
+
+    <ScrollReveal variant="flip" delay={0.1}>
+      <ProcessSection />
+    </ScrollReveal>
+
+    <ParallaxSection speed={0.15}>
+      <TeamSection />
+    </ParallaxSection>
+
+    <ScrollReveal variant="fade-left">
+      <GallerySection />
+    </ScrollReveal>
+
+    <ScrollReveal variant="zoom" delay={0.1}>
+      <TestimonialsSection />
+    </ScrollReveal>
+
+    <ScrollReveal variant="slide-up">
+      <PricingSection />
+    </ScrollReveal>
+
+    <ScrollReveal variant="fade-right" delay={0.1}>
+      <FAQSection />
+    </ScrollReveal>
+
+    <ScrollScale>
+      <CTASection />
+    </ScrollScale>
+
+    <ScrollReveal variant="fade-up" delay={0.1}>
+      <ContactSection />
+    </ScrollReveal>
+
+    <ScrollReveal variant="fade-up">
+      <NewsletterSection />
+    </ScrollReveal>
+
+    <ScrollReveal variant="fade-up">
+      <Footer />
+    </ScrollReveal>
+
     <Chatbot />
   </>
 );

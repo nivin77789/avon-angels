@@ -12,7 +12,7 @@ const navItems = [
     label: "Services", id: "services",
     sub: [
       "Personal Care", "Live-in Care", "Dementia Care",
-      "Companionship", "Night Care", "Respite Care",
+      "Companionship", "Respite Care",
       "Complex Care", "Medication Support", "Meal Preparation",
     ],
   },

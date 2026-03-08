@@ -104,19 +104,6 @@ const AnimatedStep = ({ step, index, isInView }: { step: typeof steps[0]; index:
             />
           </svg>
 
-          {/* Pulsing rings */}
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{ border: `2px solid hsl(${step.color} / 0.15)` }}
-            animate={hasAnimated ? { scale: [1, 1.4, 1.4], opacity: [0.5, 0, 0] } : {}}
-            transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{ border: `2px solid hsl(${step.color} / 0.1)` }}
-            animate={hasAnimated ? { scale: [1, 1.7, 1.7], opacity: [0.3, 0, 0] } : {}}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.4 + index * 0.3 }}
-          />
 
           {/* Icon circle */}
           <motion.div

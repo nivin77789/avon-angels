@@ -53,9 +53,8 @@ const CTASection = () => {
             <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
               <Button
                 size="lg"
-                variant="outline"
                 asChild
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-body text-base px-8 py-6 rounded-full"
+                className="bg-transparent border-2 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 font-body text-base px-8 py-6 rounded-full"
               >
                 <a href="tel:+441234567890">
                   <Phone className="w-4 h-4 mr-2" /> 01234 567 890

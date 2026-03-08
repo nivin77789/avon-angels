@@ -42,43 +42,13 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Animated mesh gradient overlay */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full blur-[120px] opacity-20"
-          style={{ background: "radial-gradient(circle, hsl(160 84% 39%), transparent 70%)" }}
-          animate={{ x: [0, 100, 0], y: [0, 50, 0], scale: [1, 1.3, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full blur-[150px] opacity-15"
-          style={{ background: "radial-gradient(circle, hsl(160 84% 50%), transparent 60%)" }}
-          animate={{ x: [0, -80, 0], y: [0, -60, 0], scale: [1.2, 1, 1.2] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      {/* Floating particles - more dramatic */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            left: `${5 + Math.random() * 90}%`,
-            top: `${5 + Math.random() * 90}%`,
-            width: `${2 + Math.random() * 4}px`,
-            height: `${2 + Math.random() * 4}px`,
-            background: `hsl(160 84% ${39 + Math.random() * 30}% / ${0.2 + Math.random() * 0.4})`,
-          }}
-          animate={{
-            y: [0, -(20 + Math.random() * 40), 0],
-            x: [0, (Math.random() - 0.5) * 30, 0],
-            opacity: [0, 0.8, 0],
-            scale: [0, 1.5, 0],
-          }}
-          transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: Math.random() * 5 }}
-        />
-      ))}
+      {/* Static ambient glow */}
+      <div className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full blur-[120px] opacity-15"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39%), transparent 70%)" }}
+      />
+      <div className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full blur-[120px] opacity-10"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 50%), transparent 60%)" }}
+      />
 
       {/* Content */}
       <motion.div className="relative z-20 container py-32 lg:py-0" style={{ y: textY, opacity }}>

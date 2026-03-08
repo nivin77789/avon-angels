@@ -3,13 +3,6 @@ import { useRef } from "react";
 import { CheckCircle } from "lucide-react";
 import teamImg from "@/assets/team.jpg";
 
-const stats = [
-  { icon: Shield, value: "CQC", label: "Registered" },
-  { icon: Award, value: "15+", label: "Years Experience" },
-  { icon: Users, value: "200+", label: "Active Clients" },
-  { icon: Clock, value: "24/7", label: "Availability" },
-];
-
 const features = [
   "Person-centred care plans tailored to individual needs",
   "Fully trained, DBS-checked and insured carers",

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { db, ref, push } from "@/lib/firebase";
 
 const contactInfo = [
   { icon: MapPin, label: "Service Area", value: "All of Avon, Bath, Bristol & surrounding areas" },

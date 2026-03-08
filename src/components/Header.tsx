@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Heart, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AccessibilityWidget from "./AccessibilityWidget";
+import avonLogo from "@/assets/avon_angels.png";
 
 const navItems = [
   { label: "Home", id: "home" },

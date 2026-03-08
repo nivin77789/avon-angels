@@ -101,8 +101,8 @@ const PricingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
-      <motion.div className="absolute top-20 left-20 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.05)" }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity }} />
+    <section id="pricing" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
+      <div className="absolute top-20 left-20 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.05)" }} />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center max-w-2xl mx-auto mb-16">

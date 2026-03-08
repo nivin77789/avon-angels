@@ -127,7 +127,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-lg lg:text-xl font-body text-primary-foreground/80 mb-8 max-w-lg leading-relaxed"
+            className="text-base sm:text-lg lg:text-xl font-body text-primary-foreground/80 mb-6 sm:mb-8 max-w-lg leading-relaxed"
           >
             Avon Angels delivers compassionate, CQC-registered home care services across Avon. 
             From personal care to live-in support — we help your loved ones thrive at home.

@@ -31,16 +31,9 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <motion.div
-                className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center"
-                whileHover={{ rotate: 15, scale: 1.1 }}
-              >
-                <Heart className="w-5 h-5 text-primary-foreground" fill="currentColor" />
+              <motion.div whileHover={{ scale: 1.05 }}>
+                <img src={avonLogo} alt="Avon Angels Home Care" className="h-12 w-auto" />
               </motion.div>
-              <div>
-                <span className="text-lg font-display font-bold text-primary-foreground">Avon Angels</span>
-                <span className="block text-[10px] font-body tracking-widest uppercase text-primary-foreground/50">Home Care</span>
-              </div>
             </div>
             <p className="text-sm font-body text-primary-foreground/50 leading-relaxed mb-5 max-w-sm">
               Professional, compassionate home care services across Avon since 2010. CQC registered and rated.

@@ -201,19 +201,15 @@ const HeroSection = () => {
         transition={{ duration: 1, delay: 1.5, type: "spring" }}
         className="hidden lg:block absolute right-12 bottom-24 z-20"
       >
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 1, 0] }}
+         <motion.div
+          animate={{ y: [0, -12, 0] }}
           transition={{ duration: 6, repeat: Infinity }}
           whileHover={{ scale: 1.05 }}
           className="glass-dark rounded-2xl p-6 w-64 cursor-default"
         >
-          <motion.div
-            className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-accent flex items-center justify-center"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+          <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-accent flex items-center justify-center">
             <Sparkles className="w-4 h-4 text-accent-foreground" />
-          </motion.div>
+          </div>
           <div className="text-4xl font-display font-bold text-primary-foreground mb-1">2,500+</div>
           <div className="text-sm font-body text-primary-foreground/60 mb-3">Families Supported</div>
           <div className="flex -space-x-2">

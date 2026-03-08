@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
@@ -12,56 +12,105 @@ const CTASection = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 section-green" />
-      <div className="absolute inset-0 opacity-10">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-primary-foreground"
-            style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
-            animate={{ opacity: [0, 1, 0], scale: [0, 1.5, 0] }}
-            transition={{ duration: 3, repeat: Infinity, delay: Math.random() * 3 }}
-          />
-        ))}
-      </div>
+      
+      {/* Animated gradient mesh */}
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full opacity-30"
+        style={{ background: "radial-gradient(ellipse at 20% 50%, hsl(160 84% 50% / 0.3), transparent 50%)" }}
+        animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full opacity-20"
+        style={{ background: "radial-gradient(ellipse at 80% 50%, hsl(160 60% 60% / 0.4), transparent 50%)" }}
+        animate={{ scale: [1.2, 1, 1.2], x: [0, -30, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      {/* Floating particles */}
+      {[...Array(30)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-primary-foreground"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: `${1 + Math.random() * 3}px`,
+            height: `${1 + Math.random() * 3}px`,
+          }}
+          animate={{
+            opacity: [0, 0.6, 0],
+            scale: [0, 1.5, 0],
+            y: [0, -(10 + Math.random() * 30), 0],
+          }}
+          transition={{ duration: 2 + Math.random() * 3, repeat: Infinity, delay: Math.random() * 5 }}
+        />
+      ))}
 
       <div className="container relative z-10" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl lg:text-5xl font-display font-bold text-primary-foreground mb-5 leading-tight">
+          <motion.div
+            initial={{ scale: 0, rotate: -20 }}
+            animate={isInView ? { scale: 1, rotate: 0 } : {}}
+            transition={{ type: "spring", delay: 0.2 }}
+            className="w-16 h-16 rounded-2xl bg-primary-foreground/10 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm"
+          >
+            <Sparkles className="w-8 h-8 text-primary-foreground" />
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3 }}
+            className="text-3xl lg:text-5xl font-display font-bold text-primary-foreground mb-5 leading-tight"
+          >
             Ready to Give Your Loved One
             <br />the Care They Deserve?
-          </h2>
-          <p className="font-body text-primary-foreground/80 text-lg mb-10 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.5 }}
+            className="font-body text-primary-foreground/80 text-lg mb-10 max-w-xl mx-auto"
+          >
             Take the first step today. Our friendly team is ready to listen, advise, and create a care plan 
             that works perfectly for your family.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.7 }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            <motion.div whileHover={{ scale: 1.06, y: -3 }} whileTap={{ scale: 0.97 }} className="relative group">
+              <div className="absolute -inset-1 rounded-full bg-primary-foreground/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Button
                 size="lg"
                 onClick={() => scrollTo("contact")}
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-body text-base px-8 py-6 rounded-full shadow-xl"
+                className="relative bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-body text-base px-8 py-6 rounded-full shadow-2xl"
               >
                 Get Free Assessment <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.06, y: -3 }} whileTap={{ scale: 0.97 }}>
               <Button
                 size="lg"
                 asChild
-                className="bg-transparent border-2 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 font-body text-base px-8 py-6 rounded-full"
+                className="bg-transparent border-2 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/60 font-body text-base px-8 py-6 rounded-full transition-all duration-300"
               >
                 <a href="tel:+441234567890">
                   <Phone className="w-4 h-4 mr-2" /> 01234 567 890
                 </a>
               </Button>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -101,12 +101,27 @@
   }
 
   .section-green {
-    background: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 30%));
+    background: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 70% 28%));
   }
 
   .section-green-light {
     background: hsl(160 40% 96%);
   }
+
+  .glow-primary {
+    box-shadow: 0 0 30px -5px hsl(160 84% 39% / 0.4);
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 html {

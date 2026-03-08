@@ -1,4 +1,4 @@
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Users, Heart, Clock, Award } from "lucide-react";
 
@@ -41,37 +41,63 @@ const StatsCounter = () => {
       
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full blur-[100px]"
+        className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full blur-[120px]"
         style={{ background: "hsl(160 84% 39% / 0.15)" }}
-        animate={{ scale: [1, 1.3, 1], x: [0, 30, 0] }}
-        transition={{ duration: 8, repeat: Infinity }}
+        animate={{ scale: [1, 1.4, 1], x: [0, 40, 0], y: [-20, 20, -20] }}
+        transition={{ duration: 10, repeat: Infinity }}
       />
       <motion.div
-        className="absolute top-1/2 right-1/4 w-60 h-60 rounded-full blur-[100px]"
+        className="absolute top-1/2 right-1/4 w-60 h-60 rounded-full blur-[120px]"
         style={{ background: "hsl(160 84% 50% / 0.1)" }}
-        animate={{ scale: [1.2, 1, 1.2], y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity }}
+        animate={{ scale: [1.2, 1, 1.2], y: [0, -30, 0] }}
+        transition={{ duration: 7, repeat: Infinity }}
       />
+      <motion.div
+        className="absolute top-0 left-1/2 w-48 h-48 rounded-full blur-[100px]"
+        style={{ background: "hsl(160 70% 60% / 0.08)" }}
+        animate={{ x: [-50, 50, -50] }}
+        transition={{ duration: 12, repeat: Infinity }}
+      />
+
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: "linear-gradient(hsl(160 84% 39%) 1px, transparent 1px), linear-gradient(90deg, hsl(160 84% 39%) 1px, transparent 1px)",
+        backgroundSize: "60px 60px"
+      }} />
 
       <div className="container relative z-10" ref={ref}>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15 * i, type: "spring", stiffness: 100 }}
-              className="text-center group"
+              initial={{ opacity: 0, y: 50, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.15 * i, type: "spring", stiffness: 80 }}
+              className="text-center group relative"
             >
+              {/* Hover glow */}
+              <div className="absolute inset-0 rounded-2xl bg-primary/0 group-hover:bg-primary/5 blur-xl transition-all duration-700" />
+              
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 10 }}
-                className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary transition-colors duration-300"
+                whileHover={{ scale: 1.15, rotate: 12 }}
+                className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
               >
                 <s.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                {/* Pulse ring */}
+                <motion.div
+                  className="absolute -inset-1 rounded-2xl border border-primary/20"
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
+                />
               </motion.div>
-              <div className="text-3xl lg:text-4xl font-display font-bold text-primary-foreground mb-1">
+              <motion.div
+                className="text-3xl lg:text-5xl font-display font-bold text-primary-foreground mb-1"
+                initial={{ scale: 0.5 }}
+                animate={isInView ? { scale: 1 } : {}}
+                transition={{ delay: 0.3 + 0.15 * i, type: "spring" }}
+              >
                 <Counter end={s.end} suffix={s.suffix} />
-              </div>
+              </motion.div>
               <div className="text-sm font-display font-semibold text-primary-foreground/80 mb-0.5">{s.label}</div>
               <div className="text-xs font-body text-primary-foreground/40">{s.desc}</div>
             </motion.div>

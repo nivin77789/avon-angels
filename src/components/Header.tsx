@@ -82,11 +82,6 @@ const Header = () => {
               whileTap={{ scale: 0.98 }}
             >
               <img src={avonLogo} alt="Avon Angels Home Care" className="h-10 w-auto" />
-              <span className={`text-sm font-display font-bold tracking-tight transition-colors duration-300 ${
-                scrolled ? "text-primary" : "text-accent"
-              }`}>
-                Avon Angels<br /><span className="text-[10px] font-semibold tracking-[0.15em] uppercase">Home Care</span>
-              </span>
             </motion.button>
 
             {/* Desktop Nav */}

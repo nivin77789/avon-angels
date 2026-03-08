@@ -50,8 +50,8 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
         >
           {/* Glare */}
           <motion.div className="pointer-events-none absolute inset-0 rounded-2xl" style={{ opacity: glareOp, background: `radial-gradient(circle at ${glareX}% ${glareY}%, ${plan.popular ? "hsl(160 84% 70% / 0.15)" : "hsl(160 84% 50% / 0.12)"}, transparent 55%)` }} />
-          {/* Shimmer */}
-          <motion.div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${plan.popular ? "hsl(160 84% 50% / 0.4)" : "hsl(160 84% 39% / 0.3)"}, transparent)` }} animate={{ x: ["-100%", "100%"] }} transition={{ duration: 3, repeat: Infinity, delay: index * 0.5, repeatDelay: 4 }} />
+          {/* Shimmer - desktop only */}
+          <div className="hidden sm:block absolute top-0 left-0 w-full h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${plan.popular ? "hsl(160 84% 50% / 0.4)" : "hsl(160 84% 39% / 0.3)"}, transparent)` }} />
 
           {plan.popular && (
             <motion.div

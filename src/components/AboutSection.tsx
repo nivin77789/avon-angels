@@ -33,7 +33,7 @@ const AboutSection = () => {
   const handleLeave = () => { mx.set(0); my.set(0); };
 
   return (
-    <section id="about" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Static orbs */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />

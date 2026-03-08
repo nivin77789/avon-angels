@@ -13,7 +13,7 @@ const GallerySection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section className="py-16 sm:py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} />
 
       <div className="container relative z-10" ref={ref}>

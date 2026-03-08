@@ -18,7 +18,7 @@ const FAQSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="faq" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full blur-[100px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} />
 
       <div className="container relative z-10" ref={ref}>

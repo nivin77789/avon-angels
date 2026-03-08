@@ -131,7 +131,7 @@ const ContactSection = () => {
             style={{ boxShadow: "0 20px 60px -15px hsl(160 84% 39% / 0.12)" }}
           >
             {/* Shimmer */}
-            <motion.div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.3), transparent)" }} animate={{ x: ["-100%", "100%"] }} transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }} />
+            <div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.3), transparent)" }} />
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Your Name</label><Input name="name" required placeholder="Full name" className="font-body rounded-xl" /></div>

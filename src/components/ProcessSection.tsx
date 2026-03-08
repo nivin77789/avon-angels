@@ -163,7 +163,7 @@ const ProcessSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="process" className="py-16 sm:py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Static background glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] opacity-[0.04]"

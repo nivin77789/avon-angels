@@ -54,13 +54,9 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
           <div className="hidden sm:block absolute top-0 left-0 w-full h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${plan.popular ? "hsl(160 84% 50% / 0.4)" : "hsl(160 84% 39% / 0.3)"}, transparent)` }} />
 
           {plan.popular && (
-            <motion.div
-              className="absolute top-4 right-4 flex items-center gap-1 bg-accent text-accent-foreground text-xs font-body font-semibold px-3 py-1 rounded-full"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <div className="absolute top-4 right-4 flex items-center gap-1 bg-accent text-accent-foreground text-xs font-body font-semibold px-3 py-1 rounded-full">
               <Star className="w-3 h-3" /> Most Popular
-            </motion.div>
+            </div>
           )}
 
           <motion.div style={{ translateZ: isHovered ? 20 : 0, transformStyle: "preserve-3d" }} transition={{ duration: 0.3 }}>

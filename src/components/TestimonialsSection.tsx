@@ -54,8 +54,6 @@ const TestimonialsSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const [useState] = [null]; // removed to avoid conflict
-
   return (
     <section id="testimonials" className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl" />

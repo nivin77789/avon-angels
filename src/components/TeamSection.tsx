@@ -33,7 +33,7 @@ const TeamSection = () => {
 
   return (
     <section id="team" className="py-24 lg:py-32 section-green-light relative overflow-hidden">
-      <motion.div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity }} />
+      <div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-[100px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} />
 
       <div className="container relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">

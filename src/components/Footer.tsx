@@ -18,7 +18,7 @@ const Footer = () => {
         backgroundSize: "50px 50px"
       }} />
       {/* Glow orb */}
-      <motion.div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 8, repeat: Infinity }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full blur-[100px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} />
 
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">

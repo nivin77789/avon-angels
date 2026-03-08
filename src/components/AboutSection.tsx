@@ -34,17 +34,9 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* 3D floating orbs */}
-      <motion.div
-        className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
-        animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 12, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl"
-        animate={{ y: [0, 20, 0], x: [0, -15, 0] }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
+      {/* Static orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="container relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">

@@ -39,24 +39,12 @@ const StatsCounter = () => {
     <section className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 section-dark" />
       
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full blur-[120px]"
-        style={{ background: "hsl(160 84% 39% / 0.15)" }}
-        animate={{ scale: [1, 1.4, 1], x: [0, 40, 0], y: [-20, 20, -20] }}
-        transition={{ duration: 10, repeat: Infinity }}
+      {/* Static gradient orbs */}
+      <div className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full blur-[100px]"
+        style={{ background: "hsl(160 84% 39% / 0.12)" }}
       />
-      <motion.div
-        className="absolute top-1/2 right-1/4 w-60 h-60 rounded-full blur-[120px]"
-        style={{ background: "hsl(160 84% 50% / 0.1)" }}
-        animate={{ scale: [1.2, 1, 1.2], y: [0, -30, 0] }}
-        transition={{ duration: 7, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute top-0 left-1/2 w-48 h-48 rounded-full blur-[100px]"
-        style={{ background: "hsl(160 70% 60% / 0.08)" }}
-        animate={{ x: [-50, 50, -50] }}
-        transition={{ duration: 12, repeat: Infinity }}
+      <div className="absolute top-1/2 right-1/4 w-60 h-60 rounded-full blur-[100px]"
+        style={{ background: "hsl(160 84% 50% / 0.08)" }}
       />
 
       {/* Grid pattern overlay */}

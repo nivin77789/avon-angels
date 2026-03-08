@@ -135,7 +135,7 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label>
-              <Input required placeholder="e.g. BS1 or Bath" className="font-body rounded-xl" />
+              <Input name="location" required placeholder="e.g. BS1 or Bath" className="font-body rounded-xl" />
             </div>
             <div>
               <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>

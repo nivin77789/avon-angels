@@ -153,26 +153,6 @@ const AnimatedStep = ({ step, index, isInView }: { step: typeof steps[0]; index:
           {step.desc}
         </motion.p>
 
-        {/* Decorative dots on hover */}
-        {isHovered && (
-          <>
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1.5 h-1.5 rounded-full"
-                initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-                animate={{
-                  opacity: [0, 0.8, 0],
-                  scale: [0, 1, 0],
-                  x: (Math.random() - 0.5) * 80,
-                  y: -30 - Math.random() * 50,
-                }}
-                transition={{ duration: 1 + Math.random() * 0.5, repeat: Infinity, delay: i * 0.15 }}
-                style={{ left: "50%", top: "30%", background: `hsl(${step.color} / 0.5)` }}
-              />
-            ))}
-          </>
-        )}
       </motion.div>
     </motion.div>
   );

@@ -172,6 +172,9 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-2">
+              {/* Accessibility Widget */}
+              <AccessibilityWidget scrolled={scrolled} />
+
               {/* Phone - visible on lg+ */}
               <a
                 href="tel:+441234567890"

@@ -72,7 +72,7 @@ const Header = () => {
           <div className={`flex items-center justify-between transition-all duration-500 rounded-2xl px-5 ${
             scrolled
               ? "bg-card/80 backdrop-blur-2xl shadow-lg border border-border/50 h-14"
-              : "bg-foreground/10 backdrop-blur-xl border border-primary-foreground/10 h-16"
+              : "xl:bg-foreground/10 xl:backdrop-blur-xl xl:border xl:border-primary-foreground/10 h-14 xl:h-16"
           }`}>
             {/* Logo */}
             <motion.button

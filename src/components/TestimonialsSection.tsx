@@ -68,32 +68,32 @@ const TestimonialsSection = () => {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5, type: "spring", stiffness: 80, damping: 20 }}
-                className="bg-card rounded-3xl p-8 lg:p-12 border border-border/50 relative"
+                className="bg-card rounded-3xl p-5 sm:p-8 lg:p-12 border border-border/50 relative"
                 style={{ boxShadow: "0 20px 60px -15px hsl(160 84% 39% / 0.12)", transformStyle: "preserve-3d" }}
               >
-                <Quote className="w-12 h-12 text-primary/10 mb-4" />
-                <p className="font-body text-foreground/80 text-lg lg:text-xl leading-relaxed italic mb-8">
+                <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-primary/10 mb-3 sm:mb-4" />
+                <p className="font-body text-foreground/85 text-sm sm:text-lg lg:text-xl leading-relaxed italic mb-6 sm:mb-8">
                   "{testimonials[active].text}"
                 </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4">
                     <motion.div
-                      className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 10 }}
                     >
-                      <span className="font-display font-bold text-primary">
+                      <span className="font-display font-bold text-primary text-xs sm:text-sm">
                         {testimonials[active].name.split(" ").map(n => n[0]).join("")}
                       </span>
                     </motion.div>
                     <div>
-                      <div className="font-display font-semibold text-foreground">{testimonials[active].name}</div>
-                      <div className="text-sm font-body text-muted-foreground">{testimonials[active].relation} · {testimonials[active].location}</div>
+                      <div className="font-display font-semibold text-foreground text-sm sm:text-base">{testimonials[active].name}</div>
+                      <div className="text-xs sm:text-sm font-body text-muted-foreground">{testimonials[active].relation} · {testimonials[active].location}</div>
                     </div>
                   </div>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 self-start sm:self-auto">
                     {[...Array(testimonials[active].rating)].map((_, i) => (
                       <motion.div key={i} initial={{ scale: 0, rotate: -30 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: i * 0.08, type: "spring" }}>
-                        <Star className="w-4 h-4 text-accent fill-accent" />
+                        <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent fill-accent" />
                       </motion.div>
                     ))}
                   </div>
@@ -129,7 +129,7 @@ const TestimonialsSection = () => {
         >
           {[
             { value: "4.9/5", label: "Google Rating" },
-            { value: "500+", label: "5-Star Reviews" },
+            { value: "5★", label: "5-Star Reviews" },
             { value: "98%", label: "Would Recommend" },
             { value: "96%", label: "Staff Retention" },
           ].map((m, i) => (

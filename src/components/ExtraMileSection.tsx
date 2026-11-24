@@ -1,22 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Car, Scissors, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const extras = [
   {
-    icon: Car,
-    title: "Accessible Mobility",
-    desc: "Customized vehicle with wheelchair accessibility for stress-free shopping trips.",
-  },
-  {
-    icon: Scissors,
-    title: "Expert Grooming",
-    desc: "Well-trained hairdressers providing salon-quality care in the comfort of home.",
-  },
-  {
     icon: Sparkles,
     title: "Personal Care+",
-    desc: "Professional nail cleaning and grooming staff for consistent wellbeing.",
+    desc: "Attentive, respectful personal support and dedicated wellbeing assistance tailored for daily comfort.",
   },
 ];
 
@@ -53,11 +43,11 @@ const ExtraMileSection = () => {
             The Extra <span className="text-gradient">Mile</span>
           </h2>
           <p className="font-body text-muted-foreground text-lg">
-            Beyond medical support, we focus on lifestyle and dignity. We bring independent living to life with specialized mobility and premium home-based grooming.
+            Beyond daily routine care, we focus on lifestyle, dignity, and personal comfort in the familiar warmth of home.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="flex justify-center max-w-lg mx-auto">
           {extras.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -66,17 +56,17 @@ const ExtraMileSection = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.15 * i, type: "spring", stiffness: 80 }}
-                className="group relative rounded-2xl border border-border/50 bg-card p-8 hover:border-primary/40 transition-all duration-500 hover:shadow-lg hover:shadow-primary/10"
+                className="w-full group relative rounded-2xl border border-border/50 bg-card p-8 hover:border-primary/40 transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 text-center"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col items-center">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500">
                     <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                   </div>
                   <h3 className="text-xl font-display font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="font-body text-muted-foreground text-sm leading-relaxed">
+                  <p className="font-body text-muted-foreground text-sm leading-relaxed max-w-md">
                     {item.desc}
                   </p>
                 </div>

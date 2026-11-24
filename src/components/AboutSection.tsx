@@ -56,7 +56,7 @@ const AboutSection = () => {
               style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
               className="relative rounded-3xl overflow-hidden cursor-default"
             >
-              <img src={aboutImg} alt="Avon Angels Home Care Team" className="w-full h-[480px] object-cover scale-110" loading="lazy" />
+              <img src={aboutImg} alt="Avon Angels Home Care Team" className="w-full h-[280px] sm:h-[380px] lg:h-[480px] object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
               {/* Holographic glare */}
               <motion.div
@@ -81,20 +81,20 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1, scale: 1, z: 30 } : {}}
               transition={{ delay: 0.6, type: "spring" }}
               style={{ transformStyle: "preserve-3d", translateZ: 40 }}
-              className="absolute -bottom-6 -right-6 bg-card rounded-2xl p-5 border border-border"
+              className="absolute -bottom-4 right-2 sm:-bottom-6 sm:-right-6 bg-card rounded-2xl p-4 sm:p-5 border border-border shadow-xl backdrop-blur-md"
               whileHover={{ scale: 1.08, translateZ: 60 }}
             >
               <motion.div
                 className="absolute -inset-[1px] rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500"
                 style={{ background: "linear-gradient(135deg, hsl(160 84% 39% / 0.2), transparent, hsl(160 84% 39% / 0.1))" }}
               />
-              <div className="text-3xl font-display font-bold text-primary relative">98%</div>
-              <div className="text-sm font-body text-muted-foreground relative">Client Satisfaction</div>
+              <div className="text-2xl sm:text-3xl font-display font-bold text-primary relative">98%</div>
+              <div className="text-xs sm:text-sm font-body text-muted-foreground relative">Client Satisfaction</div>
               <div className="flex gap-0.5 mt-1 relative">
                 {[...Array(5)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-3 h-3 rounded-full bg-accent"
+                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent"
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ delay: 0.8 + i * 0.1, type: "spring" }}
@@ -108,7 +108,7 @@ const AboutSection = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.8 }}
-              className="absolute -inset-4 border-2 border-primary/10 rounded-[2rem] -z-10"
+              className="absolute inset-0 sm:-inset-4 border-2 border-primary/10 rounded-[2rem] -z-10"
             />
           </motion.div>
 

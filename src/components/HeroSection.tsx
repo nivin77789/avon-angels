@@ -5,7 +5,7 @@ import { ArrowRight, Phone, Shield, Clock, Star, CheckCircle, Sparkles } from "l
 import heroImg from "@/assets/hero-homecare.jpg";
 
 const badges = [
-  { icon: Shield, text: "CQC Registered" },
+  { icon: Shield, text: "DBS Checked Carers" },
   { icon: Clock, text: "24/7 Available" },
   { icon: Star, text: "5★ Rated" },
 ];
@@ -51,14 +51,14 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <motion.div className="relative z-20 container py-24 sm:py-32 lg:py-0" style={{ y: textY, opacity }}>
+      <motion.div className="relative z-20 container pt-28 pb-14 sm:py-32 lg:py-0" style={{ y: textY, opacity }}>
         <div className="max-w-2xl">
           {/* Trust badges with stagger */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8"
+            className="flex flex-wrap gap-2 sm:gap-3 mb-5 sm:mb-8"
           >
             {badges.map((b, i) => (
               <motion.div
@@ -67,10 +67,10 @@ const HeroSection = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.4 + i * 0.15, type: "spring", stiffness: 200 }}
                 whileHover={{ scale: 1.08, y: -2 }}
-                className="glass-dark rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 cursor-default"
+                className="glass-dark rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-1.5 sm:gap-2 cursor-default border border-primary-foreground/15"
               >
-                <b.icon className="w-4 h-4 text-accent" />
-                <span className="text-xs font-body font-medium text-primary-foreground/90">{b.text}</span>
+                <b.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
+                <span className="text-[11px] sm:text-xs font-body font-medium text-primary-foreground/95">{b.text}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -80,7 +80,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.08] mb-4 sm:mb-6"
+            className="text-[32px] xs:text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.12] sm:leading-[1.08] mb-4 sm:mb-6"
           >
             <motion.span
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
@@ -127,9 +127,9 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-base sm:text-lg lg:text-xl font-body text-primary-foreground/80 mb-6 sm:mb-8 max-w-lg leading-relaxed"
+            className="text-sm sm:text-lg lg:text-xl font-body text-primary-foreground/85 mb-6 sm:mb-8 max-w-lg leading-relaxed"
           >
-            Avon Angels delivers compassionate, CQC-registered home care services across Avon. 
+            Avon Angels delivers compassionate, professional home care services across Avon. 
             From personal care to live-in support — we help your loved ones thrive at home.
           </motion.p>
 
@@ -138,7 +138,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="flex flex-col gap-2 mb-8 sm:mb-10"
+            className="flex flex-col gap-2 mb-7 sm:mb-10"
           >
             {["Personalised care plans", "Fully trained & DBS-checked carers", "No long-term contracts"].map((f, i) => (
               <motion.div
@@ -156,7 +156,7 @@ const HeroSection = () => {
                 >
                   <CheckCircle className="w-4 h-4 text-accent flex-shrink-0 group-hover:scale-125 transition-transform" />
                 </motion.div>
-                <span className="text-sm font-body text-primary-foreground/75 group-hover:text-primary-foreground/95 transition-colors">{f}</span>
+                <span className="text-xs sm:text-sm font-body text-primary-foreground/80 group-hover:text-primary-foreground transition-colors">{f}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -168,28 +168,62 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1.3 }}
             className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
           >
-            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="relative group">
+            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="relative group w-full sm:w-auto">
               <div className="absolute -inset-1 rounded-full bg-accent/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Button
                 size="lg"
                 onClick={() => scrollTo("contact")}
-                className="relative bg-accent text-accent-foreground hover:bg-accent/90 font-body text-base px-8 py-6 rounded-full shadow-xl"
+                className="w-full sm:w-auto relative bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm sm:text-base px-7 sm:px-8 py-5 sm:py-6 rounded-full shadow-xl font-semibold"
               >
                 <Sparkles className="w-4 h-4 mr-1.5" />
                 Get Free Assessment <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
               <Button
                 size="lg"
                 asChild
-                className="bg-transparent border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50 font-body text-base px-8 py-6 rounded-full backdrop-blur-sm transition-all duration-300"
+                className="w-full sm:w-auto bg-transparent border-2 border-primary-foreground/35 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/60 font-body text-sm sm:text-base px-7 sm:px-8 py-5 sm:py-6 rounded-full backdrop-blur-sm transition-all duration-300"
               >
-                <a href="tel:+441234567890">
-                  <Phone className="w-4 h-4 mr-2" /> Call Now
+                <a href="tel:+447500111987">
+                  <Phone className="w-4 h-4 mr-2" /> Call +44 7500 111987
                 </a>
               </Button>
             </motion.div>
+          </motion.div>
+
+          {/* Mobile Social Proof Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+            className="lg:hidden mt-7 p-4 rounded-2xl glass-dark border border-primary-foreground/15 shadow-xl backdrop-blur-md"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2.5 flex-shrink-0">
+                <div className="w-9 h-9 rounded-full border-2 border-primary-foreground/30 bg-primary/90 text-primary-foreground font-display font-bold text-xs flex items-center justify-center shadow-sm">
+                  AA
+                </div>
+                <div className="w-9 h-9 rounded-full border-2 border-primary-foreground/30 bg-accent text-accent-foreground font-display font-bold text-xs flex items-center justify-center shadow-sm">
+                  SJ
+                </div>
+                <div className="w-9 h-9 rounded-full border-2 border-primary-foreground/30 bg-emerald-600 text-white font-display font-bold text-xs flex items-center justify-center shadow-sm">
+                  DC
+                </div>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <div className="flex text-accent text-xs">
+                    ★★★★★
+                  </div>
+                  <span className="text-xs font-bold text-primary-foreground">5.0 / 5</span>
+                  <span className="text-[10px] text-emerald-400 font-semibold px-1.5 py-0.5 rounded-full bg-emerald-500/20">5★ Rated</span>
+                </div>
+                <p className="text-xs text-primary-foreground/80 font-body truncate mt-0.5">
+                  10+ local families supported across Avon
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.div>
@@ -210,7 +244,7 @@ const HeroSection = () => {
           <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-accent flex items-center justify-center">
             <Sparkles className="w-4 h-4 text-accent-foreground" />
           </div>
-          <div className="text-4xl font-display font-bold text-primary-foreground mb-1">2,500+</div>
+          <div className="text-4xl font-display font-bold text-primary-foreground mb-1">10+</div>
           <div className="text-sm font-body text-primary-foreground/60 mb-3">Families Supported</div>
           <div className="flex -space-x-2">
             {[...Array(5)].map((_, i) => (

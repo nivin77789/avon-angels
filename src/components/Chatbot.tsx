@@ -18,8 +18,8 @@ const quickReplies = [
 
 const botResponses: Record<string, string> = {
   "what services do you offer?": "We offer Personal Care, Live-in Care, Dementia Care, Companionship, Night Care, Respite Care, and Complex Care. Would you like to know more about any specific service?",
-  "how much does care cost?": "Our care packages start from competitive rates tailored to your needs. For a personalised quote, please fill out our Free Assessment form or call us at 01234 567 890.",
-  "how do i book an assessment?": "You can book a free care assessment by filling out the contact form on our website, or call us directly at 01234 567 890. We'll arrange a home visit at a time that suits you!",
+  "how much does care cost?": "Our care packages start from competitive rates tailored to your needs. For a personalised quote, please fill out our Free Assessment form, chat on WhatsApp, or call us at +44 7500 111987.",
+  "how do i book an assessment?": "You can book a free care assessment by filling out the contact form on our website, messaging us on WhatsApp, or calling us directly at +44 7500 111987. We'll arrange a home visit at a time that suits you!",
   "what areas do you cover?": "We cover all of Avon, Bath, Bristol and surrounding areas. Contact us to check if we serve your specific location!",
 };
 
@@ -32,9 +32,10 @@ const getReply = (msg: string): string => {
   if (lower.includes("cost") || lower.includes("price") || lower.includes("much")) return botResponses["how much does care cost?"];
   if (lower.includes("book") || lower.includes("assess")) return botResponses["how do i book an assessment?"];
   if (lower.includes("area") || lower.includes("cover") || lower.includes("location")) return botResponses["what areas do you cover?"];
+  if (lower.includes("whatsapp")) return "You can message us directly on WhatsApp at +44 7500 111987 or click the WhatsApp widget at the bottom left!";
   if (lower.includes("hello") || lower.includes("hi")) return "Hello! 👋 Welcome to Avon Angels Homecare. How can I help you today?";
   if (lower.includes("thank")) return "You're welcome! Is there anything else I can help with?";
-  return "Thank you for your message! For detailed enquiries, please call us at 01234 567 890 or fill out our Free Assessment form. We're happy to help!";
+  return "Thank you for your message! For detailed enquiries, please call us at +44 7500 111987, chat on WhatsApp, or fill out our Free Assessment form. We're happy to help!";
 };
 
 const Chatbot = () => {
@@ -64,11 +65,11 @@ const Chatbot = () => {
       {/* Toggle */}
       <motion.button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center"
+        className="fixed bottom-5 right-3 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-primary-foreground shadow-xl flex items-center justify-center"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        {open ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+        {open ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />}
       </motion.button>
 
       <AnimatePresence>
@@ -77,7 +78,7 @@ const Chatbot = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] bg-card rounded-2xl border border-border/50 shadow-2xl overflow-hidden flex flex-col"
+            className="fixed bottom-20 right-3 sm:bottom-24 sm:right-6 z-50 w-[360px] max-w-[calc(100vw-1.5rem)] bg-card rounded-2xl border border-border/50 shadow-2xl overflow-hidden flex flex-col"
             style={{ height: "480px" }}
           >
             {/* Header */}

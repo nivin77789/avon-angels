@@ -3,10 +3,10 @@ import { useRef, useEffect, useState } from "react";
 import { Users, Heart, Clock, Award } from "lucide-react";
 
 const stats = [
-  { icon: Users, end: 2500, suffix: "+", label: "Families Supported", desc: "Across Avon & Bristol" },
+  { icon: Users, end: 10, suffix: "+", label: "Families Supported", desc: "Across Avon & Bristol" },
   { icon: Heart, end: 98, suffix: "%", label: "Client Satisfaction", desc: "Consistently rated excellent" },
-  { icon: Clock, end: 15, suffix: "+", label: "Years Experience", desc: "Trusted since 2010" },
-  { icon: Award, end: 500, suffix: "+", label: "5-Star Reviews", desc: "On Google & Trustpilot" },
+  { icon: Clock, end: 4, suffix: "+", label: "Years Experience", desc: "Dedicated care team" },
+  { icon: Award, end: 5, suffix: "★", label: "5-Star Reviews", desc: "On Google & Trustpilot" },
 ];
 
 const Counter = ({ end, suffix }: { end: number; suffix: string }) => {
@@ -54,34 +54,34 @@ const StatsCounter = () => {
       }} />
 
       <div className="container relative z-10" ref={ref}>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ delay: 0.15 * i, type: "spring", stiffness: 80 }}
-              className="text-center group relative"
+              className="text-center group relative p-3.5 sm:p-6 rounded-2xl bg-card/15 backdrop-blur-md border border-primary-foreground/10 hover:border-primary-foreground/25 transition-all duration-300"
             >
               {/* Hover glow */}
               <div className="absolute inset-0 rounded-2xl bg-primary/0 group-hover:bg-primary/5 blur-xl transition-all duration-700" />
               
               <motion.div
                 whileHover={{ scale: 1.15, rotate: 12 }}
-                className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
               >
-                <s.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                <s.icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground group-hover:scale-110 transition-transform duration-300" />
               </motion.div>
               <motion.div
-                className="text-3xl lg:text-5xl font-display font-bold text-primary-foreground mb-1"
+                className="text-2xl sm:text-3xl lg:text-5xl font-display font-bold text-primary-foreground mb-1"
                 initial={{ scale: 0.5 }}
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.3 + 0.15 * i, type: "spring" }}
               >
                 <Counter end={s.end} suffix={s.suffix} />
               </motion.div>
-              <div className="text-sm font-display font-semibold text-primary-foreground/80 mb-0.5">{s.label}</div>
-              <div className="text-xs font-body text-primary-foreground/40">{s.desc}</div>
+              <div className="text-xs sm:text-sm font-display font-semibold text-primary-foreground/90 mb-0.5 leading-snug">{s.label}</div>
+              <div className="text-[10px] sm:text-xs font-body text-primary-foreground/50">{s.desc}</div>
             </motion.div>
           ))}
         </div>

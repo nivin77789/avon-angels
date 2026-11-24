@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Shield, Award, Star, Heart, CheckCircle, Clock } from "lucide-react";
 
 const items = [
-  { icon: Shield, text: "CQC Registered" },
+  { icon: Shield, text: "Fully Vetted & Insured" },
   { icon: Star, text: "5★ Google Rating" },
   { icon: Award, text: "Award-Winning Care" },
   { icon: Heart, text: "Person-Centred Approach" },

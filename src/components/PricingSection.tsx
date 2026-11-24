@@ -46,7 +46,7 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
         style={{ rotateX: isTouchDevice ? 0 : rotX, rotateY: isTouchDevice ? 0 : rotY, transformStyle: isTouchDevice ? "flat" : "preserve-3d" }}
         className="relative"
       >
-        <div className={`rounded-2xl p-7 relative overflow-hidden border ${plan.popular ? "bg-foreground text-primary-foreground border-foreground" : "bg-card border-border/50 hover:border-primary/30"} transition-colors duration-500`}
+        <div className={`rounded-2xl p-5 sm:p-7 relative overflow-hidden border ${plan.popular ? "bg-foreground text-primary-foreground border-foreground" : "bg-card border-border/50 hover:border-primary/30"} transition-colors duration-500`}
           style={{ boxShadow: isHovered ? "0 30px 60px -15px hsl(160 84% 39% / 0.2)" : plan.popular ? "var(--shadow-elevated)" : "var(--shadow-soft)" }}
         >
           {/* Glare */}
@@ -55,14 +55,14 @@ const PricingCard = ({ plan, index, isInView }: { plan: typeof plans[0]; index: 
           <div className="hidden sm:block absolute top-0 left-0 w-full h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${plan.popular ? "hsl(160 84% 50% / 0.4)" : "hsl(160 84% 39% / 0.3)"}, transparent)` }} />
 
           {plan.popular && (
-            <div className="absolute top-4 right-4 flex items-center gap-1 bg-accent text-accent-foreground text-xs font-body font-semibold px-3 py-1 rounded-full">
+            <div className="absolute top-4 right-4 flex items-center gap-1 bg-accent text-accent-foreground text-[11px] sm:text-xs font-body font-semibold px-2.5 py-1 rounded-full shadow-sm">
               <Star className="w-3 h-3" /> Most Popular
             </div>
           )}
 
           <motion.div style={{ translateZ: isHovered ? 20 : 0, transformStyle: "preserve-3d" }} transition={{ duration: 0.3 }}>
-            <div className={`text-sm font-body font-semibold mb-1 ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{plan.name}</div>
-            <div className={`text-xs font-body mb-4 ${plan.popular ? "text-primary-foreground/50" : "text-muted-foreground/70"}`}>{plan.desc}</div>
+            <div className={`text-base font-body font-semibold mb-1 pr-24 sm:pr-0 ${plan.popular ? "text-primary-foreground/90" : "text-foreground"}`}>{plan.name}</div>
+            <div className={`text-xs font-body mb-4 ${plan.popular ? "text-primary-foreground/60" : "text-muted-foreground/80"}`}>{plan.desc}</div>
           </motion.div>
 
           <motion.div style={{ translateZ: isHovered ? 30 : 0, transformStyle: "preserve-3d" }} transition={{ duration: 0.3 }} className="flex items-baseline gap-1 mb-6">

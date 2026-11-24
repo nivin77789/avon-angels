@@ -3,14 +3,15 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { db, ref as dbRef, push } from "@/lib/firebase";
 
-const contactInfo = [
+const contactInfo: { icon: any; label: string; value: string; href?: string }[] = [
   { icon: MapPin, label: "Service Area", value: "All of Avon, Bath, Bristol & surrounding areas" },
-  { icon: Phone, label: "Phone", value: "01234 567 890" },
-  { icon: Mail, label: "Email", value: "hello@avonangels.co.uk" },
+  { icon: Phone, label: "Phone", value: "+44 7500 111987", href: "tel:+447500111987" },
+  { icon: MessageSquare, label: "WhatsApp", value: "+44 7500 111987", href: "https://wa.me/447500111987" },
+  { icon: Mail, label: "Email", value: "hello@avonangels.co.uk", href: "mailto:hello@avonangels.co.uk" },
   { icon: Clock, label: "Office Hours", value: "Mon–Fri 8am–6pm (Care available 24/7)" },
 ];
 
@@ -89,7 +90,18 @@ const ContactSection = () => {
                   </motion.div>
                   <div>
                     <div className="font-display font-semibold text-foreground text-sm">{c.label}</div>
-                    <div className="font-body text-muted-foreground text-sm">{c.value}</div>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target={c.href.startsWith("http") ? "_blank" : undefined}
+                        rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="font-body text-muted-foreground text-sm hover:text-primary transition-colors block"
+                      >
+                        {c.value}
+                      </a>
+                    ) : (
+                      <div className="font-body text-muted-foreground text-sm">{c.value}</div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -133,21 +145,21 @@ const ContactSection = () => {
             {/* Shimmer */}
             <div className="absolute top-0 left-0 w-full h-[1px]" style={{ background: "linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.3), transparent)" }} />
 
-            <div className="grid sm:grid-cols-2 gap-5">
-              <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Your Name</label><Input name="name" required placeholder="Full name" className="font-body rounded-xl" /></div>
-              <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Phone Number</label><Input name="phone" type="tel" required placeholder="Your phone number" className="font-body rounded-xl" /></div>
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+              <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Your Name</label><Input name="name" required placeholder="Full name" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
+              <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Phone Number</label><Input name="phone" type="tel" required placeholder="Your phone number" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
             </div>
-            <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Email Address</label><Input name="email" type="email" required placeholder="your@email.co.uk" className="font-body rounded-xl" /></div>
-            <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label><Input name="location" required placeholder="e.g. BS1 or Bath" className="font-body rounded-xl" /></div>
+            <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Email Address</label><Input name="email" type="email" required placeholder="your@email.co.uk" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
+            <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label><Input name="location" required placeholder="e.g. BS1 or Bath" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
             <div>
-              <label className="text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>
-              <select name="careType" className="w-full border border-input bg-background rounded-xl px-3 py-2 text-sm font-body text-foreground">
+              <label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>
+              <select name="careType" className="w-full border border-input bg-background rounded-xl px-3 h-11 sm:h-10 text-base sm:text-sm font-body text-foreground">
                 <option>Personal Care</option><option>Live-in Care</option><option>Dementia Care</option><option>Companionship</option><option>Night Care</option><option>Respite Care</option><option>Complex Care</option><option>Not sure yet</option>
               </select>
             </div>
-            <div><label className="text-sm font-body font-medium text-foreground mb-1.5 block">Tell us more</label><Textarea name="message" required placeholder="Briefly describe the care needs..." rows={4} className="font-body resize-none rounded-xl" /></div>
+            <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Tell us more</label><Textarea name="message" required placeholder="Briefly describe the care needs..." rows={3} className="font-body text-base sm:text-sm resize-none rounded-xl" /></div>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button type="submit" disabled={sending} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-body text-base py-6 rounded-full relative group">
+              <Button type="submit" disabled={sending} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm sm:text-base py-5 sm:py-6 rounded-full relative group font-semibold shadow-lg">
                 <div className="absolute -inset-1 rounded-full bg-accent/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <span className="relative flex items-center justify-center gap-2">
                   {sending ? <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }}><Send className="w-4 h-4" /></motion.div> : <><Send className="w-4 h-4" /> Request Free Assessment</>}

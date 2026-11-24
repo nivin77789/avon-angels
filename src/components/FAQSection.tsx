@@ -10,7 +10,7 @@ const faqs = [
   { q: "What if I need to cancel or change visits?", a: "We understand that needs change. You can adjust your care schedule with just 48 hours' notice at no extra cost. We don't tie you into long-term contracts — you're always in control." },
   { q: "Do you provide care for complex medical conditions?", a: "Yes, we provide specialist care for conditions including dementia, Parkinson's, multiple sclerosis, stroke recovery, and more. Our complex care team includes carers with advanced clinical training." },
   { q: "How much does home care cost?", a: "Costs depend on the type and frequency of care needed. Visiting care starts from £20/hour. We provide a detailed quote after your free assessment with no hidden fees. We can also advise on funding options including local authority support." },
-  { q: "Is Avon Angels regulated?", a: "Yes, we are fully registered and regulated by the Care Quality Commission (CQC). Our latest inspection report is available on the CQC website. We maintain the highest standards of care quality and safety." },
+  { q: "Are your carers vetted and insured?", a: "Yes, all our carers undergo rigorous enhanced DBS checks, in-depth background screening, and comprehensive training. We are fully insured and adhere to the highest standards of safety, compassion, and care quality." },
 ];
 
 const FAQSection = () => {

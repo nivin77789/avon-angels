@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Phone, Heart, ChevronDown, ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AccessibilityWidget from "./AccessibilityWidget";
 import avonLogo from "@/assets/avon_angels.png";
@@ -157,15 +157,25 @@ const Header = () => {
               {/* Accessibility Widget */}
               <AccessibilityWidget scrolled={scrolled} />
 
+              {/* Quick Call Button on Mobile */}
+              <motion.a
+                href="tel:+447500111987"
+                whileTap={{ scale: 0.92 }}
+                className="lg:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366] text-white shadow-md hover:bg-[#20ba59] active:scale-95 transition-all"
+                aria-label="Call Avon Angels"
+              >
+                <Phone className="w-4 h-4" />
+              </motion.a>
+
               {/* Phone - visible on lg+ */}
               <a
-                href="tel:+441234567890"
+                href="tel:+447500111987"
                 className={`hidden lg:flex xl:hidden items-center gap-1.5 text-xs font-body font-semibold transition-colors ${
                   scrolled ? "text-primary" : "text-primary-foreground"
                 }`}
               >
                 <Phone className="w-3.5 h-3.5" />
-                01234 567 890
+                +44 7500 111987
               </a>
 
               {/* CTA */}
@@ -234,67 +244,94 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="absolute top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-card shadow-2xl"
+              className="absolute top-0 right-0 bottom-0 w-84 max-w-[88vw] bg-card/95 backdrop-blur-2xl shadow-2xl flex flex-col justify-between border-l border-border/80"
             >
-              <div className="flex items-center justify-between p-5 border-b border-border">
-                <img src={avonLogo} alt="Avon Angels Home Care" className="h-9 w-auto" />
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setOpen(false)}
-                  className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-foreground"
-                >
-                  <X className="w-5 h-5" />
-                </motion.button>
-              </div>
-
-              <div className="p-5 space-y-1 overflow-y-auto max-h-[calc(100vh-180px)]">
-                {navItems.map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 * i }}
+              <div>
+                <div className="flex items-center justify-between p-5 border-b border-border/80 bg-muted/30">
+                  <div className="flex items-center gap-2.5">
+                    <img src={avonLogo} alt="Avon Angels Home Care" className="h-9 w-auto" />
+                    <div>
+                      <span className="text-[10px] font-body text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+                        <ShieldCheck className="w-3 h-3" /> DBS Checked & Insured
+                      </span>
+                    </div>
+                  </div>
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setOpen(false)}
+                    className="w-9 h-9 rounded-xl bg-muted/80 hover:bg-muted flex items-center justify-center text-foreground transition-colors"
                   >
-                    <button
-                      onClick={() => scrollTo(item.id)}
-                      className={`flex items-center justify-between w-full py-2.5 px-3 rounded-lg text-sm font-body font-medium transition-all ${
-                        activeSection === item.id
-                          ? "text-primary bg-primary/8"
-                          : "text-foreground/70 hover:text-foreground hover:bg-muted"
-                      }`}
+                    <X className="w-5 h-5" />
+                  </motion.button>
+                </div>
+
+                <div className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-270px)]">
+                  {navItems.map((item, i) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.04 * i }}
                     >
-                      {item.label}
-                      {activeSection === item.id && (
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      <button
+                        onClick={() => scrollTo(item.id)}
+                        className={`flex items-center justify-between w-full py-2.5 px-3.5 rounded-xl text-sm font-body font-medium transition-all ${
+                          activeSection === item.id
+                            ? "text-primary bg-primary/10 font-semibold shadow-xs"
+                            : "text-foreground/75 hover:text-foreground hover:bg-muted/70"
+                        }`}
+                      >
+                        {item.label}
+                        {activeSection === item.id && (
+                          <div className="w-2 h-2 rounded-full bg-primary" />
+                        )}
+                      </button>
+                      {item.sub && (
+                        <div className="ml-4 border-l-2 border-primary/20 pl-3 space-y-0.5 mt-1 mb-1.5">
+                          {item.sub.map((sub) => (
+                            <button
+                              key={sub}
+                              onClick={() => scrollTo("services")}
+                              className="block w-full text-left py-1.5 px-2 rounded-lg text-xs font-body text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                            >
+                              {sub}
+                            </button>
+                          ))}
+                        </div>
                       )}
-                    </button>
-                    {item.sub && (
-                      <div className="ml-4 border-l-2 border-border pl-3 space-y-0.5 mt-0.5 mb-1">
-                        {item.sub.map((sub) => (
-                          <button
-                            key={sub}
-                            onClick={() => scrollTo("services")}
-                            className="block w-full text-left py-1.5 text-xs font-body text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            {sub}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-5 border-t border-border bg-card">
-                <a href="tel:+441234567890" className="flex items-center gap-2 text-sm font-body font-semibold text-primary mb-3">
-                  <Phone className="w-4 h-4" /> 01234 567 890
-                </a>
+              {/* Bottom Quick Contact Dock inside mobile drawer */}
+              <div className="p-4 border-t border-border/80 bg-card/90 space-y-2.5">
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href="tel:+447500111987"
+                    className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary text-xs font-semibold font-body transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5" /> Call Carer
+                  </a>
+                  <a
+                    href="https://wa.me/447500111987"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold font-body shadow-sm transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                  </a>
+                </div>
+
                 <Button
                   onClick={() => scrollTo("contact")}
-                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-body rounded-full"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-body text-xs h-10 rounded-xl shadow-md font-semibold"
                 >
                   Get Free Assessment <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
+                <p className="text-[10px] text-center text-muted-foreground font-body">
+                  Serving Bath, Bristol & surrounding Avon areas
+                </p>
               </div>
             </motion.div>
           </motion.div>

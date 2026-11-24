@@ -57,7 +57,7 @@ const GallerySection = () => {
           className="flex flex-wrap justify-center items-center gap-8 lg:gap-16"
         >
           {[
-            { icon: Award, text: "CQC Registered" },
+            { icon: Award, text: "Fully Insured & Vetted" },
             { icon: Phone, text: "24/7 On-Call Support" },
             { icon: Award, text: "UKHCA Member" },
           ].map((item, i) => (

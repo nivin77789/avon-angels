@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUp, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowUp, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import avonLogo from "@/assets/avon_angels.png";
 
 const Footer = () => {
@@ -8,7 +8,7 @@ const Footer = () => {
   const sections = [
     { title: "Services", links: ["Personal Care", "Live-in Care", "Dementia Care", "Companionship", "Respite Care", "Complex Care"] },
     { title: "Company", links: ["About Us", "Our Team", "How It Works", "Pricing", "Testimonials", "FAQ", "Careers"] },
-    { title: "Resources", links: ["Care Guide", "Funding Advice", "CQC Report", "Blog", "Privacy Policy", "Terms of Service"] },
+    { title: "Resources", links: ["Care Guide", "Funding Advice", "Care Standards", "Blog", "Privacy Policy", "Terms of Service"] },
   ];
 
   return (
@@ -36,16 +36,19 @@ const Footer = () => {
               </motion.div>
             </div>
             <p className="text-sm font-body text-primary-foreground/50 leading-relaxed mb-5 max-w-sm">
-              Professional, compassionate home care services across Avon since 2010. CQC registered and rated.
+              Professional, compassionate home care services across Avon. Dedicated to dignified, person-centred care.
             </p>
             <div className="space-y-2">
               {[
-                { icon: Phone, text: "01234 567 890", href: "tel:+441234567890" },
-                { icon: Mail, text: "hello@avonangels.co.uk", href: "mailto:hello@avonangels.co.uk" },
+                { icon: Phone, text: "+44 7500 111987", href: "tel:+447500111987", target: undefined },
+                { icon: MessageCircle, text: "WhatsApp: +44 7500 111987", href: "https://wa.me/447500111987", target: "_blank" },
+                { icon: Mail, text: "hello@avonangels.co.uk", href: "mailto:hello@avonangels.co.uk", target: undefined },
               ].map((item, i) => (
                 <motion.a
                   key={item.text}
                   href={item.href}
+                  target={item.target}
+                  rel={item.target ? "noopener noreferrer" : undefined}
                   className="flex items-center gap-2 text-sm font-body text-primary-foreground/60 hover:text-accent transition-colors"
                   whileHover={{ x: 4 }}
                 >
@@ -84,7 +87,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs font-body text-primary-foreground/30">
-            © {new Date().getFullYear()} Avon Angels Home Care. All rights reserved. CQC Registered.
+            © {new Date().getFullYear()} Avon Angels Home Care. All rights reserved.
           </p>
           <motion.button
             whileHover={{ scale: 1.15, y: -4, rotate: 5 }}

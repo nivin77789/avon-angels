@@ -16,6 +16,8 @@ import ContactSection from "@/components/ContactSection";
 
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
+import LeadPopupModal from "@/components/LeadPopupModal";
 import ScrollProgress from "@/components/ScrollProgress";
 
 const Index = () => (
@@ -39,6 +41,8 @@ const Index = () => (
     
     <Footer />
     <Chatbot />
+    <WhatsAppWidget />
+    <LeadPopupModal />
   </>
 );
 

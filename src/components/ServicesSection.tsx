@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { Heart, Brain, Utensils, Activity, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Personal Care", desc: "Washing, dressing & grooming with dignity.", gradient: "from-emerald-400/20 to-teal-500/10" },
+  { icon: Heart, title: "Personal Care", desc: "Washing, dressing & personal hygiene with dignity.", gradient: "from-emerald-400/20 to-teal-500/10" },
   { icon: Home, title: "Live-in Care", desc: "Round-the-clock support in your home.", gradient: "from-teal-400/20 to-cyan-500/10" },
   { icon: Brain, title: "Dementia Care", desc: "Specialist memory care & safe routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
   { icon: Users, title: "Companionship", desc: "Social visits & emotional support.", gradient: "from-emerald-400/20 to-green-500/10" },
@@ -71,7 +71,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
       >
         {/* Card body */}
         <motion.div
-          className="relative rounded-xl p-5 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
+          className="relative rounded-xl sm:rounded-2xl p-4 sm:p-7 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
           style={{
             background: "hsl(var(--card))",
             boxShadow: `0 ${shadowBlur}px ${shadowBlur}px ${shadowSpread}px hsl(160 84% 39% / 0.12)`,
@@ -139,9 +139,13 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
             {/* Learn more CTA */}
             <motion.div
               style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
-              className="flex items-center gap-1.5 text-primary text-sm font-body font-medium overflow-hidden h-5"
+              className="flex items-center gap-1.5 text-primary text-xs sm:text-sm font-body font-medium overflow-hidden h-5"
             >
+              <span className="sm:hidden flex items-center gap-1 text-primary font-semibold text-xs">
+                Learn more <ArrowRight className="w-3 h-3" />
+              </span>
               <motion.span
+                className="hidden sm:inline"
                 initial={{ y: 20, opacity: 0 }}
                 animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                 transition={{ duration: 0.3 }}
@@ -149,6 +153,7 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
                 Learn more
               </motion.span>
               <motion.div
+                className="hidden sm:inline-block"
                 initial={{ x: -10, opacity: 0 }}
                 animate={isHovered ? { x: 0, opacity: 1 } : { x: -10, opacity: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
@@ -217,10 +222,35 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {services.map((s, i) => (
             <Card3D key={s.title} service={s} index={i} isInView={isInView} />
           ))}
+        </div>
+
+        {/* Mobile quick enquiry hint */}
+        <div className="mt-8 sm:hidden text-center">
+          <div className="p-4 rounded-2xl bg-card/80 backdrop-blur-md border border-border/80 shadow-md">
+            <p className="text-xs font-body text-muted-foreground mb-3">
+              Not sure which care package suits your family?
+            </p>
+            <div className="flex gap-2">
+              <a
+                href="https://wa.me/447500111987"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2.5 px-3 rounded-xl bg-[#25D366] text-white text-xs font-semibold font-body flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform"
+              >
+                Chat on WhatsApp
+              </a>
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="flex-1 py-2.5 px-3 rounded-xl bg-accent text-accent-foreground text-xs font-semibold font-body flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+              >
+                Free Assessment
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

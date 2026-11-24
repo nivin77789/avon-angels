@@ -2,13 +2,13 @@ import { motion, useInView, useMotionValue, useSpring, useTransform } from "fram
 import { useRef } from "react";
 import { CheckCircle } from "lucide-react";
 // About section team image
-import aboutImg from "@/assets/about-team.png";
+import aboutImg from "@/assets/about-team.webp";
 
 const features = [
   "Person-centred care plans tailored to individual needs",
   "Fully trained, DBS-checked and insured carers",
   "Regular quality audits and family feedback reviews",
-  "Transparent pricing with no hidden fees",
+  "Clear care plans with no hidden costs",
 ];
 
 const AboutSection = () => {
@@ -56,7 +56,7 @@ const AboutSection = () => {
               style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
               className="relative rounded-3xl overflow-hidden cursor-default"
             >
-              <img src={aboutImg} alt="Avon Angels Home Care Team" className="w-full h-[280px] sm:h-[380px] lg:h-[480px] object-cover" loading="lazy" />
+              <img src={aboutImg} alt="Avon Angels Home Care Team" className="w-full h-[280px] sm:h-[380px] lg:h-[480px] object-cover" loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
               {/* Holographic glare */}
               <motion.div

@@ -1,7 +1,7 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Award, GraduationCap, Heart, ShieldCheck } from "lucide-react";
-import teamImg from "@/assets/team.jpg";
+import teamImg from "@/assets/team.webp";
 
 const highlights = [
   { icon: ShieldCheck, title: "DBS Checked", desc: "Every carer undergoes enhanced DBS checks" },
@@ -95,7 +95,7 @@ const TeamSection = () => {
               style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
               className="rounded-3xl overflow-hidden cursor-default"
             >
-              <img src={teamImg} alt="Avon Angels care team" className="w-full h-[480px] object-contain bg-muted/30" loading="lazy" />
+              <img src={teamImg} alt="Avon Angels care team" className="w-full h-[480px] object-contain bg-muted/30" loading="lazy" decoding="async" />
               <motion.div
                 className="pointer-events-none absolute inset-0"
                 style={{ opacity: glareOp, background: `radial-gradient(circle at ${glareX}% ${glareY}%, hsl(160 84% 70% / 0.35), transparent 55%)` }}

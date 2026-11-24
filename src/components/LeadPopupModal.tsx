@@ -209,7 +209,7 @@ export const LeadPopupModal = () => {
                     Find the Right Care for Your Loved One
                   </h3>
                   <p className="font-body text-xs sm:text-sm text-muted-foreground mt-1">
-                    Fill in your details below and we’ll instantly connect with you on WhatsApp with tailored care advice and pricing.
+                    Fill in your details below and we’ll instantly connect with you on WhatsApp with tailored care advice and options.
                   </p>
                 </div>
 

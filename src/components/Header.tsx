@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Heart, ChevronDown, ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AccessibilityWidget from "./AccessibilityWidget";
-import avonLogo from "@/assets/avon_angels.png";
+import avonLogo from "@/assets/avon_angels.webp";
 
 const navItems = [
   { label: "Home", id: "home" },
@@ -19,7 +19,6 @@ const navItems = [
   { label: "How It Works", id: "process" },
   { label: "Team", id: "team" },
   { label: "Testimonials", id: "testimonials" },
-  { label: "Pricing", id: "pricing" },
   { label: "FAQ", id: "faq" },
   { label: "Contact", id: "contact" },
 ];

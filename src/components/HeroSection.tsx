@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Shield, Clock, Star, CheckCircle, Sparkles } from "lucide-react";
-import heroImg from "@/assets/hero-homecare.jpg";
+import heroImg from "@/assets/hero-homecare.webp";
 
 const badges = [
   { icon: Shield, text: "DBS Checked Carers" },
@@ -37,7 +37,15 @@ const HeroSection = () => {
     <section id="home" ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background with parallax */}
       <motion.div className="absolute inset-0" style={{ scale: imgScale }}>
-        <img src={heroImg} alt="Avon Angels Home Care" className="w-full h-full object-cover" loading="eager" />
+        <img
+          src={heroImg}
+          alt="Avon Angels Home Care"
+          className="w-full h-full object-cover"
+          loading="eager"
+          // @ts-expect-error fetchpriority is supported in modern browsers
+          fetchpriority="high"
+          decoding="async"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/75 to-foreground/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
       </motion.div>

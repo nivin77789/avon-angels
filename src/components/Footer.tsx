@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { ArrowUp, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
-import avonLogo from "@/assets/avon_angels.png";
+import avonLogo from "@/assets/avon_angels.webp";
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const sections = [
     { title: "Services", links: ["Personal Care", "Live-in Care", "Dementia Care", "Companionship", "Respite Care", "Complex Care"] },
-    { title: "Company", links: ["About Us", "Our Team", "How It Works", "Pricing", "Testimonials", "FAQ", "Careers"] },
+    { title: "Company", links: ["About Us", "Our Team", "How It Works", "Testimonials", "FAQ", "Careers"] },
     { title: "Resources", links: ["Care Guide", "Funding Advice", "Care Standards", "Blog", "Privacy Policy", "Terms of Service"] },
   ];
 

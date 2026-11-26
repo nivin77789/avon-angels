@@ -76,7 +76,7 @@ const HowItWorksPage = () => {
               <div className="space-y-3.5 mb-8">
                 {[
                   "Understanding daily routines, favorite meals, and hobbies",
-                  "Evaluating mobility, medication, and personal care needs",
+                  "Evaluating companionship, daily routine, domestic, and meal preferences",
                   "A gentle home safety and accessibility review",
                   "Answering all questions regarding scheduling and flexible visit plans",
                   "Formulating a tailored care proposal with zero pressure to commit",

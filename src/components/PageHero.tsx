@@ -83,9 +83,9 @@ export const PageHero = ({
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-accent text-xs font-body font-semibold mb-6 shadow-xs"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-body font-semibold mb-6 shadow-xs backdrop-blur-md"
           >
-            <Sparkles className="w-3.5 h-3.5 text-accent" />
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span>{badge}</span>
           </motion.div>
 
@@ -94,7 +94,7 @@ export const PageHero = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground leading-[1.15] mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground leading-[1.14] tracking-tight mb-5"
           >
             {title}
             {highlight && (
@@ -126,7 +126,7 @@ export const PageHero = ({
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold px-7 py-5 text-sm shadow-md"
+                className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold px-7 py-5 sm:py-6 text-sm shadow-xl hover:scale-105 transition-all duration-300"
               >
                 <a href={primaryCtaLink} target="_blank" rel="noopener noreferrer">
                   {primaryCtaText} <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -136,7 +136,7 @@ export const PageHero = ({
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold px-7 py-5 text-sm shadow-md"
+                className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold px-7 py-5 sm:py-6 text-sm shadow-xl hover:scale-105 transition-all duration-300"
               >
                 <Link to={primaryCtaLink}>
                   {primaryCtaText} <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -147,9 +147,8 @@ export const PageHero = ({
             {secondaryCtaLink.startsWith("http") ? (
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-medium px-6 py-5 text-sm"
+                className="w-full sm:w-auto bg-[#25D366]/20 border border-[#25D366]/40 text-white hover:bg-[#25D366]/30 rounded-full font-medium px-6 py-5 sm:py-6 text-sm backdrop-blur-md transition-all duration-300"
               >
                 <a href={secondaryCtaLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2 text-[#25D366]" />
@@ -159,9 +158,8 @@ export const PageHero = ({
             ) : secondaryCtaLink.startsWith("tel:") ? (
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-medium px-6 py-5 text-sm"
+                className="w-full sm:w-auto bg-transparent border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-medium px-6 py-5 sm:py-6 text-sm backdrop-blur-md transition-all duration-300"
               >
                 <a href={secondaryCtaLink}>
                   <Phone className="w-4 h-4 mr-2 text-accent" />
@@ -173,7 +171,7 @@ export const PageHero = ({
                 asChild
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-medium px-6 py-5 text-sm"
+                className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-medium px-6 py-5 sm:py-6 text-sm transition-all duration-300"
               >
                 <Link to={secondaryCtaLink}>{secondaryCtaText}</Link>
               </Button>

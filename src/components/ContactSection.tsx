@@ -156,7 +156,7 @@ const ContactSection = () => {
             <div>
               <label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>
               <select name="careType" className="w-full border border-input bg-background rounded-xl px-3 h-11 sm:h-10 text-base sm:text-sm font-body text-foreground">
-                <option>Personal Care</option><option>Live-in Care</option><option>Dementia Care</option><option>Companionship</option><option>Night Care</option><option>Respite Care</option><option>Complex Care</option><option>Not sure yet</option>
+                <option>Companionship</option><option>Meal Preparation</option><option>Domestic & Housekeeping</option><option>Errands & Shopping</option><option>Appointments & Outings</option><option>Respite Sitting</option><option>Overnight Presence</option><option>Dementia Companionship</option><option>Not sure yet</option>
               </select>
             </div>
             <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Tell us more</label><Textarea name="message" required placeholder="Briefly describe the care needs..." rows={3} className="font-body text-base sm:text-sm resize-none rounded-xl" /></div>

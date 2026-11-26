@@ -75,13 +75,13 @@ const ContactPage = () => {
             {contactCards.map((c) => (
               <div
                 key={c.title}
-                className="p-6 rounded-2xl bg-background border border-border/70 hover:border-primary/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-background border border-border/70 hover:border-emerald-500/40 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className={`w-12 h-12 rounded-xl ${c.color} flex items-center justify-center mb-4`}>
+                  <div className={`w-12 h-12 rounded-xl ${c.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <c.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-base font-display font-bold text-foreground mb-1">
+                  <h3 className="text-base font-display font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                     {c.title}
                   </h3>
                   <div className="text-sm font-body font-semibold text-primary mb-2">
@@ -97,7 +97,7 @@ const ContactPage = () => {
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center text-xs font-body font-semibold text-primary hover:underline mt-2"
+                    className="inline-flex items-center text-xs font-body font-semibold text-primary hover:text-emerald-500 transition-colors mt-2"
                   >
                     {c.action} →
                   </a>

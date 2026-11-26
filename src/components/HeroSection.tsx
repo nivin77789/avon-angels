@@ -66,6 +66,20 @@ const HeroSection = () => {
       {/* Content */}
       <motion.div className="relative z-20 container pt-28 pb-14 sm:py-32 lg:py-0" style={{ y: textY, opacity }}>
         <div className="max-w-2xl">
+          {/* Live Status Pill */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[11px] sm:text-xs font-semibold backdrop-blur-md mb-4 sm:mb-5 shadow-xs"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
+            <span>Welcoming New Families in Stratford-upon-Avon & Warwickshire</span>
+          </motion.div>
+
           {/* Trust badges with stagger */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -78,9 +92,9 @@ const HeroSection = () => {
                 key={b.text}
                 initial={{ opacity: 0, scale: 0.5, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.4 + i * 0.15, type: "spring", stiffness: 200 }}
+                transition={{ delay: 0.3 + i * 0.12, type: "spring", stiffness: 200 }}
                 whileHover={{ scale: 1.08, y: -2 }}
-                className="glass-dark rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-1.5 sm:gap-2 cursor-default border border-primary-foreground/15"
+                className="glass-dark rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-1.5 sm:gap-2 cursor-default border border-primary-foreground/15 hover:border-accent/40 transition-colors"
               >
                 <b.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
                 <span className="text-[11px] sm:text-xs font-body font-medium text-primary-foreground/95">{b.text}</span>
@@ -142,8 +156,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-sm sm:text-lg lg:text-xl font-body text-primary-foreground/85 mb-6 sm:mb-8 max-w-lg leading-relaxed"
           >
-            Avon Angels delivers compassionate, professional home care services across Stratford-upon-Avon and Warwickshire. 
-            From personal care to live-in support — we help your loved ones thrive at home.
+            Avon Angels delivers compassionate, friendly home support services across Stratford-upon-Avon and Warwickshire. 
+            From companionship to nutritious meal prep and domestic help — we help your loved ones thrive at home.
           </motion.p>
 
           {/* Quick features with animated check marks */}
@@ -181,27 +195,43 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1.3 }}
             className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
           >
-            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="relative group w-full sm:w-auto">
-              <div className="absolute -inset-1 rounded-full bg-accent/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.98 }} className="relative group w-full sm:w-auto">
+              <div className="absolute -inset-1 rounded-full bg-accent/40 blur-lg opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
               <Button
                 size="lg"
                 asChild
-                className="w-full sm:w-auto relative bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm sm:text-base px-7 sm:px-8 py-5 sm:py-6 rounded-full shadow-xl font-semibold"
+                className="w-full sm:w-auto relative bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm sm:text-base px-7 sm:px-8 py-5 sm:py-6 rounded-full shadow-xl font-semibold transition-all duration-300"
               >
                 <Link to="/contact">
-                  <Sparkles className="w-4 h-4 mr-1.5" />
-                  Get Free Assessment <ArrowRight className="w-4 h-4 ml-1" />
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Get Free Assessment <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Link>
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+
+            <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
               <Button
                 size="lg"
                 asChild
-                className="w-full sm:w-auto bg-transparent border-2 border-primary-foreground/35 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/60 font-body text-sm sm:text-base px-7 sm:px-8 py-5 sm:py-6 rounded-full backdrop-blur-sm transition-all duration-300"
+                className="w-full sm:w-auto bg-[#25D366]/20 border border-[#25D366]/50 text-white hover:bg-[#25D366]/30 font-body text-sm sm:text-base px-6 py-5 sm:py-6 rounded-full backdrop-blur-md transition-all duration-300"
+              >
+                <a href="https://wa.me/447500111987" target="_blank" rel="noopener noreferrer">
+                  <svg className="w-4 h-4 mr-2 fill-current text-[#25D366]" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  WhatsApp Us
+                </a>
+              </Button>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                asChild
+                className="w-full sm:w-auto bg-transparent border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50 font-body text-sm sm:text-base px-6 py-5 sm:py-6 rounded-full backdrop-blur-sm transition-all duration-300"
               >
                 <a href="tel:+447500111987">
-                  <Phone className="w-4 h-4 mr-2" /> Call +44 7500 111987
+                  <Phone className="w-4 h-4 mr-2" /> Call 24/7
                 </a>
               </Button>
             </motion.div>
@@ -250,29 +280,44 @@ const HeroSection = () => {
         transition={{ duration: 1, delay: 1.5, type: "spring" }}
         className="hidden lg:block absolute right-12 bottom-24 z-20"
       >
-         <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 6, repeat: Infinity }}
-          whileHover={{ scale: 1.05 }}
-          className="glass-dark rounded-2xl p-6 w-64 cursor-default"
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          whileHover={{ scale: 1.04 }}
+          className="glass-dark rounded-3xl p-5 w-72 cursor-default border border-primary-foreground/20 shadow-2xl backdrop-blur-xl"
         >
-          <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-            <Sparkles className="w-4 h-4 text-accent-foreground" />
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-1.5 text-amber-400 text-xs font-bold tracking-wide">
+              <span>★★★★★</span>
+              <span className="text-white text-xs ml-1 font-semibold">5.0 / 5</span>
+            </div>
+            <div className="w-7 h-7 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center">
+              <Sparkles className="w-3.5 h-3.5 text-accent" />
+            </div>
           </div>
-          <div className="text-4xl font-display font-bold text-primary-foreground mb-1">10+</div>
-          <div className="text-sm font-body text-primary-foreground/60 mb-3">Families Supported</div>
-          <div className="flex -space-x-2">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.8 + i * 0.1, type: "spring" }}
-                className="w-8 h-8 rounded-full bg-primary/30 border-2 border-foreground/20 flex items-center justify-center text-xs font-bold text-primary-foreground"
-              >
-                {String.fromCharCode(65 + i)}
-              </motion.div>
-            ))}
+
+          <div className="text-3xl font-display font-bold text-primary-foreground mb-0.5">
+            10+ Families
+          </div>
+          <div className="text-xs font-body text-primary-foreground/75 mb-3.5">
+            Supported across Stratford & Warwickshire
+          </div>
+
+          <div className="pt-3 border-t border-primary-foreground/10 flex items-center justify-between">
+            <div className="flex -space-x-2">
+              <div className="w-7 h-7 rounded-full bg-primary border-2 border-foreground/80 flex items-center justify-center text-[10px] font-bold text-white shadow-xs">
+                AA
+              </div>
+              <div className="w-7 h-7 rounded-full bg-accent border-2 border-foreground/80 flex items-center justify-center text-[10px] font-bold text-accent-foreground shadow-xs">
+                SJ
+              </div>
+              <div className="w-7 h-7 rounded-full bg-teal-600 border-2 border-foreground/80 flex items-center justify-center text-[10px] font-bold text-white shadow-xs">
+                DC
+              </div>
+            </div>
+            <span className="text-[11px] font-medium text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30">
+              100% DBS-Vetted
+            </span>
           </div>
         </motion.div>
       </motion.div>

@@ -14,11 +14,11 @@ const allReviews = [
   {
     name: "Margaret Thompson",
     relation: "Daughter of Client",
-    category: "Personal Care",
+    category: "Companionship & Meals",
     location: "Stratford-upon-Avon, Warwickshire",
     date: "November 2026",
     rating: 5,
-    text: "Avon Angels transformed my mother's quality of life. She receives personal care at home every morning, and the carers are absolutely wonderful — always on time, respectful, and smiling.",
+    text: "Avon Angels transformed my mother's quality of life. The carers visit every morning to prepare fresh breakfast, share a friendly chat, and help keep her home tidy and comfortable. Always on time, respectful, and smiling.",
   },
   {
     name: "David Collins",
@@ -40,34 +40,34 @@ const allReviews = [
   },
   {
     name: "Robert Fletcher",
-    relation: "Live-in Care Client",
-    category: "Live-in Care",
+    relation: "Client",
+    category: "Overnight Sitting",
     location: "Kenilworth, Warwickshire",
     date: "August 2026",
     rating: 5,
-    text: "After my stroke, I feared I would have to sell my home and move into a residential facility. Avon Angels provided a live-in carer who supported my rehab. I am now enjoying living in my own home again.",
+    text: "Having an overnight companion provided immense reassurance after my hospital stay. Avon Angels helped me regain my confidence living safely in my own home again.",
   },
   {
     name: "Patricia Moore",
     relation: "Wife of Client",
-    category: "Respite Care",
+    category: "Respite Sitting",
     location: "Alcester, Warwickshire",
     date: "July 2026",
     rating: 5,
-    text: "The respite care service gave me an essential break. Caring for my husband full-time was taking a toll on my health. Knowing he was in capable, loving hands allowed me to rest properly.",
+    text: "The respite sitting service gave me an essential break. Caring for my husband full-time was taking a toll on my health. Knowing he was in capable, loving hands allowed me to rest properly.",
   },
   {
     name: "James & Helen Wilkinson",
     relation: "Children of Client",
-    category: "Medication & Meal Support",
+    category: "Meals & Domestic Support",
     location: "Shipston-on-Stour, Warwickshire",
     date: "June 2026",
     rating: 5,
-    text: "Mum's medication is managed flawlessly, and she loves the home-cooked lunches. The communication from the office team is fantastic — we get updates after every visit.",
+    text: "Mum's home is kept spotless, and she loves the home-cooked lunches. The communication from the office team is fantastic — we get updates after every visit.",
   },
 ];
 
-const categories = ["All", "Personal Care", "Companionship", "Dementia Care", "Live-in Care", "Respite Care"];
+const categories = ["All", "Companionship", "Dementia Care", "Meals & Domestic Support", "Respite Sitting", "Overnight Sitting"];
 
 const TestimonialsPage = () => {
   const [filter, setFilter] = useState("All");

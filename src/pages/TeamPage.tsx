@@ -29,8 +29,8 @@ const vettingSteps = [
   },
   {
     step: "04",
-    title: "Comprehensive Clinical Induction",
-    desc: "In-depth training covering moving and handling, dementia care, medication management, infection control, and safeguarding.",
+    title: "Comprehensive Home Care Induction",
+    desc: "In-depth training covering client dignity, dementia companionship, home safety, food hygiene, and safeguarding.",
   },
 ];
 
@@ -44,17 +44,17 @@ const teamSpotlights = [
   },
   {
     name: "Michael Davies",
-    role: "Live-in Care Lead",
+    role: "Companionship & Sitting Lead",
     experience: "6+ Years Experience",
-    specialty: "Complex Care & Rehabilitation",
-    bio: "With a background in post-hospital recovery, Michael provides attentive, 24/7 one-to-one companionship that gives client families complete peace of mind.",
+    specialty: "Companionship & Wellbeing",
+    bio: "With a warm and attentive approach, Michael provides dependable companionship and sitting support that gives client families complete peace of mind.",
   },
   {
     name: "Emma Thornton",
-    role: "Personal Care & Wellbeing Carer",
+    role: "Domestic & Nutrition Specialist",
     experience: "5+ Years Experience",
-    specialty: "Personal Care & Nutrition",
-    bio: "Emma brings boundless warmth and culinary enthusiasm. She takes pride in cooking delicious, healthy home meals and promoting dignified independence.",
+    specialty: "Home Support & Nutrition",
+    bio: "Emma brings boundless warmth and culinary enthusiasm. She takes pride in cooking delicious, healthy home meals and creating a clean, welcoming environment.",
   },
 ];
 

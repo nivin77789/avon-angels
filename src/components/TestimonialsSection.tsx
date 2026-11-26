@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
-  { name: "Margaret Thompson", relation: "Daughter of Client", text: "Avon Angels transformed my mother's quality of life. She receives personal care at home every morning, and the carers are absolutely wonderful — always on time, always smiling.", rating: 5, location: "Stratford-upon-Avon, Warwickshire" },
+  { name: "Margaret Thompson", relation: "Daughter of Client", text: "Avon Angels transformed my mother's quality of life. The carers visit every morning to prepare fresh breakfast, share a friendly chat, and help keep her home tidy and comfortable. Always on time, always smiling.", rating: 5, location: "Stratford-upon-Avon, Warwickshire" },
   { name: "David Collins", relation: "Son of Client", text: "Dad was resistant to having carers at first, but within a week he was looking forward to their visits. They've become like family. The companionship has made a huge difference.", rating: 5, location: "Warwick, Warwickshire" },
   { name: "Susan Hartley", relation: "Niece of Client", text: "The dementia care my aunt receives is exceptional. The team understands her needs perfectly and adapts beautifully. We finally have peace of mind knowing she's safe at home.", rating: 5, location: "Royal Leamington Spa, Warwickshire" },
   { name: "Robert Fletcher", relation: "Live-in Care Client", text: "After my stroke, I thought I'd have to move into a care home. Avon Angels provided a live-in carer who helped me recover at home. I'm now more independent than ever.", rating: 5, location: "Kenilworth, Warwickshire" },

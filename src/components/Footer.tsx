@@ -4,12 +4,12 @@ import avonLogo from "@/assets/avon_angels.webp";
 import { Link } from "react-router-dom";
 
 const serviceLinks = [
-  { label: "Personal Care", path: "/services#personal-care" },
-  { label: "Live-in Care", path: "/services#live-in-care" },
-  { label: "Dementia Care", path: "/services#dementia-care" },
   { label: "Companionship", path: "/services#companionship" },
-  { label: "Respite Care", path: "/services#respite-care" },
-  { label: "Complex Care", path: "/services#complex-care" },
+  { label: "Meal Preparation", path: "/services#meal-preparation" },
+  { label: "Domestic Support", path: "/services#domestic-support" },
+  { label: "Errands & Shopping", path: "/services#errands-shopping" },
+  { label: "Respite Sitting", path: "/services#respite-sitting" },
+  { label: "Dementia Companionship", path: "/services#dementia-companionship" },
 ];
 
 const companyLinks = [

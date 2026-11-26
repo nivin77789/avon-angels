@@ -10,13 +10,15 @@ const STORAGE_KEY = "avon_angels_lead_modal_seen";
 const WHATSAPP_NUMBER = "447500111987";
 
 const careOptions = [
-  "Personal Care",
-  "Live-in Care",
-  "Dementia Care",
   "Companionship",
-  "Respite Care",
-  "Night / Overnight Care",
-  "General Care Advice",
+  "Meal Preparation",
+  "Domestic & Housekeeping",
+  "Errands & Shopping",
+  "Appointments & Outings",
+  "Respite Sitting",
+  "Overnight Presence",
+  "Dementia Companionship",
+  "General Support Advice",
 ];
 
 export const LeadPopupModal = () => {
@@ -28,7 +30,7 @@ export const LeadPopupModal = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    careType: "Personal Care",
+    careType: "Companionship",
     location: "",
     notes: "",
   });

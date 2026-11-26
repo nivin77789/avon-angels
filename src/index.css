@@ -81,28 +81,62 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-hero);
+    background-image: linear-gradient(135deg, hsl(160 84% 39%), hsl(165 80% 48%));
   }
 
   .text-gradient-accent {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-accent);
+    background-image: linear-gradient(135deg, hsl(160 84% 39%), hsl(175 75% 42%));
   }
 
   .glass {
     background: hsl(214 40% 99% / 0.85);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid hsl(214 30% 89% / 0.5);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid hsl(214 30% 89% / 0.6);
     transform: translateZ(0);
   }
 
   .glass-dark {
     background: hsl(217 33% 12% / 0.85);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid hsl(0 0% 100% / 0.12);
+    transform: translateZ(0);
+  }
+
+  .glass-card {
+    background: hsl(var(--card) / 0.9);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    border: 1px solid hsl(0 0% 100% / 0.1);
-    transform: translateZ(0);
+    border: 1px solid hsl(var(--border) / 0.7);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card-hover {
+    background: hsl(var(--card) / 0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.7);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: hsl(160 84% 39% / 0.45);
+    box-shadow: 0 12px 36px -8px hsl(160 84% 39% / 0.12);
+    transform: translateY(-3px);
+  }
+
+  .card-luxury {
+    position: relative;
+    background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(214 35% 97%) 100%);
+    border: 1px solid hsl(var(--border) / 0.8);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-luxury:hover {
+    border-color: hsl(160 84% 39% / 0.4);
+    box-shadow: 0 20px 40px -12px hsl(160 84% 39% / 0.14);
+    transform: translateY(-4px);
   }
 
   .will-change-transform {
@@ -112,7 +146,7 @@
   }
 
   .section-dark {
-    background: linear-gradient(135deg, hsl(217 33% 12%), hsl(217 40% 18%));
+    background: linear-gradient(135deg, hsl(217 33% 10%), hsl(217 38% 16%));
   }
 
   .section-green {
@@ -124,11 +158,23 @@
   }
 
   .glow-primary {
-    box-shadow: 0 0 30px -5px hsl(160 84% 39% / 0.4);
+    box-shadow: 0 0 35px -5px hsl(160 84% 39% / 0.45);
+  }
+
+  .glow-subtle {
+    box-shadow: 0 4px 24px -2px hsl(160 84% 39% / 0.18);
+  }
+
+  .badge-luxury {
+    background: hsl(160 84% 39% / 0.12);
+    border: 1px solid hsl(160 84% 39% / 0.28);
+    color: hsl(160 84% 32%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(160 84% 39% / 0.15), transparent);
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
   }

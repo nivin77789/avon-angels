@@ -1,16 +1,17 @@
 import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
-import { Heart, Brain, Utensils, Activity, Users, Stethoscope, Home, Pill, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Heart, Brain, Utensils, Users, Sparkles, ShoppingBag, Calendar, Moon, ArrowRight } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Personal Care", desc: "Washing, dressing & personal hygiene with dignity.", gradient: "from-emerald-400/20 to-teal-500/10" },
-  { icon: Home, title: "Live-in Care", desc: "Round-the-clock support in your home.", gradient: "from-teal-400/20 to-cyan-500/10" },
-  { icon: Brain, title: "Dementia Care", desc: "Specialist memory care & safe routines.", gradient: "from-cyan-400/20 to-emerald-500/10" },
-  { icon: Users, title: "Companionship", desc: "Social visits & emotional support.", gradient: "from-emerald-400/20 to-green-500/10" },
-  { icon: Activity, title: "Respite Care", desc: "Short-term relief for family carers.", gradient: "from-green-400/20 to-teal-500/10" },
-  { icon: Stethoscope, title: "Complex Care", desc: "Specialist nursing for complex conditions.", gradient: "from-emerald-400/20 to-cyan-500/10" },
-  { icon: Pill, title: "Medication Support", desc: "Safe medication management & reminders.", gradient: "from-cyan-400/20 to-teal-500/10" },
-  { icon: Utensils, title: "Meal Preparation", desc: "Nutritious meals tailored to your needs.", gradient: "from-teal-400/20 to-green-500/10" },
+  { icon: Users, title: "Companionship", tag: "Social & Wellbeing", desc: "Friendly conversation, social visits & emotional warmth.", gradient: "from-emerald-400/20 to-teal-500/10" },
+  { icon: Utensils, title: "Meal Preparation", tag: "Fresh Nutrition", desc: "Fresh, nutritious home-cooked meals tailored to your taste.", gradient: "from-teal-400/20 to-cyan-500/10" },
+  { icon: Sparkles, title: "Domestic Support", tag: "Tidiness & Laundry", desc: "Light housekeeping, laundry, tidying & clean linen.", gradient: "from-cyan-400/20 to-emerald-500/10" },
+  { icon: ShoppingBag, title: "Errands & Shopping", tag: "Prescriptions & Food", desc: "Grocery shopping & prescription collection errands.", gradient: "from-emerald-400/20 to-green-500/10" },
+  { icon: Calendar, title: "Appointments & Outings", tag: "Outings & Medical", desc: "Accompaniment to medical visits, walks & social events.", gradient: "from-green-400/20 to-teal-500/10" },
+  { icon: Heart, title: "Respite Sitting", tag: "Family Relief", desc: "Reliable sitting service giving family carers a well-earned break.", gradient: "from-emerald-400/20 to-cyan-500/10" },
+  { icon: Moon, title: "Overnight Presence", tag: "Sleep-in Reassurance", desc: "Reassuring sleep-in companion presence through the night.", gradient: "from-cyan-400/20 to-teal-500/10" },
+  { icon: Brain, title: "Dementia Companionship", tag: "Memory & Routine", desc: "Gentle memory activities, safe routines & patient reassurance.", gradient: "from-teal-400/20 to-green-500/10" },
 ];
 
 const Card3D = ({ service, index, isInView }: { service: typeof services[0]; index: number; isInView: boolean }) => {
@@ -111,65 +112,56 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
 
 
           {/* Content with 3D depth layers */}
-          <div className="relative z-10">
-            {/* Icon - floats highest on hover */}
-            <motion.div
-              style={{ translateZ: iconZ, transformStyle: "preserve-3d" }}
-              className="mb-3"
-            >
-              <motion.div
-                animate={isHovered ? { rotate: [0, -8, 8, 0], scale: 1.1 } : { rotate: 0, scale: 1 }}
-                transition={{ duration: 0.6, type: "spring" }}
-                className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-500 relative"
-              >
-                <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-                {/* Icon glow */}
+          <div className="relative z-10 flex flex-col h-full justify-between">
+            <div>
+              {/* Icon & Category Tag */}
+              <div className="flex items-center justify-between gap-2 mb-3.5">
                 <motion.div
-                  className="absolute -inset-2 rounded-xl bg-primary/0 group-hover:bg-primary/10 blur-lg transition-all duration-500"
-                />
-              </motion.div>
-            </motion.div>
+                  style={{ translateZ: iconZ, transformStyle: "preserve-3d" }}
+                >
+                  <motion.div
+                    animate={isHovered ? { rotate: [0, -8, 8, 0], scale: 1.1 } : { rotate: 0, scale: 1 }}
+                    transition={{ duration: 0.6, type: "spring" }}
+                    className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-400 relative"
+                  >
+                    <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                  </motion.div>
+                </motion.div>
 
-            {/* Title - mid depth */}
-            <motion.h3
-              style={{ translateZ: titleZ, transformStyle: "preserve-3d" }}
-              className="text-base font-display font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-300"
-            >
-              {service.title}
-            </motion.h3>
+                <span className="text-[10px] font-semibold text-primary/80 bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20 tracking-wide">
+                  {service.tag}
+                </span>
+              </div>
 
-            {/* Description - lowest depth */}
-            <motion.p
-              style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
-              className="font-body text-muted-foreground text-xs leading-relaxed mb-3"
-            >
-              {service.desc}
-            </motion.p>
+              {/* Title - mid depth */}
+              <motion.h3
+                style={{ translateZ: titleZ, transformStyle: "preserve-3d" }}
+                className="text-base sm:text-lg font-display font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-300"
+              >
+                {service.title}
+              </motion.h3>
 
-            {/* Learn more CTA */}
+              {/* Description - lowest depth */}
+              <motion.p
+                style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
+                className="font-body text-muted-foreground text-xs sm:text-[13px] leading-relaxed mb-4"
+              >
+                {service.desc}
+              </motion.p>
+            </div>
+
+            {/* Learn more CTA with Link */}
             <motion.div
               style={{ translateZ: descZ, transformStyle: "preserve-3d" }}
-              className="flex items-center gap-1.5 text-primary text-xs sm:text-sm font-body font-medium overflow-hidden h-5"
+              className="pt-2 border-t border-border/40"
             >
-              <span className="sm:hidden flex items-center gap-1 text-primary font-semibold text-xs">
-                Learn more <ArrowRight className="w-3 h-3" />
-              </span>
-              <motion.span
-                className="hidden sm:inline"
-                initial={{ y: 20, opacity: 0 }}
-                animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-1.5 text-primary text-xs sm:text-sm font-body font-semibold group-hover:translate-x-1 transition-all duration-300"
               >
-                Learn more
-              </motion.span>
-              <motion.div
-                className="hidden sm:inline-block"
-                initial={{ x: -10, opacity: 0 }}
-                animate={isHovered ? { x: 0, opacity: 1 } : { x: -10, opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                <ArrowRight className="w-3.5 h-3.5" />
-              </motion.div>
+                <span>View Details</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -223,12 +215,12 @@ const ServicesSection = () => {
             Our Services
           </motion.span>
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-display font-bold text-foreground mb-4 sm:mb-5">
-            Complete Home Care
+            Complete Home Support
             <br />
             <span className="text-gradient">Solutions</span>
           </h2>
           <p className="font-body text-muted-foreground text-lg">
-            From daily personal care to specialist nursing — we cover every aspect of home care with professionalism and warmth.
+            From friendly companionship and cooking to housekeeping and errands — we support daily living with warmth and dependability.
           </p>
         </motion.div>
 

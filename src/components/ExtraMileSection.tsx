@@ -5,8 +5,8 @@ import { Sparkles } from "lucide-react";
 const extras = [
   {
     icon: Sparkles,
-    title: "Personal Care+",
-    desc: "Attentive, respectful personal support and dedicated wellbeing assistance tailored for daily comfort.",
+    title: "Home Support+",
+    desc: "Attentive, respectful daily assistance, light housekeeping, and dedicated companionship tailored for daily comfort and independence.",
   },
 ];
 

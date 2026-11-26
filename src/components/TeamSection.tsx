@@ -15,25 +15,43 @@ const TeamSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   const imgRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rotX = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 120, damping: 20 });
-  const rotY = useSpring(useTransform(mx, [-0.5, 0.5], [-8, 8]), { stiffness: 120, damping: 20 });
+  const rotX = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 120, damping: 20 });
+  const rotY = useSpring(useTransform(mx, [-0.5, 0.5], [-6, 6]), { stiffness: 120, damping: 20 });
   const glareX = useTransform(mx, [-0.5, 0.5], [20, 80]);
   const glareY = useTransform(my, [-0.5, 0.5], [20, 80]);
-  const glareOp = useSpring(useTransform(mx, [-0.5, 0, 0.5], [0, 0.02, 0.12]), { stiffness: 200, damping: 25 });
+  const glareOp = useSpring(useTransform(mx, [-0.5, 0, 0.5], [0, 0.02, 0.12]), { stiffness: 150, damping: 25 });
 
   const handleMouse = (e: React.MouseEvent) => {
     if (!imgRef.current) return;
-    const rect = imgRef.current.getBoundingClientRect();
-    mx.set((e.clientX - rect.left) / rect.width - 0.5);
-    my.set((e.clientY - rect.top) / rect.height - 0.5);
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      if (imgRef.current) {
+        const rect = imgRef.current.getBoundingClientRect();
+        mx.set((clientX - rect.left) / rect.width - 0.5);
+        my.set((clientY - rect.top) / rect.height - 0.5);
+      }
+      rafRef.current = null;
+    });
   };
-  const handleLeave = () => { mx.set(0); my.set(0); };
+  const handleLeave = () => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+    mx.set(0);
+    my.set(0);
+  };
 
   return (
     <section id="team" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
-      <div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-[100px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} />
+      <div className="absolute top-10 right-10 w-80 h-80 rounded-full pointer-events-none opacity-50"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39% / 0.12), transparent 70%)" }}
+      />
 
       <div className="container relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">

@@ -47,7 +47,9 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-16 sm:py-24 lg:py-32 section-green-light relative overflow-hidden">
-      <div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(160 84% 39% / 0.06)" }} />
+      <div className="absolute top-10 right-10 w-80 h-80 rounded-full pointer-events-none opacity-50"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39% / 0.12), transparent 70%)" }}
+      />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div

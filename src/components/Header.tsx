@@ -30,19 +30,35 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
+    let ticking = false;
+    let lastY = 0;
+
     const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-      // Track active section
-      const sections = navItems.map(n => n.id);
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top <= 120) {
-          setActiveSection(sections[i]);
-          break;
-        }
+      const currentY = window.scrollY;
+      if (Math.abs(currentY - lastY) < 10 && (currentY > 30) === (lastY > 30)) {
+        return;
+      }
+      lastY = currentY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(currentY > 30);
+          // Track active section with low-overhead check
+          const sections = navItems.map(n => n.id);
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i]);
+            if (el && el.getBoundingClientRect().top <= 140) {
+              setActiveSection(sections[i]);
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

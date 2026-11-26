@@ -61,9 +61,16 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -83,15 +90,25 @@
   }
 
   .glass {
-    background: hsl(214 40% 99% / 0.8);
-    backdrop-filter: blur(20px);
+    background: hsl(214 40% 99% / 0.85);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border: 1px solid hsl(214 30% 89% / 0.5);
+    transform: translateZ(0);
   }
 
   .glass-dark {
-    background: hsl(217 33% 12% / 0.8);
-    backdrop-filter: blur(20px);
+    background: hsl(217 33% 12% / 0.85);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border: 1px solid hsl(0 0% 100% / 0.1);
+    transform: translateZ(0);
+  }
+
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .section-dark {

@@ -18,7 +18,6 @@ const HeroSection = () => {
   const imgScale = useTransform(scrollYProgress, [0, 1], [1, 1.25]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const bgBlur = useTransform(scrollYProgress, [0, 0.5], [0, 10]);
 
   const [wordIndex, setWordIndex] = useState(0);
 
@@ -50,12 +49,12 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Static ambient glow */}
-      <div className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full blur-[120px] opacity-15"
-        style={{ background: "radial-gradient(circle, hsl(160 84% 39%), transparent 70%)" }}
+      {/* Static ambient glow with high-performance radial gradients */}
+      <div className="absolute -top-1/2 -left-1/2 w-full h-full rounded-full pointer-events-none opacity-20"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39% / 0.35), transparent 65%)" }}
       />
-      <div className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full blur-[120px] opacity-10"
-        style={{ background: "radial-gradient(circle, hsl(160 84% 50%), transparent 60%)" }}
+      <div className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full pointer-events-none opacity-15"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 50% / 0.25), transparent 60%)" }}
       />
 
       {/* Content */}
@@ -91,17 +90,17 @@ const HeroSection = () => {
             className="text-[32px] xs:text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.12] sm:leading-[1.08] mb-4 sm:mb-6"
           >
             <motion.span
-              initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
               className="block"
             >
               Professional Care,
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
               className="block"
             >
               <span className="relative">
@@ -110,11 +109,11 @@ const HeroSection = () => {
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={wordIndex}
-                      initial={{ y: 40, opacity: 0, filter: "blur(8px)" }}
-                      animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                      exit={{ y: -40, opacity: 0, filter: "blur(8px)" }}
-                      transition={{ duration: 0.5 }}
-                      className="text-accent inline-block"
+                      initial={{ y: 25, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -25, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="text-accent inline-block will-change-transform"
                     >
                       {rotatingWords[wordIndex]}
                     </motion.span>

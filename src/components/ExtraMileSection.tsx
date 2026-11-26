@@ -16,8 +16,12 @@ const ExtraMileSection = () => {
 
   return (
     <section className="py-16 sm:py-24 lg:py-32 relative overflow-hidden bg-background">
-      <div className="absolute top-20 right-10 w-80 h-80 rounded-full blur-[120px]" style={{ background: "hsl(var(--primary) / 0.06)" }} />
-      <div className="absolute bottom-10 left-10 w-64 h-64 rounded-full blur-[100px]" style={{ background: "hsl(var(--primary) / 0.04)" }} />
+      <div className="absolute top-20 right-10 w-80 h-80 rounded-full pointer-events-none opacity-40"
+        style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.12), transparent 70%)" }}
+      />
+      <div className="absolute bottom-10 left-10 w-64 h-64 rounded-full pointer-events-none opacity-30"
+        style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.1), transparent 70%)" }}
+      />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div

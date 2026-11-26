@@ -19,7 +19,9 @@ const FAQSection = () => {
 
   return (
     <section id="faq" className="py-16 sm:py-24 lg:py-32 bg-background relative overflow-hidden">
-      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full blur-[100px]" style={{ background: "hsl(160 84% 39% / 0.04)" }} />
+      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full pointer-events-none opacity-40"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39% / 0.08), transparent 70%)" }}
+      />
 
       <div className="container relative z-10" ref={ref}>
         <motion.div

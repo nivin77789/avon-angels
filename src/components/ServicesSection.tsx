@@ -17,32 +17,42 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
+  const rafRef = useRef<number | null>(null);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), { stiffness: 150, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), { stiffness: 150, damping: 20 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), { stiffness: 120, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), { stiffness: 120, damping: 20 });
 
-  const glareOpacity = useSpring(useTransform(mouseX, [-0.5, 0, 0.5], [0, 0.05, 0.15]), { stiffness: 200, damping: 25 });
+  const glareOpacity = useSpring(useTransform(mouseX, [-0.5, 0, 0.5], [0, 0.05, 0.15]), { stiffness: 150, damping: 25 });
   const glareX = useTransform(mouseX, [-0.5, 0.5], [20, 80]);
   const glareY = useTransform(mouseY, [-0.5, 0.5], [20, 80]);
 
-  const iconZ = useSpring(isHovered && !isTouchDevice ? 40 : 0, { stiffness: 200, damping: 20 });
-  const titleZ = useSpring(isHovered && !isTouchDevice ? 25 : 0, { stiffness: 200, damping: 20 });
-  const descZ = useSpring(isHovered && !isTouchDevice ? 15 : 0, { stiffness: 200, damping: 20 });
-
-  const shadowBlur = useSpring(isHovered ? 40 : 10, { stiffness: 120, damping: 20 });
-  const shadowSpread = useSpring(isHovered ? -5 : -4, { stiffness: 120, damping: 20 });
+  const iconZ = useSpring(isHovered && !isTouchDevice ? 30 : 0, { stiffness: 150, damping: 20 });
+  const titleZ = useSpring(isHovered && !isTouchDevice ? 20 : 0, { stiffness: 150, damping: 20 });
+  const descZ = useSpring(isHovered && !isTouchDevice ? 10 : 0, { stiffness: 150, damping: 20 });
 
   const handleMouse = (e: React.MouseEvent) => {
     if (isTouchDevice || !cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      if (cardRef.current) {
+        const rect = cardRef.current.getBoundingClientRect();
+        mouseX.set((clientX - rect.left) / rect.width - 0.5);
+        mouseY.set((clientY - rect.top) / rect.height - 0.5);
+      }
+      rafRef.current = null;
+    });
   };
 
   const handleLeave = () => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     mouseX.set(0);
     mouseY.set(0);
     setIsHovered(false);
@@ -67,14 +77,14 @@ const Card3D = ({ service, index, isInView }: { service: typeof services[0]; ind
           rotateY: isTouchDevice ? 0 : rotateY,
           transformStyle: isTouchDevice ? "flat" : "preserve-3d",
         }}
-        className="relative group cursor-default"
+        className="relative group cursor-default will-change-transform"
       >
-        {/* Card body */}
+        {/* Card body with GPU-accelerated shadow */}
         <motion.div
-          className="relative rounded-xl sm:rounded-2xl p-4 sm:p-7 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-colors duration-500"
+          className="relative rounded-xl sm:rounded-2xl p-4 sm:p-7 overflow-hidden border border-border/50 group-hover:border-primary/40 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/10"
           style={{
             background: "hsl(var(--card))",
-            boxShadow: `0 ${shadowBlur}px ${shadowBlur}px ${shadowSpread}px hsl(160 84% 39% / 0.12)`,
+            transform: "translateZ(0)",
           }}
         >
           {/* Animated gradient fill on hover */}

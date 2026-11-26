@@ -17,7 +17,8 @@ const items = [
 const MarqueeRow = ({ reverse = false }: { reverse?: boolean }) => (
   <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
     <motion.div
-      className="flex gap-5 shrink-0"
+      className="flex gap-5 shrink-0 will-change-transform"
+      style={{ transform: "translateZ(0)" }}
       animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
       transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
     >

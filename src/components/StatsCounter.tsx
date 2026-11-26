@@ -40,11 +40,11 @@ const StatsCounter = () => {
       <div className="absolute inset-0 section-dark" />
       
       {/* Static gradient orbs */}
-      <div className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full blur-[100px]"
-        style={{ background: "hsl(160 84% 39% / 0.12)" }}
+      <div className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full pointer-events-none opacity-50"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 39% / 0.16), transparent 70%)" }}
       />
-      <div className="absolute top-1/2 right-1/4 w-60 h-60 rounded-full blur-[100px]"
-        style={{ background: "hsl(160 84% 50% / 0.08)" }}
+      <div className="absolute top-1/2 right-1/4 w-60 h-60 rounded-full pointer-events-none opacity-40"
+        style={{ background: "radial-gradient(circle, hsl(160 84% 50% / 0.12), transparent 70%)" }}
       />
 
       {/* Grid pattern overlay */}

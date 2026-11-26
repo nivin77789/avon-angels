@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react";
 import { Users, Heart, Clock, Award } from "lucide-react";
 
 const stats = [
-  { icon: Users, end: 10, suffix: "+", label: "Families Supported", desc: "Across Avon & Bristol" },
+  { icon: Users, end: 10, suffix: "+", label: "Families Supported", desc: "Across Stratford & Warwickshire" },
   { icon: Heart, end: 98, suffix: "%", label: "Client Satisfaction", desc: "Consistently rated excellent" },
   { icon: Clock, end: 4, suffix: "+", label: "Years Experience", desc: "Dedicated care team" },
   { icon: Award, end: 5, suffix: "★", label: "5-Star Reviews", desc: "On Google & Trustpilot" },

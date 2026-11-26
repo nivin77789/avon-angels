@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { db, ref as dbRef, push } from "@/lib/firebase";
 
 const contactInfo: { icon: any; label: string; value: string; href?: string }[] = [
-  { icon: MapPin, label: "Service Area", value: "All of Avon, Bath, Bristol & surrounding areas" },
+  { icon: MapPin, label: "Service Area", value: "Stratford-upon-Avon, Warwick, Leamington Spa & across Warwickshire" },
   { icon: Phone, label: "Phone", value: "+44 7500 111987", href: "tel:+447500111987" },
   { icon: MessageSquare, label: "WhatsApp", value: "+44 7500 111987", href: "https://wa.me/447500111987" },
   { icon: Mail, label: "Email", value: "hello@avonangels.co.uk", href: "mailto:hello@avonangels.co.uk" },
@@ -152,7 +152,7 @@ const ContactSection = () => {
               <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Phone Number</label><Input name="phone" type="tel" required placeholder="Your phone number" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
             </div>
             <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Email Address</label><Input name="email" type="email" required placeholder="your@email.co.uk" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
-            <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label><Input name="location" required placeholder="e.g. BS1 or Bath" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
+            <div><label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Location / Postcode</label><Input name="location" required placeholder="e.g. CV37 or Stratford" className="font-body text-base sm:text-sm h-11 sm:h-10 rounded-xl" /></div>
             <div>
               <label className="text-xs sm:text-sm font-body font-medium text-foreground mb-1.5 block">Type of Care Needed</label>
               <select name="careType" className="w-full border border-input bg-background rounded-xl px-3 h-11 sm:h-10 text-base sm:text-sm font-body text-foreground">

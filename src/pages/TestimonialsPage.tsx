@@ -15,7 +15,7 @@ const allReviews = [
     name: "Margaret Thompson",
     relation: "Daughter of Client",
     category: "Personal Care",
-    location: "Bath, Avon",
+    location: "Stratford-upon-Avon, Warwickshire",
     date: "November 2026",
     rating: 5,
     text: "Avon Angels transformed my mother's quality of life. She receives personal care at home every morning, and the carers are absolutely wonderful — always on time, respectful, and smiling.",
@@ -24,7 +24,7 @@ const allReviews = [
     name: "David Collins",
     relation: "Son of Client",
     category: "Companionship",
-    location: "Bristol, Avon",
+    location: "Warwick, Warwickshire",
     date: "October 2026",
     rating: 5,
     text: "Dad was resistant to having carers at first, but within a week he was eagerly looking forward to their visits. They've truly become like family. The companionship has brought him back to life.",
@@ -33,7 +33,7 @@ const allReviews = [
     name: "Susan Hartley",
     relation: "Niece of Client",
     category: "Dementia Care",
-    location: "Keynsham, Avon",
+    location: "Royal Leamington Spa, Warwickshire",
     date: "September 2026",
     rating: 5,
     text: "The dementia care my aunt receives is exceptional. The carers understand her routine and memory triggers and adapt beautifully. We finally have total peace of mind knowing she is safe at home.",
@@ -42,7 +42,7 @@ const allReviews = [
     name: "Robert Fletcher",
     relation: "Live-in Care Client",
     category: "Live-in Care",
-    location: "Clevedon, Avon",
+    location: "Kenilworth, Warwickshire",
     date: "August 2026",
     rating: 5,
     text: "After my stroke, I feared I would have to sell my home and move into a residential facility. Avon Angels provided a live-in carer who supported my rehab. I am now enjoying living in my own home again.",
@@ -51,7 +51,7 @@ const allReviews = [
     name: "Patricia Moore",
     relation: "Wife of Client",
     category: "Respite Care",
-    location: "Portishead, Avon",
+    location: "Alcester, Warwickshire",
     date: "July 2026",
     rating: 5,
     text: "The respite care service gave me an essential break. Caring for my husband full-time was taking a toll on my health. Knowing he was in capable, loving hands allowed me to rest properly.",
@@ -60,7 +60,7 @@ const allReviews = [
     name: "James & Helen Wilkinson",
     relation: "Children of Client",
     category: "Medication & Meal Support",
-    location: "Weston-super-Mare, Avon",
+    location: "Shipston-on-Stour, Warwickshire",
     date: "June 2026",
     rating: 5,
     text: "Mum's medication is managed flawlessly, and she loves the home-cooked lunches. The communication from the office team is fantastic — we get updates after every visit.",
@@ -85,7 +85,7 @@ const TestimonialsPage = () => {
         badge="Verified Client Reviews"
         title="Family Stories & Reviews"
         highlight="Rated 5.0 / 5 Stars"
-        description="Read real experiences from families across Bath, Bristol, and Avon who trust Avon Angels with their loved ones' daily wellbeing and independence."
+        description="Read real experiences from families across Stratford-upon-Avon, Warwick, and Warwickshire who trust Avon Angels with their loved ones' daily wellbeing and independence."
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "Testimonials" },

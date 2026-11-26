@@ -53,7 +53,7 @@ const AboutPage = () => {
         badge="About Avon Angels Home Care"
         title="Compassionate Care in the"
         highlight="Familiar Warmth of Home"
-        description="Dedicated to person-centred home care across Avon and Bristol. We support independence, dignity, and peace of mind for our clients and their loved ones."
+        description="Dedicated to person-centred home care across Stratford-upon-Avon and Warwickshire. We support independence, dignity, and peace of mind for our clients and their loved ones."
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "About Us" },

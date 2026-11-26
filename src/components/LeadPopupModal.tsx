@@ -267,7 +267,7 @@ export const LeadPopupModal = () => {
                         Postcode or Town
                       </label>
                       <Input
-                        placeholder="e.g. Bristol, Bath, BS1"
+                        placeholder="e.g. Stratford, Warwick, CV37"
                         value={formData.location}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                         className="h-11 sm:h-10 text-base sm:text-sm rounded-xl"

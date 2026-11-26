@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "What areas do you cover?", a: "We provide home care services across all of Avon, including Bath, Bristol, Keynsham, Clevedon, Portishead, Weston-super-Mare, and surrounding areas. If you're unsure whether we cover your area, please give us a call." },
+  { q: "What areas do you cover?", a: "We provide home care services across Stratford-upon-Avon and Warwickshire, including Warwick, Royal Leamington Spa, Kenilworth, Alcester, Henley-in-Arden, Shipston-on-Stour, Wellesbourne, and surrounding areas. If you're unsure whether we cover your village or town, please give us a call." },
   { q: "How quickly can care start?", a: "In urgent cases, we can begin care within 24-48 hours. Typically, we aim to start within one week of the initial assessment to ensure we match you with the right carer and create a thorough care plan." },
   { q: "Are your carers qualified?", a: "Yes, all our carers hold a minimum NVQ Level 2 in Health & Social Care. They undergo enhanced DBS checks, comprehensive training, and receive ongoing professional development. Many have specialist certifications in dementia care, complex care, and end-of-life care." },
   { q: "Can I choose my carer?", a: "Absolutely. We carefully match carers based on personality, interests, and care needs. You'll meet your proposed carer before care begins, and we'll always accommodate changes if the match isn't quite right." },

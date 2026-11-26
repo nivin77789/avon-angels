@@ -3,9 +3,9 @@ import { useRef } from "react";
 import { MapPin, Phone, Award } from "lucide-react";
 
 const areas = [
-  "Bath", "Bristol", "Keynsham", "Clevedon", "Portishead", 
-  "Weston-super-Mare", "Nailsea", "Midsomer Norton", "Radstock",
-  "Thornbury", "Yate", "Chipping Sodbury",
+  "Stratford-upon-Avon", "Warwick", "Royal Leamington Spa", "Kenilworth", 
+  "Alcester", "Henley-in-Arden", "Shipston-on-Stour", "Wellesbourne",
+  "Bidford-on-Avon", "Southam", "Studley", "Kineton",
 ];
 
 const GallerySection = () => {
@@ -30,10 +30,10 @@ const GallerySection = () => {
           </span>
           <h2 className="text-3xl lg:text-5xl font-display font-bold text-foreground mb-5">
             Caring for Communities
-            <br /><span className="text-gradient-accent">Across Avon</span>
+            <br /><span className="text-gradient-accent">Across Stratford & Warwickshire</span>
           </h2>
           <p className="font-body text-muted-foreground text-lg">
-            We provide home care services throughout Avon and the surrounding areas.
+            We provide home care services throughout Stratford-upon-Avon, Warwick, Leamington Spa, and surrounding Warwickshire areas.
           </p>
         </motion.div>
 

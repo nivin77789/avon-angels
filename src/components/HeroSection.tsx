@@ -3,6 +3,8 @@ import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Shield, Clock, Star, CheckCircle, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero-homecare.webp";
+import heroMobileImg from "@/assets/hero-mobile.webp";
+import { Link } from "react-router-dom";
 
 const badges = [
   { icon: Shield, text: "DBS Checked Carers" },
@@ -34,19 +36,23 @@ const HeroSection = () => {
 
   return (
     <section id="home" ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background with parallax */}
+      {/* Background with parallax & responsive mobile/tablet art direction */}
       <motion.div className="absolute inset-0" style={{ scale: imgScale }}>
-        <img
-          src={heroImg}
-          alt="Avon Angels Home Care"
-          className="w-full h-full object-cover"
-          loading="eager"
-          // @ts-expect-error fetchpriority is supported in modern browsers
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/75 to-foreground/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
+        <picture className="w-full h-full block">
+          <source media="(max-width: 1023px)" srcSet={heroMobileImg} type="image/webp" />
+          <source media="(min-width: 1024px)" srcSet={heroImg} type="image/webp" />
+          <img
+            src={heroImg}
+            alt="Avon Angels Home Care"
+            className="w-full h-full object-cover object-top sm:object-center"
+            loading="eager"
+            // @ts-expect-error fetchpriority is supported in modern browsers
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/90 via-foreground/75 to-foreground/45 lg:bg-gradient-to-r lg:from-foreground/95 lg:via-foreground/75 lg:to-foreground/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
       </motion.div>
 
       {/* Static ambient glow with high-performance radial gradients */}
@@ -136,7 +142,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-sm sm:text-lg lg:text-xl font-body text-primary-foreground/85 mb-6 sm:mb-8 max-w-lg leading-relaxed"
           >
-            Avon Angels delivers compassionate, professional home care services across Avon. 
+            Avon Angels delivers compassionate, professional home care services across Stratford-upon-Avon and Warwickshire. 
             From personal care to live-in support — we help your loved ones thrive at home.
           </motion.p>
 
@@ -179,11 +185,13 @@ const HeroSection = () => {
               <div className="absolute -inset-1 rounded-full bg-accent/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Button
                 size="lg"
-                onClick={() => scrollTo("contact")}
+                asChild
                 className="w-full sm:w-auto relative bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm sm:text-base px-7 sm:px-8 py-5 sm:py-6 rounded-full shadow-xl font-semibold"
               >
-                <Sparkles className="w-4 h-4 mr-1.5" />
-                Get Free Assessment <ArrowRight className="w-4 h-4 ml-1" />
+                <Link to="/contact">
+                  <Sparkles className="w-4 h-4 mr-1.5" />
+                  Get Free Assessment <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
@@ -227,7 +235,7 @@ const HeroSection = () => {
                   <span className="text-[10px] text-emerald-400 font-semibold px-1.5 py-0.5 rounded-full bg-emerald-500/20">5★ Rated</span>
                 </div>
                 <p className="text-xs text-primary-foreground/80 font-body truncate mt-0.5">
-                  10+ local families supported across Avon
+                  10+ local families supported across Stratford & Warwickshire
                 </p>
               </div>
             </div>

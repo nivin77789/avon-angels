@@ -20,7 +20,7 @@ const botResponses: Record<string, string> = {
   "what services do you offer?": "We offer Personal Care, Live-in Care, Dementia Care, Companionship, Night Care, Respite Care, and Complex Care. Would you like to know more about any specific service?",
   "how much does care cost?": "Our care packages start from competitive rates tailored to your needs. For a personalised quote, please fill out our Free Assessment form, chat on WhatsApp, or call us at +44 7500 111987.",
   "how do i book an assessment?": "You can book a free care assessment by filling out the contact form on our website, messaging us on WhatsApp, or calling us directly at +44 7500 111987. We'll arrange a home visit at a time that suits you!",
-  "what areas do you cover?": "We cover all of Avon, Bath, Bristol and surrounding areas. Contact us to check if we serve your specific location!",
+  "what areas do you cover?": "We cover all of Stratford-upon-Avon, Warwick, Leamington Spa, Kenilworth, and surrounding Warwickshire areas. Contact us to check if we serve your specific location!",
 };
 
 const getReply = (msg: string): string => {

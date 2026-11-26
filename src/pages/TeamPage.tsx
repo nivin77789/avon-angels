@@ -68,7 +68,7 @@ const TeamPage = () => {
         badge="Our Care Team"
         title="Meet the Angels"
         highlight="Behind Your Care"
-        description="We recruit for character and train for skill. Meet the compassionate, DBS-checked professionals dedicated to dignified home care across Avon and Bristol."
+        description="We recruit for character and train for skill. Meet the compassionate, DBS-checked professionals dedicated to dignified home care across Stratford-upon-Avon and Warwickshire."
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "Our Team" },
@@ -179,7 +179,7 @@ const TeamPage = () => {
               Want to Join Our Care Team?
             </h3>
             <p className="text-xs sm:text-sm font-body text-muted-foreground mb-6 leading-relaxed">
-              We are always looking for warm, dependable, and compassionate carers in Bath, Bristol, and surrounding Avon areas. We offer competitive pay, comprehensive training, and supportive management.
+              We are always looking for warm, dependable, and compassionate carers in Stratford-upon-Avon, Warwick, Leamington Spa, and surrounding Warwickshire areas. We offer competitive pay, comprehensive training, and supportive management.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <a

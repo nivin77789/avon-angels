@@ -4,30 +4,38 @@ import { Menu, X, Phone, Heart, ChevronDown, ArrowRight, MessageCircle, ShieldCh
 import { Button } from "@/components/ui/button";
 import AccessibilityWidget from "./AccessibilityWidget";
 import avonLogo from "@/assets/avon_angels.webp";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
-  { label: "Home", id: "home" },
-  { label: "About", id: "about" },
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
   {
-    label: "Services", id: "services",
+    label: "Services",
+    path: "/services",
     sub: [
-      "Personal Care", "Live-in Care", "Dementia Care",
-      "Companionship", "Respite Care",
-      "Complex Care", "Medication Support", "Meal Preparation",
+      { name: "Personal Care", path: "/services#personal-care" },
+      { name: "Live-in Care", path: "/services#live-in-care" },
+      { name: "Dementia Care", path: "/services#dementia-care" },
+      { name: "Companionship", path: "/services#companionship" },
+      { name: "Respite Care", path: "/services#respite-care" },
+      { name: "Complex Care", path: "/services#complex-care" },
+      { name: "Medication Support", path: "/services#medication-support" },
+      { name: "Meal Preparation", path: "/services#meal-preparation" },
     ],
   },
-  { label: "How It Works", id: "process" },
-  { label: "Team", id: "team" },
-  { label: "Testimonials", id: "testimonials" },
-  { label: "FAQ", id: "faq" },
-  { label: "Contact", id: "contact" },
+  { label: "How It Works", path: "/how-it-works" },
+  { label: "Team", path: "/team" },
+  { label: "Testimonials", path: "/testimonials" },
+  { label: "FAQ", path: "/faq" },
+  { label: "Contact", path: "/contact" },
 ];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdown, setDropdown] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState("home");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ticking = false;
@@ -43,15 +51,6 @@ const Header = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           setScrolled(currentY > 30);
-          // Track active section with low-overhead check
-          const sections = navItems.map(n => n.id);
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const el = document.getElementById(sections[i]);
-            if (el && el.getBoundingClientRect().top <= 140) {
-              setActiveSection(sections[i]);
-              break;
-            }
-          }
           ticking = false;
         });
         ticking = true;
@@ -62,8 +61,13 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const isCurrentPage = (path: string) => {
+    if (path === "/") return location.pathname === "/";
+    return location.pathname === path || location.pathname.startsWith(path);
+  };
+
+  const handleNavClick = (path: string) => {
+    navigate(path);
     setOpen(false);
     setDropdown(null);
   };
@@ -75,29 +79,25 @@ const Header = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "py-2"
-            : "py-3"
+          scrolled ? "py-2" : "py-3"
         }`}
       >
         {/* Navbar container with glass effect */}
-        <div className={`container transition-all duration-500 ${
-          scrolled ? "max-w-6xl" : ""
-        }`}>
-          <div className={`flex items-center justify-between transition-all duration-500 rounded-2xl px-5 ${
-            scrolled
-              ? "bg-card/80 backdrop-blur-2xl shadow-lg border border-border/50 h-14"
-              : "xl:bg-foreground/10 xl:backdrop-blur-xl xl:border xl:border-primary-foreground/10 h-14 xl:h-16"
-          }`}>
+        <div className={`container transition-all duration-500 ${scrolled ? "max-w-6xl" : ""}`}>
+          <div
+            className={`flex items-center justify-between transition-all duration-500 rounded-2xl px-5 ${
+              scrolled
+                ? "bg-card/85 backdrop-blur-2xl shadow-lg border border-border/50 h-14"
+                : "xl:bg-foreground/15 xl:backdrop-blur-xl xl:border xl:border-primary-foreground/10 h-14 xl:h-16"
+            }`}
+          >
             {/* Logo */}
-            <motion.button
-              onClick={() => scrollTo("home")}
+            <Link
+              to="/"
               className="flex items-center gap-2.5 group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
             >
               <img src={avonLogo} alt="Avon Angels Home Care" className="h-10 w-auto" />
-            </motion.button>
+            </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden xl:flex items-center gap-0.5">
@@ -109,15 +109,15 @@ const Header = () => {
                   onMouseLeave={() => setDropdown(null)}
                 >
                   <button
-                    onClick={() => scrollTo(item.id)}
+                    onClick={() => handleNavClick(item.path)}
                     className={`relative px-3 py-1.5 text-[13px] font-body font-medium rounded-lg transition-all duration-200 flex items-center gap-1 ${
-                      activeSection === item.id
+                      isCurrentPage(item.path)
                         ? scrolled
-                          ? "text-primary bg-primary/8"
-                          : "text-primary-foreground bg-primary-foreground/15"
+                          ? "text-primary bg-primary/10 font-semibold"
+                          : "text-primary-foreground bg-primary-foreground/20 font-semibold"
                         : scrolled
-                          ? "text-foreground/60 hover:text-foreground hover:bg-muted"
-                          : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                          ? "text-foreground/70 hover:text-foreground hover:bg-muted"
+                          : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
                     }`}
                   >
                     {item.label}
@@ -126,7 +126,7 @@ const Header = () => {
                         <ChevronDown className="w-3 h-3" />
                       </motion.div>
                     )}
-                    {activeSection === item.id && (
+                    {isCurrentPage(item.path) && (
                       <motion.div
                         layoutId="nav-active"
                         className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full ${
@@ -137,7 +137,7 @@ const Header = () => {
                     )}
                   </button>
 
-                  {/* Dropdown */}
+                  {/* Dropdown for Services */}
                   <AnimatePresence>
                     {item.sub && dropdown === item.label && (
                       <motion.div
@@ -145,20 +145,17 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.96 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-card/95 backdrop-blur-xl rounded-xl shadow-xl border border-border/80 overflow-hidden p-1.5"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-card/95 backdrop-blur-xl rounded-xl shadow-xl border border-border/80 overflow-hidden p-1.5 z-50"
                       >
                         {item.sub.map((sub, j) => (
-                          <motion.button
-                            key={sub}
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: j * 0.03 }}
-                            onClick={() => scrollTo("services")}
-                            className="flex items-center w-full text-left px-3 py-2 text-sm font-body text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-150 group"
+                          <button
+                            key={sub.name}
+                            onClick={() => handleNavClick(sub.path)}
+                            className="flex items-center w-full text-left px-3 py-2 text-sm font-body text-foreground/75 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-150 group"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary mr-2.5 transition-colors" />
-                            {sub}
-                          </motion.button>
+                            {sub.name}
+                          </button>
                         ))}
                       </motion.div>
                     )}
@@ -167,66 +164,50 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Right side */}
+            {/* Right side CTA & Quick Actions */}
             <div className="flex items-center gap-2">
-              {/* Accessibility Widget */}
               <AccessibilityWidget scrolled={scrolled} />
 
               {/* Quick Call Button on Mobile */}
-              <motion.a
+              <a
                 href="tel:+447500111987"
-                whileTap={{ scale: 0.92 }}
                 className="lg:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366] text-white shadow-md hover:bg-[#20ba59] active:scale-95 transition-all"
                 aria-label="Call Avon Angels"
               >
                 <Phone className="w-4 h-4" />
-              </motion.a>
-
-              {/* Phone - visible on lg+ */}
-              <a
-                href="tel:+447500111987"
-                className={`hidden lg:flex xl:hidden items-center gap-1.5 text-xs font-body font-semibold transition-colors ${
-                  scrolled ? "text-primary" : "text-primary-foreground"
-                }`}
-              >
-                <Phone className="w-3.5 h-3.5" />
-                +44 7500 111987
               </a>
 
-              {/* CTA */}
-              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="hidden lg:block">
+              {/* Desktop CTA */}
+              <div className="hidden lg:flex items-center gap-2">
                 <Button
-                  onClick={() => scrollTo("contact")}
-                  className={`font-body text-xs px-4 h-9 rounded-full shadow-md transition-all duration-300 ${
-                    scrolled
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-accent text-accent-foreground hover:bg-accent/90"
-                  }`}
+                  size="sm"
+                  onClick={() => handleNavClick("/contact")}
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 font-body text-xs px-4 py-2 rounded-full shadow-sm font-semibold flex items-center gap-1.5"
                 >
-                  Free Assessment
-                  <ArrowRight className="w-3 h-3 ml-1" />
+                  Get Free Assessment <ArrowRight className="w-3 h-3" />
                 </Button>
-              </motion.div>
+              </div>
 
-              {/* Mobile toggle */}
+              {/* Mobile menu button */}
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                className={`xl:hidden w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
-                  scrolled
-                    ? "text-foreground hover:bg-muted"
-                    : "text-primary-foreground hover:bg-primary-foreground/10"
-                }`}
                 onClick={() => setOpen(!open)}
+                className={`xl:hidden flex items-center justify-center w-9 h-9 rounded-xl transition-colors ${
+                  scrolled
+                    ? "bg-muted text-foreground hover:bg-muted/80"
+                    : "bg-primary-foreground/15 text-primary-foreground hover:bg-primary-foreground/25"
+                }`}
+                aria-label="Toggle menu"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={open ? "close" : "menu"}
+                    key={open ? "close" : "open"}
                     initial={{ rotate: -90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.15 }}
                   >
-                    {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
                   </motion.div>
                 </AnimatePresence>
               </motion.button>
@@ -286,18 +267,18 @@ const Header = () => {
                       key={item.label}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.04 * i }}
+                      transition={{ delay: 0.03 * i }}
                     >
                       <button
-                        onClick={() => scrollTo(item.id)}
+                        onClick={() => handleNavClick(item.path)}
                         className={`flex items-center justify-between w-full py-2.5 px-3.5 rounded-xl text-sm font-body font-medium transition-all ${
-                          activeSection === item.id
+                          isCurrentPage(item.path)
                             ? "text-primary bg-primary/10 font-semibold shadow-xs"
                             : "text-foreground/75 hover:text-foreground hover:bg-muted/70"
                         }`}
                       >
                         {item.label}
-                        {activeSection === item.id && (
+                        {isCurrentPage(item.path) && (
                           <div className="w-2 h-2 rounded-full bg-primary" />
                         )}
                       </button>
@@ -305,11 +286,11 @@ const Header = () => {
                         <div className="ml-4 border-l-2 border-primary/20 pl-3 space-y-0.5 mt-1 mb-1.5">
                           {item.sub.map((sub) => (
                             <button
-                              key={sub}
-                              onClick={() => scrollTo("services")}
+                              key={sub.name}
+                              onClick={() => handleNavClick(sub.path)}
                               className="block w-full text-left py-1.5 px-2 rounded-lg text-xs font-body text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
                             >
-                              {sub}
+                              {sub.name}
                             </button>
                           ))}
                         </div>
@@ -339,13 +320,13 @@ const Header = () => {
                 </div>
 
                 <Button
-                  onClick={() => scrollTo("contact")}
+                  onClick={() => handleNavClick("/contact")}
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-body text-xs h-10 rounded-xl shadow-md font-semibold"
                 >
                   Get Free Assessment <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
                 <p className="text-[10px] text-center text-muted-foreground font-body">
-                  Serving Bath, Bristol & surrounding Avon areas
+                  Serving Stratford-upon-Avon, Warwick & Warwickshire areas
                 </p>
               </div>
             </motion.div>
